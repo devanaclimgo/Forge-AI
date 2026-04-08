@@ -1,4 +1,4 @@
-import './style.css'
+import './global.css'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 <section id="center">
