@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_08_180103) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_08_180126) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "agent_logs", force: :cascade do |t|
+    t.string "action"
+    t.string "agent_name"
+    t.decimal "cost"
+    t.datetime "created_at", null: false
+    t.jsonb "metadata"
+    t.bigint "project_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_agent_logs_on_project_id"
+  end
 
   create_table "projects", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -43,6 +54,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_08_180103) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "agent_logs", "projects"
   add_foreign_key "projects", "users"
   add_foreign_key "tasks", "projects"
 end
