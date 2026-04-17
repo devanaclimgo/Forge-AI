@@ -20,7 +20,7 @@ export default  {
 
         secondary: {
           DEFAULT: "oklch(0.18 0.02 280)",
-          foreground: "oklch(0. 9 0 0)",
+          foreground: "oklch(0.9 0 0)",
         },
 
         muted: {
