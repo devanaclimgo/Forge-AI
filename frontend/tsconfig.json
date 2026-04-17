@@ -2,7 +2,7 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "target": "ES2023",
-    "lib": ["ES2023"],
+    "lib": ["ESNext", "DOM"],
     "module": "ESNext",
     "types": ["node"],
     "skipLibCheck": true,
