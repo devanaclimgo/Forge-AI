@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom"
-import { NavLink } from "react-router-dom"
 import { cn } from "../../lib/utils"
 import {
   LayoutDashboard,
@@ -14,7 +13,7 @@ import {
 
 const navigation = [
   { name: "Dashboard", href: "/", icon: LayoutDashboard },
-  { name: "Projetos", href: "/project", icon: FolderKanban },
+  { name: "Projetos", href: "/projects", icon: FolderKanban },
   { name: "Agentes IA", href: "/agents", icon: Sparkles },
   { name: "Brain Dump", href: "/brain-dump", icon: Brain },
   { name: "Comunidade", href: "/community", icon: MessageSquare },
