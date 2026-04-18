@@ -1,28 +1,26 @@
-"use client"
-
-import { cn } from "../../lib/utils"
-import { 
-  Layers, 
-  GitBranch, 
-  ListTodo, 
-  Bug, 
-  TrendingUp, 
+import { cn } from "../../lib/utils";
+import {
+  Layers,
+  GitBranch,
+  ListTodo,
+  Bug,
+  TrendingUp,
   Users,
   Clock,
-} from "lucide-react"
-import type { AgentType } from "./agent-card"
+} from "lucide-react";
+import type { AgentType } from "./agent-card";
 
 interface ActivityItem {
-  id: string
-  agent: AgentType
-  action: string
-  timestamp: string
-  details?: string
+  id: string;
+  agent: AgentType;
+  action: string;
+  timestamp: string;
+  details?: string;
 }
 
 interface ActivityFeedProps {
-  activities: ActivityItem[]
-  className?: string
+  activities: ActivityItem[];
+  className?: string;
 }
 
 const agentIcons = {
@@ -32,7 +30,7 @@ const agentIcons = {
   debug: Bug,
   progress: TrendingUp,
   community: Users,
-}
+};
 
 const agentColors = {
   planner: "text-violet-400 bg-violet-500/10",
@@ -41,7 +39,7 @@ const agentColors = {
   debug: "text-red-400 bg-red-500/10",
   progress: "text-amber-400 bg-amber-500/10",
   community: "text-pink-400 bg-pink-500/10",
-}
+};
 
 const agentNames = {
   planner: "Planner",
@@ -50,22 +48,22 @@ const agentNames = {
   debug: "Debug",
   progress: "Progress",
   community: "Community",
-}
+};
 
 export function ActivityFeed({ activities, className }: ActivityFeedProps) {
   return (
     <div className={cn("space-y-3", className)}>
       {activities.map((activity, index) => {
-        const Icon = agentIcons[activity.agent]
-        const colors = agentColors[activity.agent]
-        const [iconColor, bgColor] = colors.split(" ")
+        const Icon = agentIcons[activity.agent];
+        const colors = agentColors[activity.agent];
+        const [iconColor, bgColor] = colors.split(" ");
 
         return (
           <div
             key={activity.id}
             className={cn(
               "group relative flex gap-3 rounded-lg border border-border/50 bg-card/50 p-3 transition-all duration-200 hover:border-border hover:bg-card",
-              index === 0 && "border-primary/30 bg-primary/5"
+              index === 0 && "border-primary/30 bg-primary/5",
             )}
           >
             {/* Agent Icon */}
@@ -84,7 +82,9 @@ export function ActivityFeed({ activities, className }: ActivityFeedProps) {
                   <span>{activity.timestamp}</span>
                 </div>
               </div>
-              <p className="mt-0.5 text-sm text-foreground">{activity.action}</p>
+              <p className="mt-0.5 text-sm text-foreground">
+                {activity.action}
+              </p>
               {activity.details && (
                 <p className="mt-1 text-xs text-muted-foreground truncate">
                   {activity.details}
@@ -102,8 +102,8 @@ export function ActivityFeed({ activities, className }: ActivityFeedProps) {
               </div>
             )}
           </div>
-        )
+        );
       })}
     </div>
-  )
+  );
 }
