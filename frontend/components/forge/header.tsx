@@ -1,10 +1,10 @@
-import { Bell, Search, User, Command } from "lucide-react"
-import { Button } from "../../components/ui/button"
-import { Input } from "../../components/ui/input"
+import { Bell, Search, User, Command } from "lucide-react";
+import { Button } from "../../components/ui/button";
+import { Input } from "../../components/ui/input";
 
 interface HeaderProps {
-  title: string
-  subtitle?: string
+  title: string;
+  subtitle?: string;
 }
 
 export function Header({ title, subtitle }: HeaderProps) {
@@ -24,7 +24,7 @@ export function Header({ title, subtitle }: HeaderProps) {
           <Input
             type="search"
             placeholder="Buscar..."
-            className="w-64 bg-secondary/50 pl-9 pr-12 text-sm"
+            className="w-64 bg-secondary/50 pl-9 pr-12 text-sm border-border focus:border-primary focus:ring-primary/20"
           />
           <div className="absolute right-2 top-1/2 flex -translate-y-1/2 items-center gap-0.5 rounded border border-border bg-muted px-1.5 py-0.5">
             <Command className="h-3 w-3 text-muted-foreground" />
@@ -46,5 +46,5 @@ export function Header({ title, subtitle }: HeaderProps) {
         </Button>
       </div>
     </header>
-  )
+  );
 }
