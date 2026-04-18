@@ -1,41 +1,81 @@
-export default {
-  darkMode: "class",
-  content: ["./index.html", "./src/**/*.{ts,tsx}"],
+import type { Config } from 'tailwindcss'
 
+const config: Config = {
+  content: ['./index.html', './src/**/*.{ts,tsx,js,jsx}'],
+  darkMode: ["class"],
   theme: {
     extend: {
       colors: {
-        background: "oklch(var(--background))",
-        foreground: "oklch(var(--foreground))",
-
+        background: 'rgb(var(--background))',
+        foreground: 'rgb(var(--foreground))',
         card: {
-          DEFAULT: "oklch(var(--card))",
-          foreground: "oklch(var(--card-foreground))",
+          DEFAULT: 'rgb(var(--card))',
+          foreground: 'rgb(var(--card-foreground))',
         },
-
         primary: {
-          DEFAULT: "oklch(var(--primary))",
-          foreground: "oklch(var(--primary-foreground))",
+          DEFAULT: 'rgb(var(--primary))',
+          foreground: 'rgb(var(--primary-foreground))',
         },
-
         secondary: {
-          DEFAULT: "oklch(var(--secondary))",
-          foreground: "oklch(var(--secondary-foreground))",
+          DEFAULT: 'rgb(var(--secondary))',
+          foreground: 'rgb(var(--secondary-foreground))',
         },
-
         muted: {
-          DEFAULT: "oklch(var(--muted))",
-          foreground: "oklch(var(--muted-foreground))",
+          DEFAULT: 'rgb(var(--muted))',
+          foreground: 'rgb(var(--muted-foreground))',
         },
-
-        border: "oklch(var(--border))",
-        input: "oklch(var(--input))",
-        ring: "oklch(var(--ring))",
-
-        sidebar: "oklch(var(--sidebar))",
+        accent: {
+          DEFAULT: 'rgb(var(--accent))',
+          foreground: 'rgb(var(--accent-foreground))',
+        },
+        destructive: {
+          DEFAULT: 'rgb(var(--destructive))',
+          foreground: 'rgb(var(--destructive-foreground))',
+        },
+        border: 'rgb(var(--border))',
+        input: 'rgb(var(--input))',
+        ring: 'rgb(var(--ring))',
+        // Agent colors
+        agent: {
+          planner: 'rgb(var(--agent-planner))',
+          architect: 'rgb(var(--agent-architect))',
+          task: 'rgb(var(--agent-task))',
+          debug: 'rgb(var(--agent-debug))',
+          progress: 'rgb(var(--agent-progress))',
+          community: 'rgb(var(--agent-community))',
+        },
+        // Charts
+        chart: {
+          '1': 'rgb(var(--chart-1))',
+          '2': 'rgb(var(--chart-2))',
+          '3': 'rgb(var(--chart-3))',
+          '4': 'rgb(var(--chart-4))',
+          '5': 'rgb(var(--chart-5))',
+        },
+        sidebar: {
+          DEFAULT: 'rgb(var(--sidebar))',
+          foreground: 'rgb(var(--sidebar-foreground))',
+          primary: 'rgb(var(--sidebar-primary))',
+          'primary-foreground': 'rgb(var(--sidebar-primary-foreground))',
+          accent: 'rgb(var(--sidebar-accent))',
+          'accent-foreground': 'rgb(var(--sidebar-accent-foreground))',
+          border: 'rgb(var(--sidebar-border))',
+          ring: 'rgb(var(--sidebar-ring))',
+        },
+      },
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
+        xl: 'calc(var(--radius) + 4px)',
+      },
+      fontFamily: {
+        sans: ['Inter', 'Geist', 'sans-serif'],
+        mono: ['JetBrains Mono', 'Geist Mono', 'monospace'],
       },
     },
   },
-
   plugins: [],
-};
+}
+
+export default config
