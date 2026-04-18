@@ -1,19 +1,19 @@
-import { Sidebar } from "../../components/forge/sidebar"
-import { Header } from "../../components/forge/header"
-import { StatsCard } from "../../components/forge/stats-card"
-import { ProjectCard } from "../../components/forge/project-card"
-import { AgentCard } from "../../components/forge/agent-card"
-import { ActivityFeed } from "../../components/forge/activity-feed"
-import { 
-  FolderGit2, 
-  CheckCircle2, 
-  Clock, 
+import { Sidebar } from "../../components/forge/sidebar";
+import { Header } from "../../components/forge/header";
+import { StatsCard } from "../../components/forge/stats-card";
+import { ProjectCard } from "../../components/forge/project-card";
+import { AgentCard } from "../../components/forge/agent-card";
+import { ActivityFeed } from "../../components/forge/activity-feed";
+import {
+  FolderGit2,
+  CheckCircle2,
+  Clock,
   Sparkles,
   Plus,
   ArrowRight,
-} from "lucide-react"
-import { Button } from "../../components/ui/button"
-import { Link } from "react-router-dom"
+} from "lucide-react";
+import { Button } from "../../components/ui/button";
+import { Link } from "react-router-dom";
 
 const mockProjects = [
   {
@@ -46,7 +46,7 @@ const mockProjects = [
     lastActivity: "1h atras",
     techStack: ["React", "D3.js", "WebSocket", "ClickHouse"],
   },
-]
+];
 
 const mockActivities = [
   {
@@ -82,17 +82,17 @@ const mockActivities = [
     timestamp: "2h",
     details: "Produtividade aumentou 23% em relacao a semana anterior",
   },
-]
+];
 
 export default function DashboardPage() {
   return (
     <div className="flex min-h-screen">
       <Sidebar />
-      
-      <main className="flex-1 pl-2">
-        <Header 
-          title="Dashboard" 
-          subtitle="Visao geral dos seus projetos e agentes IA" 
+
+      <main className="flex-1 pl-64">
+        <Header
+          title="Dashboard"
+          subtitle="Visao geral dos seus projetos e agentes IA"
         />
 
         <div className="p-6">
@@ -141,8 +141,15 @@ export default function DashboardPage() {
             {/* Projects Section */}
             <div className="lg:col-span-2">
               <div className="flex items-center justify-between">
-                <h2 className="text-lg font-semibold text-foreground">Projetos Recentes</h2>
-                <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground" asChild>
+                <h2 className="text-lg font-semibold text-foreground">
+                  Projetos Recentes
+                </h2>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-muted-foreground hover:text-foreground"
+                  asChild
+                >
                   <Link to="/project">
                     Ver todos
                     <ArrowRight className="ml-1 h-4 w-4" />
@@ -175,8 +182,15 @@ export default function DashboardPage() {
               {/* AI Agents Quick View */}
               <div>
                 <div className="flex items-center justify-between">
-                  <h2 className="text-lg font-semibold text-foreground">Agentes Ativos</h2>
-                  <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground" asChild>
+                  <h2 className="text-lg font-semibold text-foreground">
+                    Agentes Ativos
+                  </h2>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-muted-foreground hover:text-foreground"
+                    asChild
+                  >
                     <Link to="/agents">
                       Ver todos
                       <ArrowRight className="ml-1 h-4 w-4" />
@@ -192,8 +206,12 @@ export default function DashboardPage() {
 
               {/* Activity Feed */}
               <div>
-                <h2 className="text-lg font-semibold text-foreground">Atividade Recente</h2>
-                <p className="text-sm text-muted-foreground">Decisoes e acoes dos agentes IA</p>
+                <h2 className="text-lg font-semibold text-foreground">
+                  Atividade Recente
+                </h2>
+                <p className="text-sm text-muted-foreground">
+                  Decisoes e acoes dos agentes IA
+                </p>
                 <div className="mt-4 max-h-96 overflow-y-auto pr-2">
                   <ActivityFeed activities={mockActivities} />
                 </div>
@@ -203,5 +221,5 @@ export default function DashboardPage() {
         </div>
       </main>
     </div>
-  )
+  );
 }
