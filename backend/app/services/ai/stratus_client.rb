@@ -59,10 +59,10 @@ module Ai
       end
 
       parsed
+    end
 
-      def self.api_key
-        ENV["STRATUS_API_KEY"] || Rails.application.credentials.stratus_api_key
-      end
+    def self.api_key
+      ENV["STRATUS_API_KEY"] || Rails.application.credentials.stratus_api_key
     end
   end
 end
