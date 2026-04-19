@@ -1,3 +1,6 @@
+require 'net/http'
+require 'uri'
+
 module Ai
   class StratusClient
     BASE_URL = "https://api.stratus.run/v1".freeze
