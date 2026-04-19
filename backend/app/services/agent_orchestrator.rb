@@ -1,6 +1,6 @@
 class AgentOrchestrator
   def self.project_created(project)
-    PlannerAgent.new(project).call(project.description)
+    Agents::PlannerAgent.new(project).call(project.description)
   end
 
   def self.task_completed(task)
