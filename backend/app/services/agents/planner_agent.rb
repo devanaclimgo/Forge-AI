@@ -5,7 +5,7 @@ module Agents
 
       response = Ai::StratusClient.generate(
         prompt,
-        system: "You are a senior software project planner. Be consice and structured."
+        system: "You are a senior software project planner. Be concise and structured."
       )
 
       log("planner", { description: description }, response)
