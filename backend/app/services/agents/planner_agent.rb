@@ -2,7 +2,10 @@ class PlannerAgent < BaseAgent
   def call(description)
     prompt = build_prompt(description)
 
-    response = StratusClient.generate(prompt)
+    response = Ai::StratusClient.generate(
+      prompt,
+      system: "You are a senior software project planner. Be consice and structured."
+    )
 
     log("planner", { description: description }, response)
 
