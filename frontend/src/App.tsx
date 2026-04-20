@@ -1,10 +1,10 @@
-import './App.css'
+import ForgeTest from "./ForgeTest";
 
 function App() {
 
   return (
     <>
-      <h1>Welcome to Forge AI!</h1>
+      <ForgeTest />
     </>
   )
 }
