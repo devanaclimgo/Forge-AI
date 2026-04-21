@@ -4,7 +4,7 @@ class Api::V1::AuthController < ApplicationController
   def register
     user = User.create!(user_params)
 
-    token = JsonWebToken.encode(user_id: user.id)
+    token = Auth::JsonWebToken.encode(user_id: user.id)
 
     render json: { user: user, token: token }
   end
@@ -13,7 +13,7 @@ class Api::V1::AuthController < ApplicationController
     user = User.find_by(email: params[:email])
 
     if user&.authenticate(params[:password])
-      token = JsonWebToken.encode(user_id: user.id)
+      token = Auth::JsonWebToken.encode(user_id: user.id)
       render json: { user: user, token: token }
     else
       render json: { error: "Invalid credentials" }, status: :unauthorized
