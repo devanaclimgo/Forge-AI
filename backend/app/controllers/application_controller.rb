@@ -10,7 +10,7 @@ class ApplicationController < ActionController::API
 
     token = header.split(' ').last if header
 
-    decoded = JsonWebToken.decode(token)
+    decoded = Auth::JsonWebToken.decode(token)
 
     @current_user = User.find(decoded[:user_id]) if decoded
   rescue
