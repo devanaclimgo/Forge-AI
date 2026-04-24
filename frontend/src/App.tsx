@@ -1,10 +1,11 @@
-import ForgeTest from "./ForgeTest";
+//import ForgeTest from "./ForgeTest";
+import LandingPage from "./pages/landing/page"
 
 function App() {
 
   return (
     <>
-      <ForgeTest />
+      <LandingPage />
     </>
   )
 }
