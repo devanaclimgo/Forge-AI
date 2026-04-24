@@ -72,15 +72,15 @@ export default function LandingPage() {
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <Logo />
           <nav className="hidden md:flex items-center gap-6">
-            <Link to="#how-it-works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a href="#how-it-works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               How it Works
-            </Link>
-            <Link to="#agents" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            </a>
+            <a href="#agents" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Agents
-            </Link>
-            <Link to="#features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            </a>
+            <a href="#features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Features
-            </Link>
+            </a>
           </nav>
           <div className="flex items-center gap-3">
             <Link
@@ -128,12 +128,12 @@ export default function LandingPage() {
               Try for Free
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
-            <Link
-              to="#how-it-works"
+            <a
+              href="#how-it-works"
               className="flex items-center gap-2 rounded-lg border border-border px-6 py-3 text-base font-medium text-foreground transition-colors hover:bg-secondary"
             >
               See How It Works
-            </Link>
+            </a>
           </div>
         </div>
       </section>
