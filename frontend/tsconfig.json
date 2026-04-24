@@ -8,7 +8,7 @@
     "baseUrl": "./*",
     "ignoreDeprecations": "6.0",
     "paths": {
-      "@/*": ["./src/*", "globals.d.ts"]
+      "@/*": ["./src/*", "vite-env.d.ts"]
     }
   }
 }
