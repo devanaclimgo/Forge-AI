@@ -4,36 +4,36 @@
 
 @layer base {
   :root {
-    --background: #0B0F14;
-    --foreground: #F8FAFC;
+    --background: #0b0f14;
+    --foreground: #f8fafc;
     --card: #111827;
-    --card-foreground: #F8FAFC;
-    --popover: #0F172A;
-    --popover-foreground: #F8FAFC;
+    --card-foreground: #f8fafc;
+    --popover: #0f172a;
+    --popover-foreground: #f8fafc;
     --primary: #38bdf8;
-    --primary-foreground: #0B0F14;
-    --secondary: #1F2937;
-    --secondary-foreground: #F8FAFC;
-    --muted: #1F2937;
-    --muted-foreground: #94A3B8;
+    --primary-foreground: #0b0f14;
+    --secondary: #1f2937;
+    --secondary-foreground: #f8fafc;
+    --muted: #1f2937;
+    --muted-foreground: #94a3b8;
     --accent: #a78bfa;
-    --accent-foreground: #0B0F14;
+    --accent-foreground: #0b0f14;
     --destructive: #fb923c;
-    --destructive-foreground: #0B0F14;
-    --border: #1F2937;
-    --input: #1F2937;
+    --destructive-foreground: #0b0f14;
+    --border: #1f2937;
+    --input: #1f2937;
     --ring: #38bdf8;
     --success: #34d399;
     --warning: #fbbf24;
     --agent: #a78bfa;
     --radius: 0.5rem;
-    --sidebar: #0F172A;
-    --sidebar-foreground: #F8FAFC;
+    --sidebar: #0f172a;
+    --sidebar-foreground: #f8fafc;
     --sidebar-primary: #38bdf8;
-    --sidebar-primary-foreground: #0B0F14;
-    --sidebar-accent: #1F2937;
-    --sidebar-accent-foreground: #F8FAFC;
-    --sidebar-border: #1F2937;
+    --sidebar-primary-foreground: #0b0f14;
+    --sidebar-accent: #1f2937;
+    --sidebar-accent-foreground: #f8fafc;
+    --sidebar-border: #1f2937;
     --sidebar-ring: #38bdf8;
   }
 
@@ -43,18 +43,32 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Geist', system-ui, sans-serif;
+    font-family: "Geist", system-ui, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 8px 2px rgba(167, 139, 250, 0.3); }
-  50%       { box-shadow: 0 0 16px 4px rgba(167, 139, 250, 0.5); }
+  0%,
+  100% {
+    box-shadow: 0 0 8px 2px rgba(167, 139, 250, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 16px 4px rgba(167, 139, 250, 0.5);
+  }
 }
 
 @keyframes thinking-dot {
-  0%, 100% { opacity: 0.3; }
-  50%       { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 .agent-glow {
@@ -64,5 +78,9 @@
 .thinking-dot {
   animation: thinking-dot 1.5s ease-in-out infinite;
 }
-.thinking-dot:nth-child(2) { animation-delay: 0.2s; }
-.thinking-dot:nth-child(3) { animation-delay: 0.4s; }
+.thinking-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.thinking-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
