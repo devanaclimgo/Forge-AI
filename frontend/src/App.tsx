@@ -3,7 +3,7 @@ import LandingPage from "./pages/landing/page";
 import SignupPage from "./pages/signup/page";
 import LoginPage from "./pages/login/page";
 import DashboardPage from "./pages/dashboard/page";
-import ProjectPage from "./pages/projects/id/page";
+import ProjectPage from "./pages/project/id/page";
 import AgentsPage from "./pages/agents/page";
 import BrainDumpPage from "./pages/brain-dump/page";
 
