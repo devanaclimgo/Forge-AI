@@ -19,7 +19,7 @@ export default function SignupPage() {
     
     const API_URL = "http://localhost:3000";
 
-    const res = await fetch(`${API_URL}/api/v1/auth_controller`, {
+    const res = await fetch(`${API_URL}/api/v1/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
