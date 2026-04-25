@@ -1,43 +1,62 @@
-import { Link, useNavigate } from "react-router-dom"
-import { useState } from "react"
-import { Logo } from "../../../components/forge/logo"
-import { Mail, Lock, User, ArrowRight, Eye, EyeOff, CheckCircle2 } from "lucide-react"
-import { FaGithub } from "react-icons/fa"
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Logo } from "../../../components/forge/logo";
+import {
+  Mail,
+  Lock,
+  User,
+  ArrowRight,
+  Eye,
+  EyeOff,
+  CheckCircle2,
+} from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 
 export default function SignupPage() {
-  const [showPassword, setShowPassword] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
-  const navigate = useNavigate()
+  const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
+    name: "",
     email: "",
     password: "",
-  })
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
-    
-    const API_URL = "http://localhost:3000";
+    e.preventDefault();
+    setIsLoading(true);
 
-    const res = await fetch(`${API_URL}/api/v1/signup`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: formData.email,
-        password: formData.password,
-      }),
-    })
+    try {
+      const API_URL = "http://localhost:3000";
 
-    if (res.ok) {
-      setIsLoading(false)
-      navigate("/dashboard")
-    } else {
-      setIsLoading(false)
-      alert("Signup failed. Please try again.")
+      const res = await fetch(`${API_URL}/api/v1/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          password: formData.password,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        navigate("/dashboard");
+      } else {
+        alert(data.error || "Signup failed. Please try again.");
+      }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (err) {
+      alert("Connection error. Please try again later.");
+    } finally {
+      setIsLoading(false);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center px-4 py-12">
@@ -51,7 +70,9 @@ export default function SignupPage() {
           <div className="flex justify-center mb-6">
             <Logo size="lg" />
           </div>
-          <h1 className="text-2xl font-bold text-foreground">Create your account</h1>
+          <h1 className="text-2xl font-bold text-foreground">
+            Create your account
+          </h1>
           <p className="text-muted-foreground mt-2">
             Start building with AI-powered project management
           </p>
@@ -71,13 +92,18 @@ export default function SignupPage() {
               <div className="w-full border-t border-border" />
             </div>
             <div className="relative flex justify-center text-xs">
-              <span className="bg-card px-4 text-muted-foreground">or continue with email</span>
+              <span className="bg-card px-4 text-muted-foreground">
+                or continue with email
+              </span>
             </div>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-foreground mb-2"
+              >
                 Full Name
               </label>
               <div className="relative">
@@ -88,12 +114,19 @@ export default function SignupPage() {
                   placeholder="John Doe"
                   className="w-full rounded-lg border border-border bg-secondary pl-10 pr-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
                   required
+                  value={formData.name}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-foreground mb-2"
+              >
                 Email
               </label>
               <div className="relative">
@@ -105,13 +138,18 @@ export default function SignupPage() {
                   className="w-full rounded-lg border border-border bg-secondary pl-10 pr-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
                   required
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-foreground mb-2">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-foreground mb-2"
+              >
                 Password
               </label>
               <div className="relative">
@@ -124,14 +162,20 @@ export default function SignupPage() {
                   required
                   minLength={8}
                   value={formData.password}
-                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, password: e.target.value })
+                  }
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                  {showPassword ? (
+                    <EyeOff className="w-5 h-5" />
+                  ) : (
+                    <Eye className="w-5 h-5" />
+                  )}
                 </button>
               </div>
               <p className="mt-1.5 text-xs text-muted-foreground">
@@ -164,11 +208,17 @@ export default function SignupPage() {
 
           <p className="mt-4 text-xs text-muted-foreground text-center">
             By signing up, you agree to our{" "}
-            <a href="#" className="text-primary hover:text-primary/80 transition-colors">
+            <a
+              href="#"
+              className="text-primary hover:text-primary/80 transition-colors"
+            >
               Terms of Service
             </a>{" "}
             and{" "}
-            <a href="#" className="text-primary hover:text-primary/80 transition-colors">
+            <a
+              href="#"
+              className="text-primary hover:text-primary/80 transition-colors"
+            >
               Privacy Policy
             </a>
           </p>
@@ -191,11 +241,14 @@ export default function SignupPage() {
 
         <p className="text-center mt-6 text-sm text-muted-foreground">
           Already have an account?{" "}
-          <Link to="/login" className="text-primary hover:text-primary/80 transition-colors font-medium">
+          <Link
+            to="/login"
+            className="text-primary hover:text-primary/80 transition-colors font-medium"
+          >
             Sign in
           </Link>
         </p>
       </div>
     </div>
-  )
+  );
 }
