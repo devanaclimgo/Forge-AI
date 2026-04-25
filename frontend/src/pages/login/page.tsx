@@ -1,43 +1,55 @@
-import { Link, useNavigate } from "react-router-dom"
-import { useState } from "react"
-import { Logo } from "../../..//components/forge/logo"
-import { Mail, Lock, ArrowRight, Eye, EyeOff } from "lucide-react"
-import { FaGithub } from "react-icons/fa"
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Logo } from "../../..//components/forge/logo";
+import { Mail, Lock, ArrowRight, Eye, EyeOff } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 
 export default function LoginPage() {
-  const [showPassword, setShowPassword] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
-  const navigate = useNavigate()
+  const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-  })
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
+    e.preventDefault();
+    setIsLoading(true);
 
-    const API_URL = "http://localhost:3000";
-    
-    const res = await fetch(`${API_URL}/api/v1/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: formData.email,
-        password: formData.password,
-      }),
-    })
+    try {
+      const API_URL = "http://localhost:3000";
 
-    if (res.ok) {
-      setIsLoading(false)
-      navigate("/dashboard")
-    } else {
-      setIsLoading(false)
-      alert("Login failed. Please check your credentials and try again.")
+      const res = await fetch(`${API_URL}/api/v1/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        navigate("/dashboard");
+      } else {
+        alert(
+          data.error ||
+            "Login failed. Please check your credentials and try again.",
+        );
+      }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (err) {
+      alert("Connection error. Please try again later.");
+    } finally {
+      setIsLoading(false);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center px-4">
@@ -71,13 +83,18 @@ export default function LoginPage() {
               <div className="w-full border-t border-border" />
             </div>
             <div className="relative flex justify-center text-xs">
-              <span className="bg-card px-4 text-muted-foreground">or continue with email</span>
+              <span className="bg-card px-4 text-muted-foreground">
+                or continue with email
+              </span>
             </div>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-foreground mb-2"
+              >
                 Email
               </label>
               <div className="relative">
@@ -89,13 +106,18 @@ export default function LoginPage() {
                   className="w-full rounded-lg border border-border bg-secondary pl-10 pr-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
                   required
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-foreground mb-2">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-foreground mb-2"
+              >
                 Password
               </label>
               <div className="relative">
@@ -107,14 +129,20 @@ export default function LoginPage() {
                   className="w-full rounded-lg border border-border bg-secondary pl-10 pr-12 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
                   required
                   value={formData.password}
-                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, password: e.target.value })
+                  }
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                  {showPassword ? (
+                    <EyeOff className="w-5 h-5" />
+                  ) : (
+                    <Eye className="w-5 h-5" />
+                  )}
                 </button>
               </div>
             </div>
@@ -127,7 +155,10 @@ export default function LoginPage() {
                 />
                 <span className="text-muted-foreground">Remember me</span>
               </label>
-              <a href="#" className="text-primary hover:text-primary/80 transition-colors">
+              <a
+                href="#"
+                className="text-primary hover:text-primary/80 transition-colors"
+              >
                 Forgot password?
               </a>
             </div>
@@ -158,11 +189,14 @@ export default function LoginPage() {
 
         <p className="text-center mt-6 text-sm text-muted-foreground">
           Don&apos;t have an account?{" "}
-          <Link to="/signup" className="text-primary hover:text-primary/80 transition-colors font-medium">
+          <Link
+            to="/signup"
+            className="text-primary hover:text-primary/80 transition-colors font-medium"
+          >
             Sign up
           </Link>
         </p>
       </div>
     </div>
-  )
+  );
 }
