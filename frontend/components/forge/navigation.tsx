@@ -1,4 +1,4 @@
-import { Link, useNavigation } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { cn } from "../../lib/src/*/utils"
 import { Logo } from "./logo"
 import { 
@@ -16,7 +16,14 @@ const navItems = [
 ]
 
 export function Navigation() {
-  const pathname = useNavigation()
+  const { pathname } = useLocation()
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    localStorage.removeItem("token")
+    localStorage.removeItem("user")
+    navigate("/login")
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-sm">
@@ -52,12 +59,12 @@ export function Navigation() {
           >
             <Settings className="w-5 h-5" />
           </Link>
-          <Link
-            to="/login"
+          <button
+            onClick={handleLogout}
             className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors"
           >
             <LogOut className="w-5 h-5" />
-          </Link>
+          </button>
         </div>
       </div>
     </header>
