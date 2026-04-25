@@ -6,11 +6,13 @@ import {
   Lightbulb, 
   Bot, 
   Settings,
-  LogOut
+  LogOut,
+  FolderKanban
 } from "lucide-react"
 
 const navItems = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/projects", label: "Projects", icon: FolderKanban },
   { href: "/brain-dump", label: "Brain Dump", icon: Lightbulb },
   { href: "/agents", label: "Agents", icon: Bot },
 ]
