@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { Logo } from "../../..//components/forge/logo";
+import { Logo } from "../../../components/forge/logo";
 import { Mail, Lock, ArrowRight, Eye, EyeOff } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 
