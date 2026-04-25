@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { cn } from "../../lib/src/*/utils"
-import { ChevronDown, ChevronRight, CheckCircle2, Circle, Clock, AlertCircle } from "lucide-react"
+import { ChevronDown, ChevronRight, CheckCircle2, Circle, Clock, AlertCircle, Plus } from "lucide-react"
 
 interface SubTask {
   id: string
@@ -8,7 +8,7 @@ interface SubTask {
   completed: boolean
 }
 
-interface TaskItemProps {
+export interface Task {
   id: string
   title: string
   description?: string
@@ -17,6 +17,12 @@ interface TaskItemProps {
   assignedAgent?: string
   agentNotes?: string
   subTasks?: SubTask[]
+}
+
+interface TaskItemProps extends Task {
+  onStatusChange?: (id: string, status: Task["status"]) => void
+  onAddToSprint?: (id: string) => void
+  showAddToSprint?: boolean
 }
 
 const priorityConfig = {
@@ -33,17 +39,33 @@ const statusConfig = {
   blocked: { label: "Blocked", icon: AlertCircle, className: "text-destructive" }
 }
 
+const statusOrder: Task["status"][] = ["todo", "in-progress", "done", "blocked"]
+
 export function TaskItem({
+  id,
   title,
   description,
   priority,
   status,
   assignedAgent,
   agentNotes,
-  subTasks
+  subTasks,
+  onStatusChange,
+  onAddToSprint,
+  showAddToSprint = false
 }: TaskItemProps) {
   const [isExpanded, setIsExpanded] = useState(false)
-  const StatusIcon = statusConfig[status].icon
+  const [currentStatus, setCurrentStatus] = useState(status)
+  const StatusIcon = statusConfig[currentStatus].icon
+
+  const cycleStatus = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    const currentIndex = statusOrder.indexOf(currentStatus)
+    const nextIndex = (currentIndex + 1) % statusOrder.length
+    const newStatus = statusOrder[nextIndex]
+    setCurrentStatus(newStatus)
+    onStatusChange?.(id, newStatus)
+  }
 
   return (
     <div className="group border-b border-border last:border-b-0">
@@ -51,7 +73,13 @@ export function TaskItem({
         className="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-secondary/30 transition-colors"
         onClick={() => setIsExpanded(!isExpanded)}
       >
-        <button className="text-muted-foreground hover:text-foreground transition-colors">
+        <button 
+          className="text-muted-foreground hover:text-foreground transition-colors"
+          onClick={(e) => {
+            e.stopPropagation()
+            setIsExpanded(!isExpanded)
+          }}
+        >
           {isExpanded ? (
             <ChevronDown className="w-4 h-4" />
           ) : (
@@ -59,7 +87,13 @@ export function TaskItem({
           )}
         </button>
         
-        <StatusIcon className={cn("w-5 h-5", statusConfig[status].className)} />
+        <button
+          onClick={cycleStatus}
+          className="hover:scale-110 transition-transform"
+          title="Click to change status"
+        >
+          <StatusIcon className={cn("w-5 h-5 transition-colors duration-150", statusConfig[currentStatus].className)} />
+        </button>
         
         <span className="flex-1 font-medium text-foreground">{title}</span>
         
@@ -74,17 +108,30 @@ export function TaskItem({
         
         <span
           className={cn(
-            "px-2 py-0.5 rounded text-xs font-mono",
-            statusConfig[status].className
+            "px-2 py-0.5 rounded text-xs font-mono transition-colors duration-150",
+            statusConfig[currentStatus].className
           )}
         >
-          {statusConfig[status].label}
+          {statusConfig[currentStatus].label}
         </span>
         
         {assignedAgent && (
           <span className="px-2 py-0.5 rounded bg-accent/20 text-accent text-xs font-mono">
             {assignedAgent}
           </span>
+        )}
+
+        {showAddToSprint && (
+          <button
+            onClick={(e) => {
+              e.stopPropagation()
+              onAddToSprint?.(id)
+            }}
+            className="px-2 py-1 rounded bg-primary/20 text-primary text-xs font-medium hover:bg-primary/30 transition-colors flex items-center gap-1"
+          >
+            <Plus className="w-3 h-3" />
+            Add to Sprint
+          </button>
         )}
       </div>
       
