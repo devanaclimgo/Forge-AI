@@ -1,62 +1,71 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
-import { Logo } from "../../../components/forge/logo"
-import { 
-  Send, 
-  Target, 
-  GitBranch, 
-  ListTodo, 
-  Shield, 
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Logo } from "../../../components/forge/logo";
+import {
+  Send,
+  Target,
+  GitBranch,
+  ListTodo,
+  Shield,
   Workflow,
   ArrowRight,
-  CheckCircle2
-} from "lucide-react"
+  CheckCircle2,
+  LogOut,
+} from "lucide-react";
 
 const agents = [
   { name: "Planner", icon: Target, message: "Structuring features..." },
-  { name: "Architect", icon: GitBranch, message: "Defining technical stack..." },
+  {
+    name: "Architect",
+    icon: GitBranch,
+    message: "Defining technical stack...",
+  },
   { name: "Task Manager", icon: ListTodo, message: "Organizing backlog..." },
-  { name: "Debug Agent", icon: Shield, message: "Setting up quality checks..." },
-  { name: "Analyst", icon: Workflow, message: "Analyzing scope..." }
-]
+  {
+    name: "Debug Agent",
+    icon: Shield,
+    message: "Setting up quality checks...",
+  },
+  { name: "Analyst", icon: Workflow, message: "Analyzing scope..." },
+];
 
 export default function BrainDumpPage() {
-  const navigate = useNavigate()
-  const [content, setContent] = useState("")
-  const [isProcessing, setIsProcessing] = useState(false)
-  const [currentAgentIndex, setCurrentAgentIndex] = useState(0)
-  const [processedAgents, setProcessedAgents] = useState<number[]>([])
-  const [showResult, setShowResult] = useState(false)
+  const navigate = useNavigate();
+  const [content, setContent] = useState("");
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [currentAgentIndex, setCurrentAgentIndex] = useState(0);
+  const [processedAgents, setProcessedAgents] = useState<number[]>([]);
+  const [showResult, setShowResult] = useState(false);
 
-  const wordCount = content.trim().split(/\s+/).filter(Boolean).length
-  const charCount = content.length
+  const wordCount = content.trim().split(/\s+/).filter(Boolean).length;
+  const charCount = content.length;
 
   const handleSubmit = () => {
-    if (!content.trim() || isProcessing) return
-    
-    setIsProcessing(true)
-    setCurrentAgentIndex(0)
-    setProcessedAgents([])
-    
+    if (!content.trim() || isProcessing) return;
+
+    setIsProcessing(true);
+    setCurrentAgentIndex(0);
+    setProcessedAgents([]);
+
     // Simulate agents processing one by one
-    let index = 0
+    let index = 0;
     const interval = setInterval(() => {
-      setProcessedAgents(prev => [...prev, index])
-      index++
-      setCurrentAgentIndex(index)
-      
+      setProcessedAgents((prev) => [...prev, index]);
+      index++;
+      setCurrentAgentIndex(index);
+
       if (index >= agents.length) {
-        clearInterval(interval)
+        clearInterval(interval);
         setTimeout(() => {
-          setShowResult(true)
-        }, 500)
+          setShowResult(true);
+        }, 500);
       }
-    }, 1200)
-  }
+    }, 1200);
+  };
 
   const handleViewProject = () => {
-    navigate("/project/fintrack-ai")
-  }
+    navigate("/project/fintrack-ai");
+  };
 
   if (showResult) {
     return (
@@ -66,9 +75,12 @@ export default function BrainDumpPage() {
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-success/20 mb-4">
               <CheckCircle2 className="w-8 h-8 text-success" />
             </div>
-            <h1 className="text-3xl font-bold text-foreground">Project Created!</h1>
+            <h1 className="text-3xl font-bold text-foreground">
+              Project Created!
+            </h1>
             <p className="text-muted-foreground mt-2">
-              Our agents have analyzed your idea and created a structured project.
+              Our agents have analyzed your idea and created a structured
+              project.
             </p>
           </div>
 
@@ -76,7 +88,9 @@ export default function BrainDumpPage() {
             <h2 className="text-xl font-semibold mb-4">Project: FinTrack AI</h2>
             <div className="space-y-4">
               <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">Features identified</span>
+                <span className="text-muted-foreground">
+                  Features identified
+                </span>
                 <span className="font-mono text-foreground">8</span>
               </div>
               <div className="flex items-center justify-between text-sm">
@@ -88,7 +102,9 @@ export default function BrainDumpPage() {
                 <span className="font-mono text-foreground">3</span>
               </div>
               <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">Estimated duration</span>
+                <span className="text-muted-foreground">
+                  Estimated duration
+                </span>
                 <span className="font-mono text-foreground">6 weeks</span>
               </div>
             </div>
@@ -104,7 +120,9 @@ export default function BrainDumpPage() {
                   <agent.icon className="w-4 h-4" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-foreground">{agent.name}</p>
+                  <p className="text-sm font-medium text-foreground">
+                    {agent.name}
+                  </p>
                   <p className="text-xs text-success font-mono">Completed</p>
                 </div>
               </div>
@@ -120,14 +138,22 @@ export default function BrainDumpPage() {
           </button>
         </div>
       </div>
-    )
+    );
   }
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {/* Minimal header */}
       <header className="flex items-center justify-between px-6 py-4 border-b border-border">
-        <Logo href="/dashboard" />
+        <div className="flex items-center gap-4">
+          <Logo href="/dashboard" />
+          <button
+            onClick={() => navigate("/dashboard")}
+            className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors"
+          >
+            <LogOut className="w-5 h-5 rotate-180" />
+          </button>
+        </div>
         <span className="text-sm text-muted-foreground font-mono">
           {wordCount} words · {charCount} characters
         </span>
@@ -149,9 +175,9 @@ export default function BrainDumpPage() {
 
               <div className="space-y-3">
                 {agents.map((agent, index) => {
-                  const isProcessed = processedAgents.includes(index)
-                  const isCurrent = currentAgentIndex === index
-                  
+                  const isProcessed = processedAgents.includes(index);
+                  const isCurrent = currentAgentIndex === index;
+
                   return (
                     <div
                       key={index}
@@ -159,8 +185,8 @@ export default function BrainDumpPage() {
                         isProcessed
                           ? "border-success/50 bg-success/5"
                           : isCurrent
-                          ? "border-accent/50 bg-accent/5 agent-glow"
-                          : "border-border bg-card"
+                            ? "border-accent/50 bg-accent/5 agent-glow"
+                            : "border-border bg-card"
                       }`}
                     >
                       <div
@@ -168,8 +194,8 @@ export default function BrainDumpPage() {
                           isProcessed
                             ? "bg-success/20 text-success"
                             : isCurrent
-                            ? "bg-accent/20 text-accent"
-                            : "bg-secondary text-muted-foreground"
+                              ? "bg-accent/20 text-accent"
+                              : "bg-secondary text-muted-foreground"
                         }`}
                       >
                         {isProcessed ? (
@@ -179,17 +205,23 @@ export default function BrainDumpPage() {
                         )}
                       </div>
                       <div className="flex-1">
-                        <p className="font-medium text-foreground">{agent.name}</p>
+                        <p className="font-medium text-foreground">
+                          {agent.name}
+                        </p>
                         <p
                           className={`text-sm font-mono ${
                             isProcessed
                               ? "text-success"
                               : isCurrent
-                              ? "text-accent"
-                              : "text-muted-foreground"
+                                ? "text-accent"
+                                : "text-muted-foreground"
                           }`}
                         >
-                          {isProcessed ? "Completed" : isCurrent ? agent.message : "Waiting..."}
+                          {isProcessed
+                            ? "Completed"
+                            : isCurrent
+                              ? agent.message
+                              : "Waiting..."}
                         </p>
                       </div>
                       {isCurrent && (
@@ -200,7 +232,7 @@ export default function BrainDumpPage() {
                         </span>
                       )}
                     </div>
-                  )
+                  );
                 })}
               </div>
             </div>
@@ -245,5 +277,5 @@ export default function BrainDumpPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
