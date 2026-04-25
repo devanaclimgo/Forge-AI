@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { Logo } from "../../..//components/forge/logo"
 import { Mail, Lock, ArrowRight, Eye, EyeOff } from "lucide-react"
@@ -7,15 +7,36 @@ import { FaGithub } from "react-icons/fa"
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const navigate = useNavigate()
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
-    // Simulating login - would connect to backend in real app
-    setTimeout(() => {
+
+    const API_URL = "http://localhost:3000";
+    
+    const res = await fetch(`${API_URL}/api/v1/auth_controller`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: formData.email,
+        password: formData.password,
+      }),
+    })
+
+    if (res.ok) {
       setIsLoading(false)
-      window.location.href = "/dashboard"
-    }, 1500)
+      navigate("/dashboard")
+    } else {
+      setIsLoading(false)
+      alert("Login failed. Please check your credentials and try again.")
+    }
   }
 
   return (
@@ -67,6 +88,8 @@ export default function LoginPage() {
                   placeholder="you@example.com"
                   className="w-full rounded-lg border border-border bg-secondary pl-10 pr-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
                   required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 />
               </div>
             </div>
@@ -83,6 +106,8 @@ export default function LoginPage() {
                   placeholder="••••••••"
                   className="w-full rounded-lg border border-border bg-secondary pl-10 pr-12 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
                   required
+                  value={formData.password}
+                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                 />
                 <button
                   type="button"
