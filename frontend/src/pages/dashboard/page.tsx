@@ -4,6 +4,7 @@ import { ProjectCard } from "../../../components/forge/project-card"
 import { Plus, Activity, CheckCircle2, Zap, Calendar } from "lucide-react"
 
 const projects = [
+  // TODO: replace this with actual API call to fetch projects for the logged in user
   {
     id: "fintrack-ai",
     name: "FinTrack AI",
