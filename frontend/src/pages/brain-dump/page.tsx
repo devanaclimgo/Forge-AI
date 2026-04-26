@@ -12,6 +12,7 @@ import {
   CheckCircle2,
   LogOut,
 } from "lucide-react";
+import { api } from "../../../lib/api";
 
 const agents = [
   { name: "Planner", icon: Target, message: "Structuring features..." },
@@ -36,35 +37,52 @@ export default function BrainDumpPage() {
   const [currentAgentIndex, setCurrentAgentIndex] = useState(0);
   const [processedAgents, setProcessedAgents] = useState<number[]>([]);
   const [showResult, setShowResult] = useState(false);
+  const [createdProjectId, setCreatedProjectId] = useState<string>("");
 
   const wordCount = content.trim().split(/\s+/).filter(Boolean).length;
   const charCount = content.length;
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!content.trim() || isProcessing) return;
 
     setIsProcessing(true);
     setCurrentAgentIndex(0);
     setProcessedAgents([]);
 
-    // Simulate agents processing one by one
     let index = 0;
     const interval = setInterval(() => {
       setProcessedAgents((prev) => [...prev, index]);
       index++;
       setCurrentAgentIndex(index);
-
-      if (index >= agents.length) {
-        clearInterval(interval);
-        setTimeout(() => {
-          setShowResult(true);
-        }, 500);
-      }
+      if (index >= agents.length) clearInterval(interval);
     }, 1200);
+
+    try {
+      const firstLine = content.split("\n")[0].trim();
+      const name =
+        firstLine.length > 50
+          ? firstLine.slice(0, 50) + "..."
+          : firstLine || "New Project";
+
+      const project = await api.createProject({ name, description: content });
+
+      setTimeout(
+        () => {
+          setShowResult(true);
+          setCreatedProjectId(String(project.id));
+        },
+        agents.length * 1200 + 500,
+      );
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (err) {
+      clearInterval(interval);
+      setIsProcessing(false);
+      alert("Failed to create project. Is the server running?");
+    }
   };
 
   const handleViewProject = () => {
-    navigate("/project/fintrack-ai");
+    navigate(`/project/${createdProjectId}`);
   };
 
   if (showResult) {
