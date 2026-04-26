@@ -1,24 +1,24 @@
-import { Link } from "react-router-dom"
-import { cn } from "../../lib/src/*/utils"
+import { Link } from "react-router-dom";
+import { cn } from "../../lib/utils";
 
 interface ProjectCardProps {
-  id: string
-  name: string
-  description?: string
-  progress: number
-  status: "active" | "planning" | "completed" | "paused"
-  lastAgentActivity: string
-  tasksCompleted: number
-  totalTasks: number
-  activeSprint?: string
+  id: string;
+  name: string;
+  description?: string;
+  progress: number;
+  status: "active" | "planning" | "completed" | "paused";
+  lastAgentActivity: string;
+  tasksCompleted: number;
+  totalTasks: number;
+  activeSprint?: string;
 }
 
 const statusConfig = {
   active: { label: "Active", className: "bg-success/20 text-success" },
   planning: { label: "Planning", className: "bg-accent/20 text-accent" },
   completed: { label: "Completed", className: "bg-primary/20 text-primary" },
-  paused: { label: "Paused", className: "bg-muted text-muted-foreground" }
-}
+  paused: { label: "Paused", className: "bg-muted text-muted-foreground" },
+};
 
 export function ProjectCard({
   id,
@@ -29,7 +29,7 @@ export function ProjectCard({
   lastAgentActivity,
   tasksCompleted,
   totalTasks,
-  activeSprint
+  activeSprint,
 }: ProjectCardProps) {
   return (
     <Link to={`/project/${id}`}>
@@ -48,7 +48,7 @@ export function ProjectCard({
           <span
             className={cn(
               "px-2 py-0.5 rounded-full text-xs font-medium shrink-0",
-              statusConfig[status].className
+              statusConfig[status].className,
             )}
           >
             {statusConfig[status].label}
@@ -92,5 +92,5 @@ export function ProjectCard({
         </div>
       </div>
     </Link>
-  )
+  );
 }

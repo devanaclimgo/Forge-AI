@@ -1,37 +1,51 @@
-import { useState } from "react"
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Navigation } from "../../../components/forge/navigation"
-import { cn } from "../../../lib/src/*/utils"
-import { User, Book, HelpCircle, ChevronDown, LogOut, Trash2, X } from "lucide-react"
+import { Navigation } from "../../../components/forge/navigation";
+import { cn } from "../../../lib/utils";
+import {
+  User,
+  Book,
+  HelpCircle,
+  ChevronDown,
+  LogOut,
+  Trash2,
+  X,
+} from "lucide-react";
 
-type TabType = "account" | "docs" | "support"
+type TabType = "account" | "docs" | "support";
 
 const faqItems = [
   {
     question: "How does the Brain Dump work?",
-    answer: "Brain Dump is where you describe your project idea in natural language. Our AI agents analyze your input, break it down into features, and automatically generate a structured project plan with sprints and tasks. Just write what you want to build, and we handle the rest."
+    answer:
+      "Brain Dump is where you describe your project idea in natural language. Our AI agents analyze your input, break it down into features, and automatically generate a structured project plan with sprints and tasks. Just write what you want to build, and we handle the rest.",
   },
   {
     question: "What do the agents actually do?",
-    answer: "Each agent has a specialized role: The Planner structures features into sprints. The Architect defines your tech stack and makes architectural decisions. The Task Manager prioritizes and organizes your backlog. The Debug Agent catches potential issues early. The Analyst tracks progress and provides health reports."
+    answer:
+      "Each agent has a specialized role: The Planner structures features into sprints. The Architect defines your tech stack and makes architectural decisions. The Task Manager prioritizes and organizes your backlog. The Debug Agent catches potential issues early. The Analyst tracks progress and provides health reports.",
   },
   {
     question: "Can I manually create tasks without using AI?",
-    answer: "Yes. While AI agents can generate and organize tasks automatically, you can always create tasks manually using the 'Add Task' button on any project page. You have full control over task titles, descriptions, priorities, and statuses."
+    answer:
+      "Yes. While AI agents can generate and organize tasks automatically, you can always create tasks manually using the 'Add Task' button on any project page. You have full control over task titles, descriptions, priorities, and statuses.",
   },
   {
     question: "How are sprints created?",
-    answer: "Sprints are created automatically by the Planner agent based on your project scope and complexity. The agent groups related tasks together and sequences them based on dependencies. You can also manually adjust sprint assignments and create new sprints."
+    answer:
+      "Sprints are created automatically by the Planner agent based on your project scope and complexity. The agent groups related tasks together and sequences them based on dependencies. You can also manually adjust sprint assignments and create new sprints.",
   },
   {
     question: "Is my data private?",
-    answer: "Yes. Your project data is encrypted and stored securely. We do not share your data with third parties. AI processing happens in isolated environments, and your project details are never used to train external models."
+    answer:
+      "Yes. Your project data is encrypted and stored securely. We do not share your data with third parties. AI processing happens in isolated environments, and your project details are never used to train external models.",
   },
   {
     question: "How do I delete my account?",
-    answer: "You can delete your account from the Account tab in Settings. Click the 'Delete Account' button in the Danger Zone section. This action is irreversible and will permanently delete all your projects and data."
-  }
-]
+    answer:
+      "You can delete your account from the Account tab in Settings. Click the 'Delete Account' button in the Danger Zone section. This action is irreversible and will permanently delete all your projects and data.",
+  },
+];
 
 const docsContent = {
   gettingStarted: {
@@ -40,8 +54,8 @@ const docsContent = {
     points: [
       "Sign up with your email or GitHub account",
       "Navigate to Brain Dump to create your first project",
-      "Watch as AI agents structure your idea into actionable tasks"
-    ]
+      "Watch as AI agents structure your idea into actionable tasks",
+    ],
   },
   brainDump: {
     title: "Brain Dump",
@@ -49,8 +63,8 @@ const docsContent = {
     points: [
       "Write your project idea in natural language",
       "Be as detailed or as brief as you want",
-      "AI agents will analyze and expand your vision automatically"
-    ]
+      "AI agents will analyze and expand your vision automatically",
+    ],
   },
   projectsTasks: {
     title: "Projects & Tasks",
@@ -58,8 +72,8 @@ const docsContent = {
     points: [
       "View all projects from the Projects page",
       "Click any project to see its tasks and sprints",
-      "Change task status by clicking the status icon"
-    ]
+      "Change task status by clicking the status icon",
+    ],
   },
   agents: {
     title: "Agents",
@@ -67,8 +81,8 @@ const docsContent = {
     points: [
       "Each agent specializes in a specific domain",
       "Trigger agents manually for on-demand analysis",
-      "View agent activity logs to track their work"
-    ]
+      "View agent activity logs to track their work",
+    ],
   },
   sprints: {
     title: "Sprints & Backlog",
@@ -76,54 +90,54 @@ const docsContent = {
     points: [
       "Sprints group related tasks with deadlines",
       "Backlog contains unassigned future tasks",
-      "Move tasks between sprints and backlog as needed"
-    ]
-  }
-}
+      "Move tasks between sprints and backlog as needed",
+    ],
+  },
+};
 
 export default function SettingsPage() {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<TabType>("account")
-  const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
-  const [showDeleteModal, setShowDeleteModal] = useState(false)
+  const [activeTab, setActiveTab] = useState<TabType>("account");
+  const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [formData, setFormData] = useState({
     // TODO: prefill these with actual user data from API
     fullName: "John Developer",
     email: "john@example.com",
     currentPassword: "",
     newPassword: "",
-    confirmPassword: ""
-  })
+    confirmPassword: "",
+  });
 
   const handleLogout = () => {
-    navigate("/landing")
-  }
+    navigate("/landing");
+  };
 
   const handleDeleteAccount = () => {
     // TODO: create delete account API endpoint and call it here
-    setShowDeleteModal(false)
-    navigate("/login")
-  }
+    setShowDeleteModal(false);
+    navigate("/login");
+  };
 
   const handleSaveChanges = () => {
     // TODO: create update account API endpoint and call it here
-    console.log("Saving changes:", formData)
-  }
+    console.log("Saving changes:", formData);
+  };
 
   const tabs = [
     { id: "account" as const, label: "Account", icon: User },
     { id: "docs" as const, label: "Docs", icon: Book },
-    { id: "support" as const, label: "Support", icon: HelpCircle }
-  ]
+    { id: "support" as const, label: "Support", icon: HelpCircle },
+  ];
 
   const getInitials = (name: string) => {
     return name
       .split(" ")
-      .map(n => n[0])
+      .map((n) => n[0])
       .join("")
       .toUpperCase()
-      .slice(0, 2)
-  }
+      .slice(0, 2);
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -134,7 +148,7 @@ export default function SettingsPage() {
 
         {/* Tabs */}
         <div className="flex gap-1 border-b border-border mb-8">
-          {tabs.map(tab => (
+          {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
@@ -142,7 +156,7 @@ export default function SettingsPage() {
                 "flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 transition-colors -mb-px",
                 activeTab === tab.id
                   ? "border-primary text-foreground"
-                  : "border-transparent text-muted-foreground hover:text-foreground"
+                  : "border-transparent text-muted-foreground hover:text-foreground",
               )}
             >
               <tab.icon className="w-4 h-4" />
@@ -161,8 +175,12 @@ export default function SettingsPage() {
                   {getInitials(formData.fullName)}
                 </div>
                 <div>
-                  <h2 className="text-lg font-semibold text-foreground">{formData.fullName}</h2>
-                  <p className="text-sm text-muted-foreground">{formData.email}</p>
+                  <h2 className="text-lg font-semibold text-foreground">
+                    {formData.fullName}
+                  </h2>
+                  <p className="text-sm text-muted-foreground">
+                    {formData.email}
+                  </p>
                 </div>
               </div>
 
@@ -174,7 +192,12 @@ export default function SettingsPage() {
                   <input
                     type="text"
                     value={formData.fullName}
-                    onChange={e => setFormData(prev => ({ ...prev, fullName: e.target.value }))}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        fullName: e.target.value,
+                      }))
+                    }
                     className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
                   />
                 </div>
@@ -186,7 +209,12 @@ export default function SettingsPage() {
                   <input
                     type="email"
                     value={formData.email}
-                    onChange={e => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        email: e.target.value,
+                      }))
+                    }
                     className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
                   />
                 </div>
@@ -195,7 +223,9 @@ export default function SettingsPage() {
 
             {/* Password Section */}
             <div className="rounded-lg border border-border bg-card p-6">
-              <h3 className="text-lg font-semibold text-foreground mb-4">Change Password</h3>
+              <h3 className="text-lg font-semibold text-foreground mb-4">
+                Change Password
+              </h3>
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-1.5">
@@ -204,7 +234,12 @@ export default function SettingsPage() {
                   <input
                     type="password"
                     value={formData.currentPassword}
-                    onChange={e => setFormData(prev => ({ ...prev, currentPassword: e.target.value }))}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        currentPassword: e.target.value,
+                      }))
+                    }
                     placeholder="Enter current password"
                     className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
                   />
@@ -217,7 +252,12 @@ export default function SettingsPage() {
                   <input
                     type="password"
                     value={formData.newPassword}
-                    onChange={e => setFormData(prev => ({ ...prev, newPassword: e.target.value }))}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        newPassword: e.target.value,
+                      }))
+                    }
                     placeholder="Enter new password"
                     className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
                   />
@@ -230,7 +270,12 @@ export default function SettingsPage() {
                   <input
                     type="password"
                     value={formData.confirmPassword}
-                    onChange={e => setFormData(prev => ({ ...prev, confirmPassword: e.target.value }))}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        confirmPassword: e.target.value,
+                      }))
+                    }
                     placeholder="Confirm new password"
                     className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
                   />
@@ -248,9 +293,12 @@ export default function SettingsPage() {
 
             {/* Danger Zone */}
             <div className="rounded-lg border border-destructive/50 bg-destructive/5 p-6">
-              <h3 className="text-lg font-semibold text-destructive mb-2">Danger Zone</h3>
+              <h3 className="text-lg font-semibold text-destructive mb-2">
+                Danger Zone
+              </h3>
               <p className="text-sm text-muted-foreground mb-4">
-                Once you delete your account, there is no going back. This action is permanent.
+                Once you delete your account, there is no going back. This
+                action is permanent.
               </p>
               <div className="flex gap-3">
                 <button
@@ -288,7 +336,10 @@ export default function SettingsPage() {
                 </p>
                 <ul className="space-y-2">
                   {section.points.map((point, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-foreground">
+                    <li
+                      key={i}
+                      className="flex items-start gap-2 text-sm text-foreground"
+                    >
                       <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
                       {point}
                     </li>
@@ -313,7 +364,9 @@ export default function SettingsPage() {
                 {faqItems.map((item, index) => (
                   <div key={index}>
                     <button
-                      onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
+                      onClick={() =>
+                        setExpandedFaq(expandedFaq === index ? null : index)
+                      }
                       className="w-full flex items-center justify-between p-4 text-left hover:bg-secondary/30 transition-colors"
                     >
                       <span className="font-medium text-foreground pr-4">
@@ -322,14 +375,14 @@ export default function SettingsPage() {
                       <ChevronDown
                         className={cn(
                           "w-5 h-5 text-muted-foreground shrink-0 transition-transform duration-200",
-                          expandedFaq === index && "rotate-180"
+                          expandedFaq === index && "rotate-180",
                         )}
                       />
                     </button>
                     <div
                       className={cn(
                         "overflow-hidden transition-all duration-200",
-                        expandedFaq === index ? "max-h-96" : "max-h-0"
+                        expandedFaq === index ? "max-h-96" : "max-h-0",
                       )}
                     >
                       <p className="px-4 pb-4 text-sm text-muted-foreground leading-relaxed">
@@ -363,13 +416,13 @@ export default function SettingsPage() {
 
       {/* Delete Account Modal */}
       {showDeleteModal && (
-        <div 
+        <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm animate-in fade-in duration-150"
           onClick={() => setShowDeleteModal(false)}
         >
-          <div 
+          <div
             className="relative w-full max-w-md mx-4 rounded-lg border border-destructive/50 bg-card p-6 shadow-xl animate-in zoom-in-95 duration-150"
-            onClick={e => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setShowDeleteModal(false)}
@@ -382,12 +435,15 @@ export default function SettingsPage() {
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-destructive/20">
                 <Trash2 className="w-5 h-5 text-destructive" />
               </div>
-              <h3 className="text-lg font-semibold text-foreground">Delete Account</h3>
+              <h3 className="text-lg font-semibold text-foreground">
+                Delete Account
+              </h3>
             </div>
 
             <p className="text-sm text-muted-foreground mb-6">
-              Are you sure you want to delete your account? This action cannot be undone. 
-              All your projects, tasks, and data will be permanently deleted.
+              Are you sure you want to delete your account? This action cannot
+              be undone. All your projects, tasks, and data will be permanently
+              deleted.
             </p>
 
             <div className="flex gap-3">
@@ -408,5 +464,5 @@ export default function SettingsPage() {
         </div>
       )}
     </div>
-  )
+  );
 }

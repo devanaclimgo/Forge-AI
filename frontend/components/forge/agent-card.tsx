@@ -1,15 +1,15 @@
-import { cn } from "../../lib/src/*/utils"
+import { cn } from "../../lib/utils";
 
 interface AgentCardProps {
-  name: string
-  role: string
-  description: string
-  status?: "active" | "idle" | "thinking"
-  lastAction?: string
-  timestamp?: string
-  icon: React.ReactNode
-  showTrigger?: boolean
-  compact?: boolean
+  name: string;
+  role: string;
+  description: string;
+  status?: "active" | "idle" | "thinking";
+  lastAction?: string;
+  timestamp?: string;
+  icon: React.ReactNode;
+  showTrigger?: boolean;
+  compact?: boolean;
 }
 
 export function AgentCard({
@@ -21,21 +21,23 @@ export function AgentCard({
   timestamp,
   icon,
   showTrigger = false,
-  compact = false
+  compact = false,
 }: AgentCardProps) {
   return (
     <div
       className={cn(
         "group relative rounded-lg border border-border bg-card p-4 transition-all duration-200 hover:border-border/80 hover:scale-[1.01]",
         status === "active" && "agent-glow border-accent/50",
-        status === "thinking" && "border-accent/30"
+        status === "thinking" && "border-accent/30",
       )}
     >
       <div className="flex items-start gap-3">
         <div
           className={cn(
             "flex h-10 w-10 shrink-0 items-center justify-center rounded-lg",
-            status === "active" ? "bg-accent/20 text-accent" : "bg-secondary text-muted-foreground"
+            status === "active"
+              ? "bg-accent/20 text-accent"
+              : "bg-secondary text-muted-foreground",
           )}
         >
           {icon}
@@ -71,32 +73,32 @@ export function AgentCard({
         </button>
       )}
     </div>
-  )
+  );
 }
 
 function StatusBadge({ status }: { status: "active" | "idle" | "thinking" }) {
   const statusConfig = {
     active: {
       label: "Active",
-      className: "bg-success/20 text-success"
+      className: "bg-success/20 text-success",
     },
     idle: {
       label: "Idle",
-      className: "bg-secondary text-muted-foreground"
+      className: "bg-secondary text-muted-foreground",
     },
     thinking: {
       label: "Thinking",
-      className: "bg-accent/20 text-accent"
-    }
-  }
+      className: "bg-accent/20 text-accent",
+    },
+  };
 
-  const config = statusConfig[status]
+  const config = statusConfig[status];
 
   return (
     <span
       className={cn(
         "inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium",
-        config.className
+        config.className,
       )}
     >
       {status === "thinking" && (
@@ -111,5 +113,5 @@ function StatusBadge({ status }: { status: "active" | "idle" | "thinking" }) {
       )}
       {config.label}
     </span>
-  )
+  );
 }
