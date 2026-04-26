@@ -12,7 +12,7 @@ import {
   CheckCircle2,
   LogOut,
 } from "lucide-react";
-import { api } from "../../../lib/api";
+import { api, type Project } from "../../../lib/api"
 
 const agents = [
   { name: "Planner", icon: Target, message: "Structuring features..." },
@@ -38,6 +38,7 @@ export default function BrainDumpPage() {
   const [processedAgents, setProcessedAgents] = useState<number[]>([]);
   const [showResult, setShowResult] = useState(false);
   const [createdProjectId, setCreatedProjectId] = useState<string>("");
+  const [createdProject, setCreatedProject] = useState<Project | null>(null)
 
   const wordCount = content.trim().split(/\s+/).filter(Boolean).length;
   const charCount = content.length;
@@ -70,10 +71,11 @@ export default function BrainDumpPage() {
         () => {
           setShowResult(true);
           setCreatedProjectId(String(project.id));
+          setCreatedProject(project);
         },
         agents.length * 1200 + 500,
       );
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
       clearInterval(interval);
       setIsProcessing(false);
@@ -103,27 +105,33 @@ export default function BrainDumpPage() {
           </div>
 
           <div className="rounded-xl border border-border bg-card p-6 mb-6">
-            <h2 className="text-xl font-semibold mb-4">Project: FinTrack AI</h2>
+            <h2 className="text-xl font-semibold mb-4">
+              Project: {createdProject?.name ?? "New Project"}
+            </h2>
             <div className="space-y-4">
               <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">
-                  Features identified
+                <span className="text-muted-foreground">Tasks completed</span>
+                <span className="font-mono text-foreground">
+                  {createdProject?.tasks_completed ?? 0}
                 </span>
-                <span className="font-mono text-foreground">8</span>
               </div>
               <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">Tasks created</span>
-                <span className="font-mono text-foreground">24</span>
-              </div>
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">Sprints planned</span>
-                <span className="font-mono text-foreground">3</span>
-              </div>
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">
-                  Estimated duration
+                <span className="text-muted-foreground">Total tasks</span>
+                <span className="font-mono text-foreground">
+                  {createdProject?.total_tasks ?? 0}
                 </span>
-                <span className="font-mono text-foreground">6 weeks</span>
+              </div>
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-muted-foreground">Progress</span>
+                <span className="font-mono text-foreground">
+                  {createdProject?.progress ?? 0}%
+                </span>
+              </div>
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-muted-foreground">Active sprint</span>
+                <span className="font-mono text-foreground">
+                  {createdProject?.active_sprint ?? "—"}
+                </span>
               </div>
             </div>
           </div>
