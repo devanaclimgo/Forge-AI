@@ -1,63 +1,72 @@
-import { Navigation } from "../../../components/forge/navigation"
-import { AgentCard } from "../../../components/forge/agent-card"
-import { 
-  Target, 
-  GitBranch, 
-  ListTodo, 
-  Shield, 
+import { Navigation } from "../../../components/forge/navigation";
+import { AgentCard } from "../../../components/forge/agent-card";
+import {
+  Target,
+  GitBranch,
+  ListTodo,
+  Shield,
   Workflow,
   Activity,
   Zap,
-  Clock
-} from "lucide-react"
+  Clock,
+} from "lucide-react";
+// import { api } from "@/lib/api";
+// import { useState } from "react";
 
 const agents = [
   {
     name: "Planner",
     role: "Feature Architect",
-    description: "Structures your features into organized sprints and milestones. Transforms chaos into clear roadmaps. Analyzes project scope and creates logical feature groupings.",
+    description:
+      "Structures your features into organized sprints and milestones. Transforms chaos into clear roadmaps. Analyzes project scope and creates logical feature groupings.",
     status: "active" as const,
-    lastAction: "Created Sprint 3 backlog for FinTrack AI with 7 prioritized tasks",
+    lastAction:
+      "Created Sprint 3 backlog for FinTrack AI with 7 prioritized tasks",
     timestamp: "2 hours ago",
-    icon: <Target className="w-5 h-5" />
+    icon: <Target className="w-5 h-5" />,
   },
   {
     name: "Architect",
     role: "Technical Advisor",
-    description: "Defines your technical stack and makes architectural decisions. Ensures scalability from day one. Recommends libraries, patterns, and best practices.",
+    description:
+      "Defines your technical stack and makes architectural decisions. Ensures scalability from day one. Recommends libraries, patterns, and best practices.",
     status: "thinking" as const,
     lastAction: "Analyzing chart library options for analytics dashboard",
     timestamp: "Just now",
-    icon: <GitBranch className="w-5 h-5" />
+    icon: <GitBranch className="w-5 h-5" />,
   },
   {
     name: "Task Manager",
     role: "Priority Master",
-    description: "Organizes and reprioritizes your backlog continuously. Keeps your focus on what matters. Breaks down complex tasks and identifies dependencies.",
+    description:
+      "Organizes and reprioritizes your backlog continuously. Keeps your focus on what matters. Breaks down complex tasks and identifies dependencies.",
     status: "active" as const,
-    lastAction: "Reprioritized expense tracking form subtasks based on blockers",
+    lastAction:
+      "Reprioritized expense tracking form subtasks based on blockers",
     timestamp: "5 min ago",
-    icon: <ListTodo className="w-5 h-5" />
+    icon: <ListTodo className="w-5 h-5" />,
   },
   {
     name: "Debug Agent",
     role: "Quality Guardian",
-    description: "Analyzes bugs and generates comprehensive checklists. Catches issues before they escalate. Monitors task progress for potential problems.",
+    description:
+      "Analyzes bugs and generates comprehensive checklists. Catches issues before they escalate. Monitors task progress for potential problems.",
     status: "idle" as const,
     lastAction: "Flagged missing date-fns dependency for CSV export feature",
     timestamp: "30 min ago",
-    icon: <Shield className="w-5 h-5" />
+    icon: <Shield className="w-5 h-5" />,
   },
   {
     name: "Analyst",
     role: "Progress Tracker",
-    description: "Reads task data and provides health reports. Gives you clarity on project status anytime. Tracks velocity and predicts completion dates.",
+    description:
+      "Reads task data and provides health reports. Gives you clarity on project status anytime. Tracks velocity and predicts completion dates.",
     status: "idle" as const,
     lastAction: "Generated sprint velocity report showing 15% improvement",
     timestamp: "1 hour ago",
-    icon: <Workflow className="w-5 h-5" />
-  }
-]
+    icon: <Workflow className="w-5 h-5" />,
+  },
+];
 
 const activityLog = [
   {
@@ -65,66 +74,94 @@ const activityLog = [
     action: "Reprioritized expense tracking subtasks",
     project: "FinTrack AI",
     timestamp: "5 min ago",
-    type: "priority"
+    type: "priority",
   },
   {
     agent: "Architect",
     action: "Started analyzing chart library options",
     project: "FinTrack AI",
     timestamp: "5 min ago",
-    type: "analysis"
+    type: "analysis",
   },
   {
     agent: "Debug Agent",
     action: "Flagged missing dependency for CSV export",
     project: "FinTrack AI",
     timestamp: "30 min ago",
-    type: "warning"
+    type: "warning",
   },
   {
     agent: "Analyst",
     action: "Generated sprint velocity report",
     project: "FinTrack AI",
     timestamp: "1 hour ago",
-    type: "report"
+    type: "report",
   },
   {
     agent: "Planner",
     action: "Created Sprint 3 backlog with 7 tasks",
     project: "FinTrack AI",
     timestamp: "2 hours ago",
-    type: "planning"
+    type: "planning",
   },
   {
     agent: "Task Manager",
     action: "Added 3 subtasks to authentication setup",
     project: "Dev Portfolio",
     timestamp: "3 hours ago",
-    type: "task"
+    type: "task",
   },
   {
     agent: "Architect",
     action: "Recommended Next.js App Router architecture",
     project: "Dev Portfolio",
     timestamp: "4 hours ago",
-    type: "architecture"
+    type: "architecture",
   },
   {
     agent: "Planner",
     action: "Completed initial feature breakdown",
     project: "API Dashboard",
     timestamp: "5 hours ago",
-    type: "planning"
-  }
-]
+    type: "planning",
+  },
+];
 
 export default function AgentsPage() {
-  const activeAgents = agents.filter(a => a.status === "active" || a.status === "thinking").length
+  // const [triggerState, setTriggerState] = useState<
+  //   Record<string, { loading: boolean; result: string }>
+  // >({});
+
+  // const handleTrigger = async (agentName: string) => {
+  //   setTriggerState((prev) => ({
+  //     ...prev,
+  //     [agentName]: { loading: true, result: "" },
+  //   }));
+  //   try {
+  //     const res = await api.runAgent(
+  //       agentName.toLowerCase().replace(" ", ""),
+  //       `Run a ${agentName} analysis`,
+  //     );
+  //     setTriggerState((prev) => ({
+  //       ...prev,
+  //       [agentName]: { loading: false, result: res.result },
+  //     }));
+  //   } catch (_) {
+  //     setTriggerState((prev) => ({
+  //       ...prev,
+  //       [agentName]: { loading: false, result: "Agent failed to respond." },
+  //     }));
+  //   }
+  // };
+
+  const activeAgents = agents.filter(
+    (a) => a.status === "active" || a.status === "thinking",
+  ).length;
 
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       <main className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-8">
@@ -142,8 +179,12 @@ export default function AgentsPage() {
                 <Activity className="w-5 h-5 text-success" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-foreground">{activeAgents}</p>
-                <p className="text-sm text-muted-foreground">Currently Active</p>
+                <p className="text-2xl font-bold text-foreground">
+                  {activeAgents}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  Currently Active
+                </p>
               </div>
             </div>
           </div>
@@ -174,7 +215,9 @@ export default function AgentsPage() {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Agent Cards */}
           <div className="lg:col-span-2">
-            <h2 className="text-xl font-semibold text-foreground mb-4">All Agents</h2>
+            <h2 className="text-xl font-semibold text-foreground mb-4">
+              All Agents
+            </h2>
             <div className="grid md:grid-cols-2 gap-4">
               {agents.map((agent, index) => (
                 <AgentCard key={index} {...agent} showTrigger />
@@ -184,7 +227,9 @@ export default function AgentsPage() {
 
           {/* Activity Log */}
           <div>
-            <h2 className="text-xl font-semibold text-foreground mb-4">Activity Log</h2>
+            <h2 className="text-xl font-semibold text-foreground mb-4">
+              Activity Log
+            </h2>
             <div className="rounded-lg border border-border bg-card overflow-hidden">
               <div className="divide-y divide-border">
                 {activityLog.map((entry, index) => (
@@ -193,14 +238,18 @@ export default function AgentsPage() {
                       <div className="w-2 h-2 rounded-full bg-accent mt-2 shrink-0" />
                       <div className="min-w-0">
                         <p className="text-sm text-foreground leading-relaxed">
-                          <span className="font-medium text-accent">{entry.agent}</span>{" "}
+                          <span className="font-medium text-accent">
+                            {entry.agent}
+                          </span>{" "}
                           {entry.action}
                         </p>
                         <div className="flex items-center gap-2 mt-1.5 flex-wrap">
                           <span className="text-xs text-muted-foreground font-mono">
                             {entry.timestamp}
                           </span>
-                          <span className="text-xs text-muted-foreground">•</span>
+                          <span className="text-xs text-muted-foreground">
+                            •
+                          </span>
                           <span className="text-xs text-muted-foreground">
                             {entry.project}
                           </span>
@@ -215,5 +264,5 @@ export default function AgentsPage() {
         </div>
       </main>
     </div>
-  )
+  );
 }
