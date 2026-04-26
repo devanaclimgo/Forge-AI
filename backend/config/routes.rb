@@ -5,8 +5,10 @@ Rails.application.routes.draw do
       post "/register", to: "auth#register"
       post "agent_test", to: "agent_test#create" 
 
-      resources :projects
-      resources :tasks
+      resources :projects do
+        resources :tasks
+        resources :sprints, only: [:index, :create]
+      end
     end
   end
 end
