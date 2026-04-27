@@ -27,13 +27,12 @@ class Api::V1::ProjectsController < ApplicationController
   end
 
   private
-
   def set_project
     @project = current_user.projects.find(params[:id])
   end
 
   def project_params
-    params.require(:project).permit(:name, :description, :visibility)
+    params.require(:project).permit(:name, :description, :visibility, :summary)
   end
 
   def project_json(project)
@@ -45,6 +44,7 @@ class Api::V1::ProjectsController < ApplicationController
       id:                 project.id,
       name:               project.name,
       description:        project.description,
+      summary:            project.summary,
       visibility:         project.visibility,
       progress:           progress,
       tasks_completed:    done_tasks,
