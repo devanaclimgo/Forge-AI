@@ -5,10 +5,12 @@ module Agents
 
       response = Ai::StratusClient.generate(
         prompt,
-        system: "You are a senior software project planner. Be concise and structured."
+        system: "You are a senior software project planner. Be concise and structured.", max_tokens: 2000
       )
 
-      log("planner", { description: description }, response)
+      log("planner", { description: description[0..200] }, response)
+
+      TaskGeneratorAgent.new(@project).call(response[:result])
 
       response
     end
@@ -17,10 +19,12 @@ module Agents
 
     def build_prompt(description)
       <<~PROMPT
-        You are a senior software project planner...
+        You are a senior software project planner.
 
-        Project:
+        Create a detailed project plan for:
         #{description}
+        
+        Include: features breakdown, sprint structure, task priorities.
       PROMPT
     end
   end
