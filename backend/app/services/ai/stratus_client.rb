@@ -4,7 +4,7 @@ require 'uri'
 module Ai
   class StratusClient
     BASE_URL = "https://api.stratus.run/v1".freeze
-    MODEL = "stratus-x1ac-base-claude-sonnet-4-20250514".freeze
+    MODEL = "stratus-x1ac-small-gpt-4o".freeze
 
     class ApiError < StandardError; end
 
