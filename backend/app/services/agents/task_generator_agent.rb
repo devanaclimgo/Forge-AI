@@ -9,12 +9,7 @@ module Agents
 
       parsed = JSON.parse(response[:result].gsub(/```json|```/, "").strip)
 
-      def create_sprints_and_tasks(parsed)
-        @project.update!(
-          name: parsed["project_name"] || @project.name,
-          summary: parsed["project_summary"] || ""
-        )
-      end
+      create_sprints_and_tasks(parsed)
 
       log("task_generator", { planner_output: planner_output[0..200] }, parsed)
       parsed
@@ -62,6 +57,11 @@ module Agents
     end
 
     def create_sprints_and_tasks(parsed)
+      @project.update!(
+        name:    parsed["project_name"]    || @project.name,
+        summary: parsed["project_summary"] || ""
+      )
+
       return unless parsed["sprints"].is_a?(Array)
 
       parsed["sprints"].each do |sprint_data|
