@@ -7,13 +7,21 @@ class AgentJob < ApplicationJob
 
     result = case agent_name
     when "planner"
-      Agents::PlannerAgent.new(project).call(project.description)
+      result = Agents::PlannerAgent.new(project).call(project.description)
+      Agents::TaskGeneratorAgent.new(project).call(result[:result])
+      result
     when "architect"
-      Agents::ArchitectAgent.new(project).call(project.description)
+      result = Agents::ArchitectAgent.new(project).call(project.description)
+      Agents::TaskGeneratorAgent.new(project).call(result[:result])
+      result
     when "debug"
-      Agents::DebugAgent.new(project).call(task)
+      result = Agents::DebugAgent.new(project).call(task)
+      Agents::TaskGeneratorAgent.new(project).call(result[:result])
+      result
     when "progress"
-      Agents::ProgressAgent.new(project).call
+      result = Agents::ProgressAgent.new(project).call
+      Agents::TaskGeneratorAgent.new(project).call(result[:result])
+      result
     end
 
     ActionCable.server.broadcast(
