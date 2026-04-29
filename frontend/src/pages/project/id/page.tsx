@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Navigation } from "../../../../components/forge/navigation";
@@ -96,7 +95,13 @@ export default function ProjectPage() {
     Promise.all([api.getProject(id), api.getTasks(id), api.getSprints(id)])
       .then(([proj, taskList, sprintList]) => {
         setProject(proj);
-        setTasks(taskList.map((t) => ({ ...t, id: String(t.id) })));
+        setTasks(
+          taskList.map((t) => ({
+            ...t,
+            id: String(t.id),
+            sprint_id: t.sprint_id ?? null,
+          })),
+        );
         setSprints(sprintList);
         const active = sprintList.find((s) => s.status === "active");
         if (active) setActiveSprint(active.id);
@@ -105,9 +110,10 @@ export default function ProjectPage() {
   }, [id]);
 
   const sprintTasks = activeSprint
-    ? tasks.filter((t) => (t as any).sprint_id === activeSprint)
-    : tasks.filter((t) => (t as any).sprint_id);
-  const backlogTasks = tasks.filter((t) => !(t as any).sprint_id);
+    ? tasks.filter((t) => t.sprint_id === activeSprint)
+    : tasks.filter((t) => t.sprint_id != null);
+
+  const backlogTasks = tasks.filter((t) => t.sprint_id == null);
   const done = tasks.filter((t) => t.status === "done").length;
   const progress =
     tasks.length > 0 ? Math.round((done / tasks.length) * 100) : 0;
@@ -159,7 +165,7 @@ export default function ProjectPage() {
     try {
       await api.deleteProject(project.id);
       navigate("/dashboard");
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (_) {
       alert("Failed to delete project.");
     }
@@ -431,42 +437,6 @@ export default function ProjectPage() {
                             {label}
                           </button>
                         ))}
-                        {showDeleteModal && (
-                          <div
-                            className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm"
-                            onClick={() => setShowDeleteModal(false)}
-                          >
-                            <div
-                              className="relative w-full max-w-sm mx-4 rounded-lg border border-border bg-card p-6 shadow-xl"
-                              onClick={(e) => e.stopPropagation()}
-                            >
-                              <h3 className="text-lg font-semibold text-foreground mb-2">
-                                Delete Project
-                              </h3>
-                              <p className="text-sm text-muted-foreground mb-6">
-                                Are you sure you want to delete{" "}
-                                <span className="text-foreground font-medium">
-                                  "{project.name}"
-                                </span>
-                                ? This action cannot be undone.
-                              </p>
-                              <div className="flex gap-3">
-                                <button
-                                  onClick={() => setShowDeleteModal(false)}
-                                  className="flex-1 rounded-lg border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-secondary transition-colors"
-                                >
-                                  Cancel
-                                </button>
-                                <button
-                                  onClick={handleDeleteProject}
-                                  className="flex-1 rounded-lg bg-destructive px-4 py-2 text-sm font-medium text-destructive-foreground hover:bg-destructive/90 transition-colors"
-                                >
-                                  Delete
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        )}
                       </div>
                     </>
                   )}
@@ -558,6 +528,44 @@ export default function ProjectPage() {
           </aside>
         )}
       </div>
+
+      {/* Delete Modal */}
+      {showDeleteModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm"
+          onClick={() => setShowDeleteModal(false)}
+        >
+          <div
+            className="relative w-full max-w-sm mx-4 rounded-lg border border-border bg-card p-6 shadow-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3 className="text-lg font-semibold text-foreground mb-2">
+              Delete Project
+            </h3>
+            <p className="text-sm text-muted-foreground mb-6">
+              Are you sure you want to delete{" "}
+              <span className="text-foreground font-medium">
+                "{project.name}"
+              </span>
+              ? This action cannot be undone.
+            </p>
+            <div className="flex gap-3">
+              <button
+                onClick={() => setShowDeleteModal(false)}
+                className="flex-1 rounded-lg border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-secondary transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleDeleteProject}
+                className="flex-1 rounded-lg bg-destructive px-4 py-2 text-sm font-medium text-destructive-foreground hover:bg-destructive/90 transition-colors"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Add Task Modal */}
       {showAddTaskModal && (
