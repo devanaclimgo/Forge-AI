@@ -25,7 +25,7 @@ export interface Task {
   assignedAgent?: string;
   agentNotes?: string;
   subTasks?: SubTask[];
-  sprint_id?: number |null;
+  sprint_id?: number | null;
 }
 
 interface TaskItemProps extends Task {
