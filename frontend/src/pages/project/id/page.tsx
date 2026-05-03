@@ -183,7 +183,7 @@ export default function ProjectPage() {
                 {project.name}
               </h1>
               <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
-                {project.summary.slice(0, 80) + "..."}
+                {project.summary?.slice(0, 80) + "..."}
               </p>
               <div className="mt-3">
                 <div className="flex items-center justify-between text-sm mb-1.5">
