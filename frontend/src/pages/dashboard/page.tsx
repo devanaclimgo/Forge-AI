@@ -89,6 +89,7 @@ export default function DashboardPage() {
                 id={String(project.id)}
                 name={project.name}
                 description={project.description}
+                summary={project.summary}
                 progress={project.progress}
                 status={project.progress === 100 ? "completed" : "active"}
                 lastAgentActivity="Agent activity loading..."
