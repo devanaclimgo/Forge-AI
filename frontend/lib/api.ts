@@ -112,7 +112,7 @@ export interface Project {
   id: number;
   name: string;
   description: string;
-  summary: string;
+  summary?: string;
   visibility: string;
   progress: number;
   tasks_completed: number;
