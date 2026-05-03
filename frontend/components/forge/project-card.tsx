@@ -5,6 +5,7 @@ interface ProjectCardProps {
   id: string;
   name: string;
   description?: string;
+  summary?: string;
   progress: number;
   status: "active" | "planning" | "completed" | "paused";
   lastAgentActivity: string;
@@ -24,6 +25,7 @@ export function ProjectCard({
   id,
   name,
   description,
+  summary,
   progress,
   status,
   lastAgentActivity,
@@ -39,9 +41,9 @@ export function ProjectCard({
             <h3 className="font-semibold text-lg text-foreground group-hover:text-primary transition-colors">
               {name}
             </h3>
-            {description && (
+            {(description || summary) && (
               <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
-                {description}
+                {summary || description}
               </p>
             )}
           </div>
