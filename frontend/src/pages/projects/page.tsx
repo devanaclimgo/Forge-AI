@@ -118,7 +118,7 @@ export default function ProjectsPage() {
                   key={p.id}
                   id={String(p.id)}
                   name={p.name}
-                  description={p.description}
+                  summary={p.summary}
                   progress={p.progress}
                   status={p.progress === 100 ? "completed" : "active"}
                   lastAgentActivity="—"
