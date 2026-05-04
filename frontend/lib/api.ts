@@ -102,6 +102,9 @@ export const api = {
       },
     ),
 
+  // Agent logs
+  getAgentLogs: () => request<AgentLog[]>("/agent_logs"),
+
   // Delete project
   deleteProject: (id: string | number) =>
     request<null>(`/projects/${id}`, { method: "DELETE" }),
@@ -141,4 +144,12 @@ export interface Sprint {
   tasks: number;
   completed: number;
   status: "active" | "planned" | "completed";
+}
+
+export interface AgentLog {
+  id: number
+  agent_name: string
+  project_name: string
+  input: Record<string, string>
+  created_at: string
 }
