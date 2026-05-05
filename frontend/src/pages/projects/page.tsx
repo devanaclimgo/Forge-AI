@@ -104,7 +104,7 @@ export default function ProjectsPage() {
           </div>
         )}
         {error && (
-          <div className="rounded-lg border border-destructive/30 bg-destructive/10 p-4 text-sm text-destructive">
+          <div className="rounded-lg border border-[#fb923c]/30 bg-[#fb923c]/10 p-4 text-sm text-destructive">
             {error}
           </div>
         )}
@@ -143,7 +143,7 @@ export default function ProjectsPage() {
               </p>
               <Link
                 to="/brain-dump"
-                className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+                className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-[#0b0f14] hover:bg-[#38bdf8]/90"
               >
                 <Plus className="w-4 h-4" /> Create Your First Project
               </Link>
