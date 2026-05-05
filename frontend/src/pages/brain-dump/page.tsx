@@ -12,7 +12,7 @@ import {
   CheckCircle2,
   LogOut,
 } from "lucide-react";
-import { api, type Project } from "../../../lib/api"
+import { api, type Project } from "../../../lib/api";
 
 const agents = [
   { name: "Planner", icon: Target, message: "Structuring features..." },
@@ -38,7 +38,7 @@ export default function BrainDumpPage() {
   const [processedAgents, setProcessedAgents] = useState<number[]>([]);
   const [showResult, setShowResult] = useState(false);
   const [createdProjectId, setCreatedProjectId] = useState<string>("");
-  const [createdProject, setCreatedProject] = useState<Project | null>(null)
+  const [createdProject, setCreatedProject] = useState<Project | null>(null);
 
   const wordCount = content.trim().split(/\s+/).filter(Boolean).length;
   const charCount = content.length;
@@ -98,7 +98,7 @@ export default function BrainDumpPage() {
             <h1 className="text-3xl font-bold text-foreground">
               Project Created!
             </h1>
-            <p className="text-muted-foreground mt-2">
+            <p className="text-[#94a3b8] mt-2">
               Our agents have analyzed your idea and created a structured
               project.
             </p>
@@ -110,25 +110,25 @@ export default function BrainDumpPage() {
             </h2>
             <div className="space-y-4">
               <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">Tasks completed</span>
+                <span className="text-[#94a3b8]">Tasks completed</span>
                 <span className="font-mono text-foreground">
                   {createdProject?.tasks_completed ?? 0}
                 </span>
               </div>
               <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">Total tasks</span>
+                <span className="text-[#94a3b8]">Total tasks</span>
                 <span className="font-mono text-foreground">
                   {createdProject?.total_tasks ?? 0}
                 </span>
               </div>
               <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">Progress</span>
+                <span className="text-[#94a3b8]">Progress</span>
                 <span className="font-mono text-foreground">
                   {createdProject?.progress ?? 0}%
                 </span>
               </div>
               <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">Active sprint</span>
+                <span className="text-[#94a3b8]">Active sprint</span>
                 <span className="font-mono text-foreground">
                   {createdProject?.active_sprint ?? "—"}
                 </span>
@@ -175,12 +175,12 @@ export default function BrainDumpPage() {
           <Logo href="/dashboard" />
           <button
             onClick={() => navigate("/dashboard")}
-            className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors"
+            className="p-2 rounded-md text-[#94a3b8] hover:text-foreground hover:bg-secondary/50 transition-colors"
           >
             <LogOut className="w-5 h-5 rotate-180" />
           </button>
         </div>
-        <span className="text-sm text-muted-foreground font-mono">
+        <span className="text-sm text-[#94a3b8] font-mono">
           {wordCount} words · {charCount} characters
         </span>
       </header>
@@ -194,7 +194,7 @@ export default function BrainDumpPage() {
                 <h1 className="text-2xl font-bold text-foreground mb-2">
                   Agents are processing your idea
                 </h1>
-                <p className="text-muted-foreground">
+                <p className="text-[#94a3b8]">
                   Sit back while our AI team structures your project
                 </p>
               </div>
@@ -221,7 +221,7 @@ export default function BrainDumpPage() {
                             ? "bg-success/20 text-success"
                             : isCurrent
                               ? "bg-accent/20 text-accent"
-                              : "bg-secondary text-muted-foreground"
+                              : "bg-secondary text-[#94a3b8]"
                         }`}
                       >
                         {isProcessed ? (
@@ -240,7 +240,7 @@ export default function BrainDumpPage() {
                               ? "text-success"
                               : isCurrent
                                 ? "text-accent"
-                                : "text-muted-foreground"
+                                : "text-[#94a3b8]"
                           }`}
                         >
                           {isProcessed
@@ -268,7 +268,7 @@ export default function BrainDumpPage() {
                 <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
                   Brain Dump
                 </h1>
-                <p className="text-muted-foreground text-lg">
+                <p className="text-[#94a3b8] text-lg">
                   Write freely. Our agents will structure everything.
                 </p>
               </div>
@@ -278,13 +278,13 @@ export default function BrainDumpPage() {
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
                   placeholder="What are you trying to build? Don't organize — just write. Describe your idea, the problem you're solving, features you're imagining, technologies you're considering... Let it flow."
-                  className="w-full h-[400px] rounded-xl border border-border bg-card p-6 text-lg text-foreground placeholder:text-muted-foreground/60 resize-none focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all leading-relaxed"
+                  className="w-full h-[400px] rounded-xl border border-border bg-card p-6 text-lg text-foreground placeholder:text-[#94a3b8]/60 resize-none focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all leading-relaxed"
                   autoFocus
                 />
               </div>
 
               <div className="mt-6 flex items-center justify-between">
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-[#94a3b8]">
                   {wordCount > 0
                     ? "Keep going! The more context, the better the planning."
                     : "Start typing your idea..."}

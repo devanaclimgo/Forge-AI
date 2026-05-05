@@ -150,14 +150,14 @@ export default function ProjectPage() {
   if (loading)
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
-        <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" />
+        <Loader2 className="w-6 h-6 animate-spin text-[#94a3b8]" />
       </div>
     );
 
   if (!project)
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
-        <p className="text-muted-foreground">Project not found.</p>
+        <p className="text-[#94a3b8]">Project not found.</p>
       </div>
     );
 
@@ -182,12 +182,12 @@ export default function ProjectPage() {
               <h1 className="text-lg font-bold text-foreground leading-tight">
                 {project.name}
               </h1>
-              <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+              <p className="text-sm text-[#94a3b8] mt-1 leading-relaxed">
                 {project.summary?.slice(0, 80) + "..."}
               </p>
               <div className="mt-3">
                 <div className="flex items-center justify-between text-sm mb-1.5">
-                  <span className="text-muted-foreground">Progress</span>
+                  <span className="text-[#94a3b8]">Progress</span>
                   <span className="font-mono text-foreground">{progress}%</span>
                 </div>
                 <div className="h-1.5 bg-secondary rounded-full overflow-hidden">
@@ -219,7 +219,7 @@ export default function ProjectPage() {
                     "w-full flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors",
                     activeView === view
                       ? "bg-secondary text-foreground"
-                      : "text-muted-foreground hover:text-foreground hover:bg-secondary/50",
+                      : "text-[#94a3b8] hover:text-foreground hover:bg-secondary/50",
                   )}
                 >
                   <Icon className="w-4 h-4" />
@@ -232,7 +232,7 @@ export default function ProjectPage() {
                   "w-full flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors",
                   showAgentPanel
                     ? "bg-accent/20 text-accent"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/50",
+                    : "text-[#94a3b8] hover:text-foreground hover:bg-secondary/50",
                 )}
               >
                 <Bot className="w-4 h-4" />
@@ -242,7 +242,7 @@ export default function ProjectPage() {
 
             {sprints.length > 0 && (
               <div>
-                <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+                <h3 className="text-xs font-semibold text-[#94a3b8] uppercase tracking-wider mb-2">
                   Sprints
                 </h3>
                 <div className="space-y-1">
@@ -254,7 +254,7 @@ export default function ProjectPage() {
                         "w-full flex items-center justify-between px-3 py-2 rounded-md text-sm transition-colors",
                         activeSprint === sprint.id
                           ? "bg-secondary text-foreground"
-                          : "text-muted-foreground hover:text-foreground hover:bg-secondary/50",
+                          : "text-[#94a3b8] hover:text-foreground hover:bg-secondary/50",
                       )}
                     >
                       <span>{sprint.name}</span>
@@ -270,7 +270,7 @@ export default function ProjectPage() {
             <div>
               <button
                 onClick={() => setShowBacklog(!showBacklog)}
-                className="w-full flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors"
+                className="w-full flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-[#94a3b8] hover:text-foreground hover:bg-secondary/50 transition-colors"
               >
                 {showBacklog ? (
                   <ChevronDown className="w-4 h-4" />
@@ -285,7 +285,7 @@ export default function ProjectPage() {
               {showBacklog && (
                 <div className="mt-2 space-y-1 animate-in slide-in-from-top-2 duration-200">
                   {backlogTasks.length === 0 ? (
-                    <p className="px-3 text-xs text-muted-foreground">
+                    <p className="px-3 text-xs text-[#94a3b8]">
                       No backlog tasks.
                     </p>
                   ) : (
@@ -305,7 +305,7 @@ export default function ProjectPage() {
                                 ? "text-warning"
                                 : task.priority === "critical"
                                   ? "text-destructive"
-                                  : "text-muted-foreground",
+                                  : "text-[#94a3b8]",
                             )}
                           >
                             {task.priority}
@@ -321,7 +321,7 @@ export default function ProjectPage() {
             <div>
               <button
                 onClick={() => setShowPromptModal(true)}
-                className="w-full flex items-center gap-2 px-3 py-2 rounded-md text-xs text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors border border-border/50 mt-2"
+                className="w-full flex items-center gap-2 px-3 py-2 rounded-md text-xs text-[#94a3b8] hover:text-foreground hover:bg-secondary/50 transition-colors border border-border/50 mt-2"
               >
                 <FileText className="w-3.5 h-3.5" />
                 View original prompt
@@ -341,13 +341,13 @@ export default function ProjectPage() {
                       </h3>
                       <button
                         onClick={() => setShowPromptModal(false)}
-                        className="p-1 rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+                        className="p-1 rounded-md text-[#94a3b8] hover:text-foreground hover:bg-secondary transition-colors"
                       >
                         <X className="w-4 h-4" />
                       </button>
                     </div>
                     <div className="overflow-y-auto flex-1">
-                      <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-wrap font-mono">
+                      <p className="text-sm text-[#94a3b8] leading-relaxed whitespace-pre-wrap font-mono">
                         {project.description}
                       </p>
                     </div>
@@ -366,7 +366,7 @@ export default function ProjectPage() {
                 <h2 className="text-xl font-semibold text-foreground">
                   {activeView === "tasks" ? "Task List" : "Sprint Overview"}
                 </h2>
-                <p className="text-sm text-muted-foreground mt-0.5">
+                <p className="text-sm text-[#94a3b8] mt-0.5">
                   {activeView === "tasks"
                     ? `${done} of ${tasks.length} tasks completed`
                     : "Manage your sprint cycles"}
@@ -383,7 +383,7 @@ export default function ProjectPage() {
                 <div className="relative">
                   <button
                     onClick={() => setShowMoreMenu(!showMoreMenu)}
-                    className="p-2 rounded-lg border border-border text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+                    className="p-2 rounded-lg border border-border text-[#94a3b8] hover:text-foreground hover:bg-secondary transition-colors"
                   >
                     <MoreHorizontal className="w-5 h-5" />
                   </button>
@@ -447,7 +447,7 @@ export default function ProjectPage() {
             {activeView === "tasks" && (
               <div className="rounded-lg border border-border bg-card overflow-hidden">
                 {sprintTasks.length === 0 ? (
-                  <p className="p-6 text-center text-muted-foreground text-sm">
+                  <p className="p-6 text-center text-[#94a3b8] text-sm">
                     No tasks in this sprint yet.
                   </p>
                 ) : (
@@ -481,13 +481,13 @@ export default function ProjectPage() {
                               ? "bg-success/20 text-success"
                               : sprint.status === "completed"
                                 ? "bg-primary/20 text-primary"
-                                : "bg-muted text-muted-foreground",
+                                : "bg-muted text-[#94a3b8]",
                           )}
                         >
                           {sprint.status}
                         </span>
                       </div>
-                      <span className="font-mono text-sm text-muted-foreground">
+                      <span className="font-mono text-sm text-[#94a3b8]">
                         {sprint.completed}/{sprint.tasks} tasks
                       </span>
                     </div>
@@ -502,7 +502,7 @@ export default function ProjectPage() {
                   </div>
                 ))}
                 {sprints.length === 0 && (
-                  <p className="text-center text-muted-foreground text-sm py-8">
+                  <p className="text-center text-[#94a3b8] text-sm py-8">
                     No sprints yet.
                   </p>
                 )}
@@ -542,7 +542,7 @@ export default function ProjectPage() {
             <h3 className="text-lg font-semibold text-foreground mb-2">
               Delete Project
             </h3>
-            <p className="text-sm text-muted-foreground mb-6">
+            <p className="text-sm text-[#94a3b8] mb-6">
               Are you sure you want to delete{" "}
               <span className="text-foreground font-medium">
                 "{project.name}"
@@ -579,7 +579,7 @@ export default function ProjectPage() {
           >
             <button
               onClick={() => setShowAddTaskModal(false)}
-              className="absolute top-4 right-4 p-1 rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+              className="absolute top-4 right-4 p-1 rounded-md text-[#94a3b8] hover:text-foreground hover:bg-secondary transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
@@ -599,7 +599,7 @@ export default function ProjectPage() {
                   }
                   placeholder="Task title..."
                   autoFocus
-                  className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                  className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
                 />
               </div>
               <div>
@@ -613,7 +613,7 @@ export default function ProjectPage() {
                   }
                   placeholder="Task description..."
                   rows={3}
-                  className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground resize-none focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                  className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-[#94a3b8] resize-none focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
@@ -665,7 +665,7 @@ export default function ProjectPage() {
                   "w-full rounded-lg px-4 py-2.5 text-sm font-medium transition-colors",
                   newTask.title.trim()
                     ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                    : "bg-secondary text-muted-foreground cursor-not-allowed",
+                    : "bg-secondary text-[#94a3b8] cursor-not-allowed",
                 )}
               >
                 Add Task

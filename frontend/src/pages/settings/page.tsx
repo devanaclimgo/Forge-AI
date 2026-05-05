@@ -156,7 +156,7 @@ export default function SettingsPage() {
                 "flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 transition-colors -mb-px",
                 activeTab === tab.id
                   ? "border-primary text-foreground"
-                  : "border-transparent text-muted-foreground hover:text-foreground",
+                  : "border-transparent text-[#94a3b8] hover:text-foreground",
               )}
             >
               <tab.icon className="w-4 h-4" />
@@ -178,9 +178,7 @@ export default function SettingsPage() {
                   <h2 className="text-lg font-semibold text-foreground">
                     {formData.fullName}
                   </h2>
-                  <p className="text-sm text-muted-foreground">
-                    {formData.email}
-                  </p>
+                  <p className="text-sm text-[#94a3b8]">{formData.email}</p>
                 </div>
               </div>
 
@@ -241,7 +239,7 @@ export default function SettingsPage() {
                       }))
                     }
                     placeholder="Enter current password"
-                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
                   />
                 </div>
 
@@ -259,7 +257,7 @@ export default function SettingsPage() {
                       }))
                     }
                     placeholder="Enter new password"
-                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
                   />
                 </div>
 
@@ -277,7 +275,7 @@ export default function SettingsPage() {
                       }))
                     }
                     placeholder="Confirm new password"
-                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
                   />
                 </div>
               </div>
@@ -296,7 +294,7 @@ export default function SettingsPage() {
               <h3 className="text-lg font-semibold text-destructive mb-2">
                 Danger Zone
               </h3>
-              <p className="text-sm text-muted-foreground mb-4">
+              <p className="text-sm text-[#94a3b8] mb-4">
                 Once you delete your account, there is no going back. This
                 action is permanent.
               </p>
@@ -331,7 +329,7 @@ export default function SettingsPage() {
                 <h3 className="text-lg font-semibold text-foreground mb-2">
                   {section.title}
                 </h3>
-                <p className="text-sm text-muted-foreground mb-4">
+                <p className="text-sm text-[#94a3b8] mb-4">
                   {section.description}
                 </p>
                 <ul className="space-y-2">
@@ -374,7 +372,7 @@ export default function SettingsPage() {
                       </span>
                       <ChevronDown
                         className={cn(
-                          "w-5 h-5 text-muted-foreground shrink-0 transition-transform duration-200",
+                          "w-5 h-5 text-[#94a3b8] shrink-0 transition-transform duration-200",
                           expandedFaq === index && "rotate-180",
                         )}
                       />
@@ -385,7 +383,7 @@ export default function SettingsPage() {
                         expandedFaq === index ? "max-h-96" : "max-h-0",
                       )}
                     >
-                      <p className="px-4 pb-4 text-sm text-muted-foreground leading-relaxed">
+                      <p className="px-4 pb-4 text-sm text-[#94a3b8] leading-relaxed">
                         {item.answer}
                       </p>
                     </div>
@@ -399,7 +397,7 @@ export default function SettingsPage() {
               <h3 className="text-lg font-semibold text-foreground mb-2">
                 Still need help?
               </h3>
-              <p className="text-sm text-muted-foreground mb-4">
+              <p className="text-sm text-[#94a3b8] mb-4">
                 Our support team is here to assist you.
               </p>
               {/* TODO: replace mailto link with actual support form or integration */}
@@ -426,7 +424,7 @@ export default function SettingsPage() {
           >
             <button
               onClick={() => setShowDeleteModal(false)}
-              className="absolute top-4 right-4 p-1 rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+              className="absolute top-4 right-4 p-1 rounded-md text-[#94a3b8] hover:text-foreground hover:bg-secondary transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
@@ -440,7 +438,7 @@ export default function SettingsPage() {
               </h3>
             </div>
 
-            <p className="text-sm text-muted-foreground mb-6">
+            <p className="text-sm text-[#94a3b8] mb-6">
               Are you sure you want to delete your account? This action cannot
               be undone. All your projects, tasks, and data will be permanently
               deleted.

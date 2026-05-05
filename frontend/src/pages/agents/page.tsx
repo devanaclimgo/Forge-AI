@@ -166,7 +166,7 @@ export default function AgentsPage() {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-foreground">AI Agents</h1>
-          <p className="text-muted-foreground mt-1">
+          <p className="text-[#94a3b8] mt-1">
             Your multi-agent development team working across all projects
           </p>
         </div>
@@ -182,9 +182,7 @@ export default function AgentsPage() {
                 <p className="text-2xl font-bold text-foreground">
                   {activeAgents}
                 </p>
-                <p className="text-sm text-muted-foreground">
-                  Currently Active
-                </p>
+                <p className="text-sm text-[#94a3b8]">Currently Active</p>
               </div>
             </div>
           </div>
@@ -195,7 +193,7 @@ export default function AgentsPage() {
               </div>
               <div>
                 <p className="text-2xl font-bold text-foreground">127</p>
-                <p className="text-sm text-muted-foreground">Actions Today</p>
+                <p className="text-sm text-[#94a3b8]">Actions Today</p>
               </div>
             </div>
           </div>
@@ -206,7 +204,7 @@ export default function AgentsPage() {
               </div>
               <div>
                 <p className="text-2xl font-bold text-foreground">2.3s</p>
-                <p className="text-sm text-muted-foreground">Avg. Response</p>
+                <p className="text-sm text-[#94a3b8]">Avg. Response</p>
               </div>
             </div>
           </div>
@@ -244,13 +242,11 @@ export default function AgentsPage() {
                           {entry.action}
                         </p>
                         <div className="flex items-center gap-2 mt-1.5 flex-wrap">
-                          <span className="text-xs text-muted-foreground font-mono">
+                          <span className="text-xs text-[#94a3b8] font-mono">
                             {entry.timestamp}
                           </span>
-                          <span className="text-xs text-muted-foreground">
-                            •
-                          </span>
-                          <span className="text-xs text-muted-foreground">
+                          <span className="text-xs text-[#94a3b8]">•</span>
+                          <span className="text-xs text-[#94a3b8]">
                             {entry.project}
                           </span>
                         </div>

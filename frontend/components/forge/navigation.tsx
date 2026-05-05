@@ -44,7 +44,7 @@ export function Navigation() {
                     "flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors",
                     isActive
                       ? "bg-secondary text-foreground"
-                      : "text-muted-foreground hover:text-foreground hover:bg-secondary/50",
+                      : "text-[#94a3b8] hover:text-foreground hover:bg-secondary/50",
                   )}
                 >
                   <item.icon className="w-4 h-4" />
@@ -58,13 +58,13 @@ export function Navigation() {
         <div className="flex items-center gap-2">
           <Link
             to="/settings"
-            className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors"
+            className="p-2 rounded-md text-[#94a3b8] hover:text-foreground hover:bg-secondary/50 transition-colors"
           >
             <Settings className="w-5 h-5" />
           </Link>
           <button
             onClick={handleLogout}
-            className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors"
+            className="p-2 rounded-md text-[#94a3b8] hover:text-foreground hover:bg-secondary/50 transition-colors"
           >
             <LogOut className="w-5 h-5" />
           </button>

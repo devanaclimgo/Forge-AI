@@ -1,68 +1,76 @@
-import { Link } from "react-router-dom"
-import { Logo } from "../../../components/forge/logo"
-import { 
-  Brain, 
-  Workflow, 
-  ListTodo, 
-  Bot, 
-  ArrowRight, 
+import { Link } from "react-router-dom";
+import { Logo } from "../../../components/forge/logo";
+import {
+  Brain,
+  Workflow,
+  ListTodo,
+  Bot,
+  ArrowRight,
   Zap,
   Target,
   GitBranch,
   Shield,
-  CheckCircle2
-} from "lucide-react"
+  CheckCircle2,
+} from "lucide-react";
 
 const agents = [
   {
     name: "Planner",
     role: "Feature Architect",
-    description: "Structures your features into organized sprints and milestones. Transforms chaos into clear roadmaps.",
-    icon: Target
+    description:
+      "Structures your features into organized sprints and milestones. Transforms chaos into clear roadmaps.",
+    icon: Target,
   },
   {
     name: "Architect",
     role: "Technical Advisor",
-    description: "Defines your technical stack and makes architectural decisions. Ensures scalability from day one.",
-    icon: GitBranch
+    description:
+      "Defines your technical stack and makes architectural decisions. Ensures scalability from day one.",
+    icon: GitBranch,
   },
   {
     name: "Task Manager",
     role: "Priority Master",
-    description: "Organizes and reprioritizes your backlog continuously. Keeps your focus on what matters.",
-    icon: ListTodo
+    description:
+      "Organizes and reprioritizes your backlog continuously. Keeps your focus on what matters.",
+    icon: ListTodo,
   },
   {
     name: "Debug Agent",
     role: "Quality Guardian",
-    description: "Analyzes bugs and generates comprehensive checklists. Catches issues before they escalate.",
-    icon: Shield
+    description:
+      "Analyzes bugs and generates comprehensive checklists. Catches issues before they escalate.",
+    icon: Shield,
   },
   {
     name: "Analyst",
     role: "Progress Tracker",
-    description: "Reads task data and provides health reports. Gives you clarity on project status anytime.",
-    icon: Workflow
-  }
-]
+    description:
+      "Reads task data and provides health reports. Gives you clarity on project status anytime.",
+    icon: Workflow,
+  },
+];
 
 const features = [
   {
     title: "Brain Dump",
-    description: "Write freely without structure. Our agents extract meaning from your stream of consciousness.",
-    icon: Brain
+    description:
+      "Write freely without structure. Our agents extract meaning from your stream of consciousness.",
+    icon: Brain,
   },
   {
     title: "AI Sprint Planning",
-    description: "Agents automatically create sprints, set priorities, and define milestones based on your input.",
-    icon: Workflow
+    description:
+      "Agents automatically create sprints, set priorities, and define milestones based on your input.",
+    icon: Workflow,
   },
   {
     title: "Smart Task Management",
-    description: "Tasks that evolve. Agents reprioritize, add context, and break down complex work automatically.",
-    icon: ListTodo
-  }
-]
+    description:
+      "Tasks that evolve. Agents reprioritize, add context, and break down complex work automatically.",
+    icon: ListTodo,
+  },
+];
 
 export default function LandingPage() {
   return (
@@ -72,20 +80,29 @@ export default function LandingPage() {
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <Logo />
           <nav className="hidden md:flex items-center gap-6">
-            <a href="#how-it-works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a
+              href="#how-it-works"
+              className="text-sm text-[#94a3b8] hover:text-foreground transition-colors"
+            >
               How it Works
             </a>
-            <a href="#agents" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a
+              href="#agents"
+              className="text-sm text-[#94a3b8] hover:text-foreground transition-colors"
+            >
               Agents
             </a>
-            <a href="#features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a
+              href="#features"
+              className="text-sm text-[#94a3b8] hover:text-foreground transition-colors"
+            >
               Features
             </a>
           </nav>
           <div className="flex items-center gap-3">
             <Link
               to="/login"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              className="text-sm font-medium text-[#94a3b8] hover:text-foreground transition-colors"
             >
               Log in
             </Link>
@@ -108,7 +125,9 @@ export default function LandingPage() {
         <div className="container relative mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 mb-6">
             <Bot className="w-4 h-4 text-accent" />
-            <span className="text-sm text-muted-foreground">Multi-Agent Development Platform</span>
+            <span className="text-sm text-[#94a3b8]">
+              Multi-Agent Development Platform
+            </span>
           </div>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-balance max-w-4xl mx-auto">
             Stop planning.
@@ -117,8 +136,10 @@ export default function LandingPage() {
               Start building.
             </span>
           </h1>
-          <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto text-balance leading-relaxed">
-            Dump your raw ideas, let our AI agents structure everything. Tasks, sprints, and priorities emerge automatically — so you can focus on what you do best: building.
+          <p className="mt-6 text-lg md:text-xl text-[#94a3b8] max-w-2xl mx-auto text-balance leading-relaxed">
+            Dump your raw ideas, let our AI agents structure everything. Tasks,
+            sprints, and priorities emerge automatically — so you can focus on
+            what you do best: building.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
@@ -139,11 +160,16 @@ export default function LandingPage() {
       </section>
 
       {/* How It Works */}
-      <section id="how-it-works" className="py-20 md:py-32 border-t border-border">
+      <section
+        id="how-it-works"
+        className="py-20 md:py-32 border-t border-border"
+      >
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">From chaos to clarity in 3 steps</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              From chaos to clarity in 3 steps
+            </h2>
+            <p className="text-[#94a3b8] text-lg max-w-2xl mx-auto">
               No complex setup. No learning curve. Just start writing.
             </p>
           </div>
@@ -152,27 +178,34 @@ export default function LandingPage() {
               {
                 step: "01",
                 title: "Dump",
-                description: "Write your ideas freely. Stream of consciousness, no structure needed. Just get it out of your head.",
-                color: "primary"
+                description:
+                  "Write your ideas freely. Stream of consciousness, no structure needed. Just get it out of your head.",
+                color: "primary",
               },
               {
                 step: "02",
                 title: "Plan",
-                description: "Our agents analyze, structure, and transform your input into organized features, tasks, and sprints.",
-                color: "accent"
+                description:
+                  "Our agents analyze, structure, and transform your input into organized features, tasks, and sprints.",
+                color: "accent",
               },
               {
                 step: "03",
                 title: "Build",
-                description: "Start executing with a clear roadmap. Agents continuously adapt and reprioritize as you progress.",
-                color: "success"
-              }
+                description:
+                  "Start executing with a clear roadmap. Agents continuously adapt and reprioritize as you progress.",
+                color: "success",
+              },
             ].map((item, index) => (
               <div key={index} className="relative group">
                 <div className="rounded-xl border border-border bg-card p-8 transition-all duration-200 hover:border-primary/30 hover:scale-[1.02]">
-                  <span className={`font-mono text-sm text-${item.color}`}>{item.step}</span>
+                  <span className={`font-mono text-sm text-${item.color}`}>
+                    {item.step}
+                  </span>
                   <h3 className="text-2xl font-bold mt-2 mb-3">{item.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{item.description}</p>
+                  <p className="text-[#94a3b8] leading-relaxed">
+                    {item.description}
+                  </p>
                 </div>
                 {index < 2 && (
                   <div className="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2">
@@ -186,16 +219,24 @@ export default function LandingPage() {
       </section>
 
       {/* Agents */}
-      <section id="agents" className="py-20 md:py-32 bg-card/30 border-t border-border">
+      <section
+        id="agents"
+        className="py-20 md:py-32 bg-card/30 border-t border-border"
+      >
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 mb-4">
               <Zap className="w-4 h-4 text-accent" />
-              <span className="text-sm text-accent">Powered by Multi-Agent AI</span>
+              <span className="text-sm text-accent">
+                Powered by Multi-Agent AI
+              </span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Your AI development team</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Specialized agents that think like a senior team. Each one focuses on what they do best.
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Your AI development team
+            </h2>
+            <p className="text-[#94a3b8] text-lg max-w-2xl mx-auto">
+              Specialized agents that think like a senior team. Each one focuses
+              on what they do best.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -209,11 +250,15 @@ export default function LandingPage() {
                     <agent.icon className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg text-foreground">{agent.name}</h3>
-                    <p className="text-sm text-accent font-mono">{agent.role}</p>
+                    <h3 className="font-semibold text-lg text-foreground">
+                      {agent.name}
+                    </h3>
+                    <p className="text-sm text-accent font-mono">
+                      {agent.role}
+                    </p>
                   </div>
                 </div>
-                <p className="mt-4 text-muted-foreground leading-relaxed">
+                <p className="mt-4 text-[#94a3b8] leading-relaxed">
                   {agent.description}
                 </p>
               </div>
@@ -226,8 +271,10 @@ export default function LandingPage() {
       <section id="features" className="py-20 md:py-32 border-t border-border">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Everything you need to ship</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Everything you need to ship
+            </h2>
+            <p className="text-[#94a3b8] text-lg max-w-2xl mx-auto">
               Built for developers who want structure without bureaucracy.
             </p>
           </div>
@@ -238,7 +285,9 @@ export default function LandingPage() {
                   <feature.icon className="w-7 h-7" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+                <p className="text-[#94a3b8] leading-relaxed">
+                  {feature.description}
+                </p>
               </div>
             ))}
           </div>
@@ -252,8 +301,9 @@ export default function LandingPage() {
             <h2 className="text-3xl md:text-5xl font-bold mb-6 text-balance">
               Ready to transform how you build?
             </h2>
-            <p className="text-lg text-muted-foreground mb-10 max-w-xl mx-auto">
-              Join developers who ship faster with AI-powered project management.
+            <p className="text-lg text-[#94a3b8] mb-10 max-w-xl mx-auto">
+              Join developers who ship faster with AI-powered project
+              management.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
@@ -264,7 +314,7 @@ export default function LandingPage() {
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />
               </Link>
             </div>
-            <div className="mt-8 flex items-center justify-center gap-6 text-sm text-muted-foreground">
+            <div className="mt-8 flex items-center justify-center gap-6 text-sm text-[#94a3b8]">
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-success" />
                 No credit card required
@@ -283,12 +333,12 @@ export default function LandingPage() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <Logo size="sm" href="/" />
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-[#94a3b8]">
               © 2026 Forge AI. Built for developers who ship.
             </p>
           </div>
         </div>
       </footer>
     </div>
-  )
+  );
 }

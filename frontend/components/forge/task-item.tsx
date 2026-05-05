@@ -35,7 +35,7 @@ interface TaskItemProps extends Task {
 }
 
 const priorityConfig = {
-  low: { label: "Low", className: "bg-muted text-muted-foreground" },
+  low: { label: "Low", className: "bg-muted text-[#94a3b8]" },
   medium: { label: "Medium", className: "bg-primary/20 text-primary" },
   high: { label: "High", className: "bg-warning/20 text-warning" },
   critical: {
@@ -45,7 +45,7 @@ const priorityConfig = {
 };
 
 const statusConfig = {
-  todo: { label: "To Do", icon: Circle, className: "text-muted-foreground" },
+  todo: { label: "To Do", icon: Circle, className: "text-[#94a3b8]" },
   "in-progress": {
     label: "In Progress",
     icon: Clock,
@@ -99,7 +99,7 @@ export function TaskItem({
         onClick={() => setIsExpanded(!isExpanded)}
       >
         <button
-          className="text-muted-foreground hover:text-foreground transition-colors"
+          className="text-[#94a3b8] hover:text-foreground transition-colors"
           onClick={(e) => {
             e.stopPropagation();
             setIsExpanded(!isExpanded);
@@ -168,7 +168,7 @@ export function TaskItem({
       {isExpanded && (
         <div className="px-12 pb-4 space-y-3 animate-in slide-in-from-top-2 duration-200">
           {description && (
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-sm text-[#94a3b8] leading-relaxed">
               {description}
             </p>
           )}
@@ -176,27 +176,25 @@ export function TaskItem({
           {agentNotes && (
             <div className="p-3 rounded-lg bg-accent/10 border border-accent/20">
               <p className="text-xs font-mono text-accent mb-1">Agent Notes:</p>
-              <p className="text-sm text-muted-foreground">{agentNotes}</p>
+              <p className="text-sm text-[#94a3b8]">{agentNotes}</p>
             </div>
           )}
 
           {subTasks && subTasks.length > 0 && (
             <div className="space-y-2">
-              <p className="text-xs font-mono text-muted-foreground">
-                Sub-tasks:
-              </p>
+              <p className="text-xs font-mono text-[#94a3b8]">Sub-tasks:</p>
               {subTasks.map((subTask) => (
                 <div key={subTask.id} className="flex items-center gap-2 pl-2">
                   {subTask.completed ? (
                     <CheckCircle2 className="w-4 h-4 text-success" />
                   ) : (
-                    <Circle className="w-4 h-4 text-muted-foreground" />
+                    <Circle className="w-4 h-4 text-[#94a3b8]" />
                   )}
                   <span
                     className={cn(
                       "text-sm",
                       subTask.completed
-                        ? "text-muted-foreground line-through"
+                        ? "text-[#94a3b8] line-through"
                         : "text-foreground",
                     )}
                   >
