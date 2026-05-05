@@ -171,7 +171,7 @@ export default function SettingsPage() {
             {/* Profile Section */}
             <div className="rounded-lg border border-border bg-card p-6">
               <div className="flex items-center gap-4 mb-6">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent/20 text-accent text-xl font-bold">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#a78bfa]/20 text-accent text-xl font-bold">
                   {getInitials(formData.fullName)}
                 </div>
                 <div>
@@ -196,7 +196,7 @@ export default function SettingsPage() {
                         fullName: e.target.value,
                       }))
                     }
-                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50 focus:border-primary"
                   />
                 </div>
 
@@ -213,7 +213,7 @@ export default function SettingsPage() {
                         email: e.target.value,
                       }))
                     }
-                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50 focus:border-primary"
                   />
                 </div>
               </div>
@@ -239,7 +239,7 @@ export default function SettingsPage() {
                       }))
                     }
                     placeholder="Enter current password"
-                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50 focus:border-primary"
                   />
                 </div>
 
@@ -257,7 +257,7 @@ export default function SettingsPage() {
                       }))
                     }
                     placeholder="Enter new password"
-                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50 focus:border-primary"
                   />
                 </div>
 
@@ -275,7 +275,7 @@ export default function SettingsPage() {
                       }))
                     }
                     placeholder="Confirm new password"
-                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50 focus:border-primary"
                   />
                 </div>
               </div>
@@ -284,13 +284,13 @@ export default function SettingsPage() {
             {/* Save Button */}
             <button
               onClick={handleSaveChanges}
-              className="w-full rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+              className="w-full rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-[#0b0f14] transition-colors hover:bg-[#38bdf8]/90"
             >
               Save Changes
             </button>
 
             {/* Danger Zone */}
-            <div className="rounded-lg border border-destructive/50 bg-destructive/5 p-6">
+            <div className="rounded-lg border border-[#fb923c]/50 bg-[#fb923c]/5 p-6">
               <h3 className="text-lg font-semibold text-destructive mb-2">
                 Danger Zone
               </h3>
@@ -301,7 +301,7 @@ export default function SettingsPage() {
               <div className="flex gap-3">
                 <button
                   onClick={() => setShowDeleteModal(true)}
-                  className="flex items-center gap-2 rounded-lg bg-destructive px-4 py-2 text-sm font-medium text-destructive-foreground transition-colors hover:bg-destructive/90"
+                  className="flex items-center gap-2 rounded-lg bg-destructive px-4 py-2 text-sm font-medium text-[#0b0f14] transition-colors hover:bg-[#fb923c]/90"
                 >
                   <Trash2 className="w-4 h-4" />
                   Delete Account
@@ -365,7 +365,7 @@ export default function SettingsPage() {
                       onClick={() =>
                         setExpandedFaq(expandedFaq === index ? null : index)
                       }
-                      className="w-full flex items-center justify-between p-4 text-left hover:bg-secondary/30 transition-colors"
+                      className="w-full flex items-center justify-between p-4 text-left hover:bg-[#1f2937]/30 transition-colors"
                     >
                       <span className="font-medium text-foreground pr-4">
                         {item.question}
@@ -403,7 +403,7 @@ export default function SettingsPage() {
               {/* TODO: replace mailto link with actual support form or integration */}
               <a
                 href="mailto:support@forgeai.dev"
-                className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-[#0b0f14] transition-colors hover:bg-[#38bdf8]/90"
               >
                 Contact Support
               </a>
@@ -415,11 +415,11 @@ export default function SettingsPage() {
       {/* Delete Account Modal */}
       {showDeleteModal && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm animate-in fade-in duration-150"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#0f172a]/80 backdrop-blur-sm animate-in fade-in duration-150"
           onClick={() => setShowDeleteModal(false)}
         >
           <div
-            className="relative w-full max-w-md mx-4 rounded-lg border border-destructive/50 bg-card p-6 shadow-xl animate-in zoom-in-95 duration-150"
+            className="relative w-full max-w-md mx-4 rounded-lg border border-[#fb923c]/50 bg-card p-6 shadow-xl animate-in zoom-in-95 duration-150"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -430,7 +430,7 @@ export default function SettingsPage() {
             </button>
 
             <div className="flex items-center gap-3 mb-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-destructive/20">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#fb923c]/20">
                 <Trash2 className="w-5 h-5 text-destructive" />
               </div>
               <h3 className="text-lg font-semibold text-foreground">
@@ -453,7 +453,7 @@ export default function SettingsPage() {
               </button>
               <button
                 onClick={handleDeleteAccount}
-                className="flex-1 rounded-lg bg-destructive px-4 py-2.5 text-sm font-medium text-destructive-foreground transition-colors hover:bg-destructive/90"
+                className="flex-1 rounded-lg bg-destructive px-4 py-2.5 text-sm font-medium text-[#0b0f14] transition-colors hover:bg-[#fb923c]/90"
               >
                 Delete Account
               </button>
