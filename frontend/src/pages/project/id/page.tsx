@@ -219,7 +219,7 @@ export default function ProjectPage() {
                     "w-full flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors",
                     activeView === view
                       ? "bg-secondary text-foreground"
-                      : "text-[#94a3b8] hover:text-foreground hover:bg-secondary/50",
+                      : "text-[#94a3b8] hover:text-foreground hover:bg-[#1f2937]/50",
                   )}
                 >
                   <Icon className="w-4 h-4" />
@@ -231,8 +231,8 @@ export default function ProjectPage() {
                 className={cn(
                   "w-full flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors",
                   showAgentPanel
-                    ? "bg-accent/20 text-accent"
-                    : "text-[#94a3b8] hover:text-foreground hover:bg-secondary/50",
+                    ? "bg-[#a78bfa]/20 text-accent"
+                    : "text-[#94a3b8] hover:text-foreground hover:bg-[#1f2937]/50",
                 )}
               >
                 <Bot className="w-4 h-4" />
@@ -254,7 +254,7 @@ export default function ProjectPage() {
                         "w-full flex items-center justify-between px-3 py-2 rounded-md text-sm transition-colors",
                         activeSprint === sprint.id
                           ? "bg-secondary text-foreground"
-                          : "text-[#94a3b8] hover:text-foreground hover:bg-secondary/50",
+                          : "text-[#94a3b8] hover:text-foreground hover:bg-[#1f2937]/50",
                       )}
                     >
                       <span>{sprint.name}</span>
@@ -270,7 +270,7 @@ export default function ProjectPage() {
             <div>
               <button
                 onClick={() => setShowBacklog(!showBacklog)}
-                className="w-full flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-[#94a3b8] hover:text-foreground hover:bg-secondary/50 transition-colors"
+                className="w-full flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-[#94a3b8] hover:text-foreground hover:bg-[#1f2937]/50 transition-colors"
               >
                 {showBacklog ? (
                   <ChevronDown className="w-4 h-4" />
@@ -292,7 +292,7 @@ export default function ProjectPage() {
                     backlogTasks.map((task) => (
                       <div
                         key={task.id}
-                        className="px-3 py-2 rounded-md bg-secondary/50 border border-border"
+                        className="px-3 py-2 rounded-md bg-[#1f2937]/50 border border-border"
                       >
                         <p className="text-sm text-foreground truncate">
                           {task.title}
@@ -321,14 +321,14 @@ export default function ProjectPage() {
             <div>
               <button
                 onClick={() => setShowPromptModal(true)}
-                className="w-full flex items-center gap-2 px-3 py-2 rounded-md text-xs text-[#94a3b8] hover:text-foreground hover:bg-secondary/50 transition-colors border border-border/50 mt-2"
+                className="w-full flex items-center gap-2 px-3 py-2 rounded-md text-xs text-[#94a3b8] hover:text-foreground hover:bg-[#1f2937]/50 transition-colors border border-border/50 mt-2"
               >
                 <FileText className="w-3.5 h-3.5" />
                 View original prompt
               </button>
               {showPromptModal && (
                 <div
-                  className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm"
+                  className="fixed inset-0 z-50 flex items-center justify-center bg-[#1f2937]/80 backdrop-blur-sm"
                   onClick={() => setShowPromptModal(false)}
                 >
                   <div
@@ -516,7 +516,7 @@ export default function ProjectPage() {
           <aside className="w-80 border-l border-border bg-card p-4 overflow-auto hidden xl:block">
             <div className="flex items-center justify-between mb-4">
               <h2 className="font-semibold text-foreground">AI Agents</h2>
-              <span className="px-2 py-0.5 rounded-full bg-success/20 text-success text-xs font-medium">
+              <span className="px-2 py-0.5 rounded-full bg-[#34d399]/20 text-success text-xs font-medium">
                 Live
               </span>
             </div>
@@ -532,7 +532,7 @@ export default function ProjectPage() {
       {/* Delete Modal */}
       {showDeleteModal && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#0b0f14]/80 backdrop-blur-sm"
           onClick={() => setShowDeleteModal(false)}
         >
           <div
@@ -558,7 +558,7 @@ export default function ProjectPage() {
               </button>
               <button
                 onClick={handleDeleteProject}
-                className="flex-1 rounded-lg bg-destructive px-4 py-2 text-sm font-medium text-destructive-foreground hover:bg-destructive/90 transition-colors"
+                className="flex-1 rounded-lg bg-destructive px-4 py-2 text-sm font-medium text-[#0b0f14] hover:bg-[#fb923c]/90 transition-colors"
               >
                 Delete
               </button>
@@ -570,7 +570,7 @@ export default function ProjectPage() {
       {/* Add Task Modal */}
       {showAddTaskModal && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm animate-in fade-in duration-150"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#0b0f14]/80 backdrop-blur-sm animate-in fade-in duration-150"
           onClick={() => setShowAddTaskModal(false)}
         >
           <div
