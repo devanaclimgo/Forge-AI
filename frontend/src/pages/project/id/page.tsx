@@ -171,6 +171,12 @@ export default function ProjectPage() {
     }
   };
 
+  // TODO: add project hover border just like in v0
+  // TODO: add "last agent activity" info to project card and project page, maybe in the sidebar header next to progress
+  // TODO: add ability to click on sprint in sidebar to filter tasks by sprint, maybe also add a "no sprint" option to show backlog tasks
+  // TODO: add ability to create/edit/delete sprints
+  // TODO: edit task list dropdown just like in v0
+  
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
