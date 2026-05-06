@@ -76,7 +76,7 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-sm">
+      <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-[#0b0f14]/80 backdrop-blur-sm">
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <Logo />
           <nav className="hidden md:flex items-center gap-6">
@@ -108,7 +108,7 @@ export default function LandingPage() {
             </Link>
             <Link
               to="/signup"
-              className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+              className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-[#0b0f14] transition-colors hover:bg-[#38bdf8]/90"
             >
               Start Building
             </Link>
@@ -119,8 +119,8 @@ export default function LandingPage() {
       {/* Hero */}
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-32">
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#38bdf8]]/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#a78bfa]/5 rounded-full blur-3xl" />
         </div>
         <div className="container relative mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 mb-6">
@@ -144,7 +144,7 @@ export default function LandingPage() {
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               to="/signup"
-              className="group flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-base font-medium text-primary-foreground transition-all hover:bg-primary/90 hover:gap-3"
+              className="group flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-base font-medium text-[#0b0f14] transition-all hover:bg-[#38bdf8]/90 hover:gap-3"
             >
               Try for Free
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
@@ -198,7 +198,7 @@ export default function LandingPage() {
               },
             ].map((item, index) => (
               <div key={index} className="relative group">
-                <div className="rounded-xl border border-border bg-card p-8 transition-all duration-200 hover:border-primary/30 hover:scale-[1.02]">
+                <div className="rounded-xl border border-border bg-card p-8 transition-all duration-200 hover:border-[#38bdf8]/30 hover:scale-[1.02]">
                   <span className={`font-mono text-sm text-${item.color}`}>
                     {item.step}
                   </span>
@@ -221,13 +221,13 @@ export default function LandingPage() {
       {/* Agents */}
       <section
         id="agents"
-        className="py-20 md:py-32 bg-card/30 border-t border-border"
+        className="py-20 md:py-32 bg-[#111827]/30 border-t border-border"
       >
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 mb-4">
-              <Zap className="w-4 h-4 text-accent" />
-              <span className="text-sm text-accent">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#a78bfa]/30 bg-[#a78bfa]/10 px-4 py-1.5 mb-4">
+              <Zap className="w-4 h-4 text-[#a78bfa]" />
+              <span className="text-sm text-[#a78bfa]">
                 Powered by Multi-Agent AI
               </span>
             </div>
@@ -243,10 +243,10 @@ export default function LandingPage() {
             {agents.map((agent, index) => (
               <div
                 key={index}
-                className="group rounded-xl border border-border bg-card p-6 transition-all duration-200 hover:border-accent/50 hover:scale-[1.01]"
+                className="group rounded-xl border border-border bg-card p-6 transition-all duration-200 hover:border-[#a78bfa]/50 hover:scale-[1.01]"
               >
                 <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent transition-colors group-hover:bg-accent/20">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#a78bfa]/10 text-accent transition-colors group-hover:bg-[#a78bfa]/20">
                     <agent.icon className="w-6 h-6" />
                   </div>
                   <div>
@@ -281,7 +281,7 @@ export default function LandingPage() {
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {features.map((feature, index) => (
               <div key={index} className="text-center">
-                <div className="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary mb-4">
+                <div className="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-[#38bdf8]/10 text-primary mb-4">
                   <feature.icon className="w-7 h-7" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
@@ -308,7 +308,7 @@ export default function LandingPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 to="/signup"
-                className="group flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-lg font-medium text-primary-foreground transition-all hover:bg-primary/90 hover:gap-3"
+                className="group flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-lg font-medium text-[#0b0f14] transition-all hover:bg-[#38bdf8]/90 hover:gap-3"
               >
                 Start Building for Free
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />
