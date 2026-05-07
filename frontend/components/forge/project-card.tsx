@@ -35,7 +35,7 @@ export function ProjectCard({
 }: ProjectCardProps) {
   return (
     <Link to={`/project/${id}`}>
-      <div className="group relative rounded-lg border border-border bg-card p-5 transition-all duration-200 hover:border-primary/50 hover:scale-[1.01] cursor-pointer">
+      <div className="group relative rounded-lg border border-border bg-card p-5 transition-all duration-200 hover:border-[#38bdf8]/50 hover:scale-[1.01] cursor-pointer">
         <div className="flex items-start justify-between mb-3">
           <div>
             <h3 className="font-semibold text-lg text-foreground group-hover:text-primary transition-colors">
