@@ -8,6 +8,7 @@ import AgentsPage from "./pages/agents/page";
 import BrainDumpPage from "./pages/brain-dump/page";
 import ProjectsPage from "./pages/projects/page";
 import SettingsPage from "./pages/settings/page";
+import NewProjectPage from "./pages/new-project/page";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Route path="/projects" element={<ProjectsPage />} />
       <Route path="/agents" element={<AgentsPage />} />
       <Route path="/brain-dump" element={<BrainDumpPage />} />
+      <Route path="/new-project" element={<NewProjectPage />} />
     </Routes>
   );
 }
