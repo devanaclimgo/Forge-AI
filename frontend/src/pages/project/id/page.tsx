@@ -177,7 +177,7 @@ export default function ProjectPage() {
   // TODO: add ability to create/edit/delete sprints
   // TODO: add "create project" -> 2 buttons: use brain dump // write on your own
   // TODO: loading page after "create project" before showing project page, informações demoram pra carregar e fica parecendo q não ta funcionando
-  
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -249,10 +249,22 @@ export default function ProjectPage() {
 
             {sprints.length > 0 && (
               <div>
-                <h3 className="text-xs font-semibold text-[#94a3b8] uppercase tracking-wider mb-2">
+                <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
                   Sprints
                 </h3>
                 <div className="space-y-1">
+                  <button
+                    onClick={() => setActiveSprint(null)}
+                    className={cn(
+                      "w-full flex items-center justify-between px-3 py-2 rounded-md text-sm transition-colors",
+                      activeSprint === null
+                        ? "bg-secondary text-foreground"
+                        : "text-muted-foreground hover:text-foreground hover:bg-secondary/50",
+                    )}
+                  >
+                    <span>All Tasks</span>
+                    <span className="font-mono text-xs">{tasks.length}</span>
+                  </button>
                   {sprints.map((sprint) => (
                     <button
                       key={sprint.id}
@@ -261,7 +273,7 @@ export default function ProjectPage() {
                         "w-full flex items-center justify-between px-3 py-2 rounded-md text-sm transition-colors",
                         activeSprint === sprint.id
                           ? "bg-secondary text-foreground"
-                          : "text-[#94a3b8] hover:text-foreground hover:bg-[#1f2937]/50",
+                          : "text-muted-foreground hover:text-foreground hover:bg-secondary/50",
                       )}
                     >
                       <span>{sprint.name}</span>
