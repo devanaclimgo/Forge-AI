@@ -109,9 +109,10 @@ export default function ProjectPage() {
       .finally(() => setLoading(false));
   }, [id]);
 
-  const sprintTasks = activeSprint
-    ? tasks.filter((t) => t.sprint_id === activeSprint)
-    : tasks.filter((t) => t.sprint_id != null);
+  const sprintTasks =
+    activeSprint === null
+      ? tasks
+      : tasks.filter((t) => t.sprint_id === activeSprint);
 
   const backlogTasks = tasks.filter((t) => t.sprint_id == null);
   const done = tasks.filter((t) => t.status === "done").length;
