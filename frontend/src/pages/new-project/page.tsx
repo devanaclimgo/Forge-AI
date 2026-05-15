@@ -25,7 +25,7 @@ interface BacklogTask {
 const categoryConfig: Record<Category, { label: string; className: string }> = {
   feature: { label: "Feature", className: "bg-[#38bdf8]/20 text-primary" },
   bug: { label: "Bug", className: "bg-[#fb923c]/20 text-destructive" },
-  refactor: { label: "Refactor", className: "bg-[#0b0f14]20 text-accent" },
+  refactor: { label: "Refactor", className: "bg-[#0b0f14]/20 text-accent" },
   design: { label: "Design", className: "bg-[#fbbf24]/20 text-warning" },
   devops: { label: "DevOps", className: "bg-muted text-[#94a3b8]" },
   testing: { label: "Testing", className: "bg-[#34d399]/20 text-success" },
@@ -131,7 +131,7 @@ export default function NewProjectPage() {
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="e.g. Âncora, My SaaS, Portfolio v2..."
+                placeholder="e.g. E-commerce, My SaaS, Portfolio..."
                 autoFocus
                 className="w-full px-3 py-2.5 rounded-lg border border-border bg-card text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50 focus:border-primary transition-colors"
               />
