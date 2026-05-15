@@ -4,37 +4,37 @@
 
 @layer base {
   :root {
-    --primary: rgb(56 189 248);
-    --primary-foreground: rgb(11 15 20);
-    --secondary: rgb(31 41 55);
-    --secondary-foreground: rgb(248 250 252);
-    --muted: rgb(31 41 55);
-    --muted-foreground: rgb(148 163 184);
-    --accent: rgb(167 139 250);
-    --accent-foreground: rgb(11 15 20);
-    --destructive: rgb(251 146 60);
-    --destructive-foreground: rgb(11 15 20);
-    --success: rgb(52 211 153);
-    --warning: rgb(251 191 36);
-    --background: rgb(11 15 20);
-    --foreground: rgb(248 250 252);
-    --card: rgb(17 24 39);
-    --card-foreground: rgb(248 250 252);
-    --popover: rgb(15 23 42);
-    --popover-foreground: rgb(248 250 252);
-    --border: rgb(31 41 55);
-    --input: rgb(31 41 55);
-    --ring: rgb(56 189 248);
-    --agent: rgb(167 139 250);
-    --sidebar: rgb(15 23 42);
-    --sidebar-foreground: rgb(248 250 252);
-    --sidebar-primary: rgb(56 189 248);
-    --sidebar-primary-foreground: rgb(11 15 20);
-    --sidebar-accent: rgb(31 41 55);
-    --sidebar-accent-foreground: rgb(248 250 252);
-    --sidebar-border: rgb(31 41 55);
-    --sidebar-ring: rgb(56 189 248);
+    --background: #0b0f14;
+    --foreground: #f8fafc;
+    --card: #111827;
+    --card-foreground: #f8fafc;
+    --popover: #0f172a;
+    --popover-foreground: #f8fafc;
+    --primary: #38bdf8;
+    --primary-foreground: #0b0f14;
+    --secondary: #1f2937;
+    --secondary-foreground: #f8fafc;
+    --muted: #1f2937;
+    --muted-foreground: #94a3b8;
+    --accent: #a78bfa;
+    --accent-foreground: #0b0f14;
+    --destructive: #fb923c;
+    --destructive-foreground: #0b0f14;
+    --border: #1f2937;
+    --input: #1f2937;
+    --ring: #38bdf8;
+    --success: #34d399;
+    --warning: #fbbf24;
+    --agent: #a78bfa;
     --radius: 0.5rem;
+    --sidebar: #0f172a;
+    --sidebar-foreground: #f8fafc;
+    --sidebar-primary: #38bdf8;
+    --sidebar-primary-foreground: #0b0f14;
+    --sidebar-accent: #1f2937;
+    --sidebar-accent-foreground: #f8fafc;
+    --sidebar-border: #1f2937;
+    --sidebar-ring: #38bdf8;
   }
 
   * {
