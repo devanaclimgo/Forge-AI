@@ -1,277 +1,128 @@
-// src/pages/new-project/page.tsx
-import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import { Logo } from "../../../components/forge/logo";
-import { api } from "../../../lib/api";
-import { Plus, X, ArrowRight, Loader2, Tag } from "lucide-react";
-import { cn } from "../../../lib/utils";
+import { useState } from "react"
+import { Link, useLocation, useNavigate } from "react-router-dom"
+import { cn } from "../../../lib/utils"
+import { Logo } from "../../../components/forge/logo"
+import { Brain, LayoutDashboard, FolderOpen, Bot, Settings, LogOut, Plus, PenLine, X } from "lucide-react"
 
-type Category =
-  | "feature"
-  | "bug"
-  | "refactor"
-  | "design"
-  | "devops"
-  | "testing";
-type Priority = "low" | "medium" | "high" | "critical";
+const navItems = [
+  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/projects",  label: "Projects",  icon: FolderOpen },
+  { href: "/agents",    label: "Agents",     icon: Bot },
+]
 
-interface BacklogTask {
-  tempId: string;
-  title: string;
-  category: Category;
-  priority: Priority;
-}
+export function Navigation() {
+  const { pathname } = useLocation()
+  const navigate     = useNavigate()
+  const [showModal, setShowModal] = useState(false)
 
-const categoryConfig: Record<Category, { label: string; className: string }> = {
-  feature: { label: "Feature", className: "bg-[#38bdf8]/20 text-primary" },
-  bug: { label: "Bug", className: "bg-[#fb923c]/20 text-destructive" },
-  refactor: { label: "Refactor", className: "bg-[#0b0f14]/20 text-accent" },
-  design: { label: "Design", className: "bg-[#fbbf24]/20 text-warning" },
-  devops: { label: "DevOps", className: "bg-muted text-[#94a3b8]" },
-  testing: { label: "Testing", className: "bg-[#34d399]/20 text-success" },
-};
-
-const priorityConfig: Record<Priority, { label: string; className: string }> = {
-  low: { label: "Low", className: "text-[#94a3b8]" },
-  medium: { label: "Medium", className: "text-primary" },
-  high: { label: "High", className: "text-warning" },
-  critical: { label: "Critical", className: "text-destructive" },
-};
-
-export default function NewProjectPage() {
-  const navigate = useNavigate();
-
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [tasks, setTasks] = useState<BacklogTask[]>([]);
-  const [loading, setLoading] = useState(false);
-
-  const [newTaskTitle, setNewTaskTitle] = useState("");
-  const [newTaskCategory, setNewTaskCategory] = useState<Category>("feature");
-  const [newTaskPriority, setNewTaskPriority] = useState<Priority>("medium");
-
-  const addTask = () => {
-    if (!newTaskTitle.trim()) return;
-    setTasks((prev) => [
-      ...prev,
-      {
-        tempId: crypto.randomUUID(),
-        title: newTaskTitle.trim(),
-        category: newTaskCategory,
-        priority: newTaskPriority,
-      },
-    ]);
-    setNewTaskTitle("");
-  };
-
-  const removeTask = (tempId: string) => {
-    setTasks((prev) => prev.filter((t) => t.tempId !== tempId));
-  };
-
-  const handleSubmit = async () => {
-    if (!name.trim()) return;
-    setLoading(true);
-    try {
-      const project = await api.createProject({
-        name: name.trim(),
-        description: description.trim(),
-      });
-
-      // cria as tasks no backlog (sem sprint_id)
-      await Promise.all(
-        tasks.map((t) =>
-          api.createTask(project.id, {
-            title: t.title,
-            category: t.category,
-            priority: t.priority,
-            status: "todo",
-          }),
-        ),
-      );
-
-      navigate(`/project/${project.id}`);
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (_) {
-      alert("Failed to create project.");
-      setLoading(false);
-    }
-  };
+  const handleLogout = () => {
+    localStorage.removeItem("token")
+    localStorage.removeItem("user")
+    navigate("/login")
+  }
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <header className="flex items-center justify-between px-6 py-4 border-b border-border">
-        <div className="flex items-center gap-4">
-          <Logo href="/dashboard" />
-          <Link
-            to="/dashboard"
-            className="text-sm text-[#94a3b8] hover:text-foreground transition-colors"
-          >
-            ← Back
-          </Link>
+    <>
+      <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-sm">
+        <div className="container mx-auto flex h-16 items-center justify-between px-4">
+          <div className="flex items-center gap-8">
+            <Logo href="/dashboard" />
+            <nav className="hidden md:flex items-center gap-1">
+              {navItems.map((item) => {
+                const isActive = pathname === item.href || pathname.startsWith(item.href + "/")
+                return (
+                  <Link
+                    key={item.href}
+                    to={item.href}
+                    className={cn(
+                      "flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors",
+                      isActive
+                        ? "bg-secondary text-foreground"
+                        : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+                    )}
+                  >
+                    <item.icon className="w-4 h-4" />
+                    {item.label}
+                  </Link>
+                )
+              })}
+            </nav>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setShowModal(true)}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-[#38bdf8]/90 transition-colors"
+            >
+              <Plus className="w-4 h-4" />
+              Create Project
+            </button>
+            <Link to="/settings" className="p-2 rounded-md text-foreground hover:text-foreground hover:bg-[#0b0f14]/50 transition-colors">
+              <Settings className="w-5 h-5" />
+            </Link>
+            <button onClick={handleLogout} className="p-2 rounded-md text-[#94a3b8] hover:text-foreground hover:bg-[#0b0f14]/50 transition-colors">
+              <LogOut className="w-5 h-5" />
+            </button>
+          </div>
         </div>
       </header>
 
-      <div className="flex-1 flex flex-col items-center justify-start py-12 px-4">
-        <div className="w-full max-w-2xl space-y-8">
-          {/* Header */}
-          <div>
-            <h1 className="text-3xl font-bold text-foreground">New Project</h1>
-            <p className="text-[#94a3b8] mt-1">
-              Set up your project and add items to your backlog.
+      {/* Create Project Modal */}
+      {showModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm animate-in fade-in duration-150"
+          onClick={() => setShowModal(false)}
+        >
+          <div
+            className="relative w-full max-w-md mx-4 rounded-xl border border-border bg-card p-6 shadow-xl animate-in zoom-in-95 duration-150"
+            onClick={e => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-4 right-4 p-1 rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            <h2 className="text-lg font-semibold text-foreground mb-1">Create Project</h2>
+            <p className="text-sm text-muted-foreground mb-6">
+              How do you want to start?
             </p>
-          </div>
 
-          {/* Project info */}
-          <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-foreground mb-1.5">
-                Project name <span className="text-destructive">*</span>
-              </label>
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="e.g. E-commerce, My SaaS, Portfolio..."
-                autoFocus
-                className="w-full px-3 py-2.5 rounded-lg border border-border bg-card text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50 focus:border-primary transition-colors"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-foreground mb-1.5">
-                Description{" "}
-                <span className="text-[#94a3b8] text-xs">(optional)</span>
-              </label>
-              <textarea
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                placeholder="What is this project about?"
-                rows={3}
-                className="w-full px-3 py-2.5 rounded-lg border border-border bg-card text-foreground placeholder:text-[#94a3b8] resize-none focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50 focus:border-primary transition-colors"
-              />
-            </div>
-          </div>
-
-          {/* Backlog */}
-          <div>
-            <div className="flex items-center justify-between mb-3">
-              <h2 className="text-sm font-semibold text-foreground">
-                Backlog
-                <span className="ml-2 text-[#94a3b8] font-normal">
-                  ({tasks.length} items)
-                </span>
-              </h2>
-            </div>
-
-            {/* Add task row */}
-            <div className="flex gap-2 mb-3">
-              <input
-                type="text"
-                value={newTaskTitle}
-                onChange={(e) => setNewTaskTitle(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && addTask()}
-                placeholder="Add a feature, bug, or task..."
-                className="flex-1 px-3 py-2 rounded-lg border border-border bg-card text-sm text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50 focus:border-primary transition-colors"
-              />
-              <select
-                value={newTaskCategory}
-                onChange={(e) => setNewTaskCategory(e.target.value as Category)}
-                className="px-2 py-2 rounded-lg border border-border bg-card text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50"
-              >
-                {(Object.keys(categoryConfig) as Category[]).map((c) => (
-                  <option key={c} value={c}>
-                    {categoryConfig[c].label}
-                  </option>
-                ))}
-              </select>
-              <select
-                value={newTaskPriority}
-                onChange={(e) => setNewTaskPriority(e.target.value as Priority)}
-                className="px-2 py-2 rounded-lg border border-border bg-card text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50"
-              >
-                {(Object.keys(priorityConfig) as Priority[]).map((p) => (
-                  <option key={p} value={p}>
-                    {priorityConfig[p].label}
-                  </option>
-                ))}
-              </select>
+            <div className="grid grid-cols-2 gap-3">
               <button
-                onClick={addTask}
-                disabled={!newTaskTitle.trim()}
-                className="px-3 py-2 rounded-lg bg-secondary border border-border text-foreground hover:bg-secondary/80 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                onClick={() => { setShowModal(false); navigate("/brain-dump") }}
+                className="flex flex-col items-start gap-3 p-4 rounded-lg border border-border bg-background hover:border-accent/50 hover:bg-accent/5 transition-all duration-150 text-left group"
               >
-                <Plus className="w-4 h-4" />
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 text-accent group-hover:bg-accent/20 transition-colors">
+                  <Brain className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="font-medium text-foreground text-sm">Brain Dump</p>
+                  <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">
+                    Write freely, AI structures everything for you
+                  </p>
+                </div>
+              </button>
+
+              <button
+                onClick={() => { setShowModal(false); navigate("/new-project") }}
+                className="flex flex-col items-start gap-3 p-4 rounded-lg border border-border bg-background hover:border-primary/50 hover:bg-primary/5 transition-all duration-150 text-left group"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
+                  <PenLine className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="font-medium text-foreground text-sm">Manual Setup</p>
+                  <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">
+                    Set up yourself and add tasks to backlog
+                  </p>
+                </div>
               </button>
             </div>
-
-            {/* Task list */}
-            {tasks.length === 0 ? (
-              <div className="rounded-lg border border-dashed border-border p-8 text-center">
-                <Tag className="w-8 h-8 text-[#94a3b8] mx-auto mb-2" />
-                <p className="text-sm text-[#94a3b8]">
-                  No backlog items yet. Add your first task above.
-                </p>
-              </div>
-            ) : (
-              <div className="rounded-lg border border-border bg-card overflow-hidden">
-                {tasks.map((task, i) => (
-                  <div
-                    key={task.tempId}
-                    className={cn(
-                      "flex items-center gap-3 px-4 py-3 transition-colors hover:bg-secondary/20",
-                      i < tasks.length - 1 && "border-b border-border",
-                    )}
-                  >
-                    <span
-                      className={cn(
-                        "px-2 py-0.5 rounded text-xs font-medium shrink-0",
-                        categoryConfig[task.category].className,
-                      )}
-                    >
-                      {categoryConfig[task.category].label}
-                    </span>
-                    <span className="flex-1 text-sm text-foreground">
-                      {task.title}
-                    </span>
-                    <span
-                      className={cn(
-                        "text-xs font-mono shrink-0",
-                        priorityConfig[task.priority].className,
-                      )}
-                    >
-                      {priorityConfig[task.priority].label}
-                    </span>
-                    <button
-                      onClick={() => removeTask(task.tempId)}
-                      className="p-1 rounded text-[#94a3b8] hover:text-foreground hover:bg-secondary transition-colors shrink-0"
-                    >
-                      <X className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
-                ))}
-              </div>
-            )}
           </div>
-
-          {/* Submit */}
-          <button
-            onClick={handleSubmit}
-            disabled={!name.trim() || loading}
-            className="w-full flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-base font-medium text-primary-foreground transition-all hover:bg-[#38bdf8]/90 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {loading ? (
-              <>
-                <Loader2 className="w-4 h-4 animate-spin" />
-                Creating project...
-              </>
-            ) : (
-              <>
-                Create Project
-                <ArrowRight className="w-4 h-4" />
-              </>
-            )}
-          </button>
         </div>
-      </div>
-    </div>
-  );
+      )}
+    </>
+  )
 }
