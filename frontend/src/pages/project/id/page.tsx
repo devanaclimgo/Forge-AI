@@ -150,8 +150,16 @@ export default function ProjectPage() {
 
   if (loading)
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <Loader2 className="w-6 h-6 animate-spin text-[#94a3b8]" />
+      <div className="min-h-screen bg-background flex flex-col items-center justify-center gap-4">
+        <div className="flex flex-col items-center gap-3">
+          <Loader2 className="w-6 h-6 animate-spin text-accent" />
+          <p className="text-sm text-muted-foreground">
+            Setting up your project...
+          </p>
+          <p className="text-xs text-muted-foreground/60">
+            Agents are structuring tasks and sprints
+          </p>
+        </div>
       </div>
     );
 
