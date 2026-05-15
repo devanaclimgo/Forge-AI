@@ -4,46 +4,24 @@ export default {
   theme: {
     extend: {
       colors: {
-        background:  "var(--background)",
-        foreground:  "var(--foreground)",
-        card:        "var(--card)",
-        popover:     "var(--popover)",
-        primary: {
-          DEFAULT:    "var(--primary)",
-          foreground: "var(--primary-foreground)",
-        },
-        secondary: {
-          DEFAULT:    "var(--secondary)",
-          foreground: "var(--secondary-foreground)",
-        },
-        muted: {
-          DEFAULT:    "var(--muted)",
-          foreground: "var(--muted-foreground)",
-        },
-        accent: {
-          DEFAULT:    "var(--accent)",
-          foreground: "var(--accent-foreground)",
-        },
-        destructive: {
-          DEFAULT:    "var(--destructive)",
-          foreground: "var(--destructive-foreground)",
-        },
-        border:  "var(--border)",
-        input:   "var(--input)",
-        ring:    "var(--ring)",
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        card: "var(--card)",
+        popover: "var(--popover)",
+        primary: "var(--primary)",
+        secondary: "var(--secondary)",
+        muted: "var(--muted)",
+        accent: "var(--accent)",
+        destructive: "var(--destructive)",
+        border: "var(--border)",
+        input: "var(--input)",
+        ring: "var(--ring)",
         success: "var(--success)",
         warning: "var(--warning)",
-        agent:   "var(--agent)",
-        sidebar: {
-          DEFAULT:            "var(--sidebar)",
-          foreground:         "var(--sidebar-foreground)",
-          primary:            "var(--sidebar-primary)",
-          "primary-foreground": "var(--sidebar-primary-foreground)",
-          accent:             "var(--sidebar-accent)",
-          "accent-foreground": "var(--sidebar-accent-foreground)",
-          border:             "var(--sidebar-border)",
-          ring:               "var(--sidebar-ring)",
-        },
+        agent: "var(--agent)",
+        sidebar: "var(--sidebar)",
+        border: "var(--border)",
+        input: "var(--input)",
       },
       borderRadius: {
         sm: "calc(var(--radius) - 4px)",
@@ -58,4 +36,4 @@ export default {
     },
   },
   plugins: [],
-}
+};
