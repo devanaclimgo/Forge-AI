@@ -64,7 +64,7 @@ export function AgentCard({
             "flex h-10 w-10 shrink-0 items-center justify-center rounded-lg",
             status === "active"
               ? "bg-accent/20 text-accent"
-              : "bg-secondary text-[#94a3b8]",
+              : "bg-secondary text-muted-foreground",
           )}
         >
           {icon}
@@ -76,17 +76,17 @@ export function AgentCard({
           </div>
           <p className="text-sm text-accent font-mono">{role}</p>
           {!compact && (
-            <p className="mt-2 text-sm text-[#94a3b8] leading-relaxed">
+            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
               {description}
             </p>
           )}
           {lastAction && (
             <div className="mt-3 pt-3 border-t border-border">
-              <p className="text-xs text-[#94a3b8] font-mono truncate">
+              <p className="text-xs text-muted-foreground font-mono truncate">
                 {lastAction}
               </p>
               {timestamp && (
-                <p className="text-xs text-[#94a3b8]/60 font-mono mt-1">
+                <p className="text-xs text-muted-foreground/60 font-mono mt-1">
                   {timestamp}
                 </p>
               )}
@@ -118,12 +118,12 @@ export function AgentCard({
                 <p className="text-xs font-mono text-accent">Result</p>
                 <button
                   onClick={() => setShowResult(false)}
-                  className="text-xs text-[#94a3b8] hover:text-foreground transition-colors"
+                  className="text-xs text-muted-foreground hover:text-foreground transition-colors"
                 >
                   dismiss
                 </button>
               </div>
-              <p className="text-xs text-[#94a3b8] leading-relaxed line-clamp-6">
+              <p className="text-xs text-muted-foreground leading-relaxed line-clamp-6">
                 {triggerResult}
               </p>
             </div>
@@ -138,7 +138,7 @@ export function AgentCard({
                 placeholder={`What should ${name} analyze?`}
                 rows={2}
                 autoFocus
-                className="w-full px-3 py-2 rounded-md border border-border bg-background text-sm text-foreground placeholder:text-[#94a3b8] resize-none focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                className="w-full px-3 py-2 rounded-md border border-border bg-background text-sm text-foreground placeholder:text-muted-foreground resize-none focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
               />
               <div className="flex gap-2">
                 <button
@@ -182,7 +182,7 @@ export function AgentCard({
 function StatusBadge({ status }: { status: "active" | "idle" | "thinking" }) {
   const config = {
     active: { label: "Active", className: "bg-success/20 text-success" },
-    idle: { label: "Idle", className: "bg-secondary text-[#94a3b8]" },
+    idle: { label: "Idle", className: "bg-secondary text-muted-foreground" },
     thinking: { label: "Thinking", className: "bg-accent/20 text-accent" },
   }[status];
 
