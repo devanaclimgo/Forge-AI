@@ -18,7 +18,7 @@ const statusConfig = {
   active: { label: "Active", className: "bg-success/20 text-success" },
   planning: { label: "Planning", className: "bg-accent/20 text-accent" },
   completed: { label: "Completed", className: "bg-primary/20 text-primary" },
-  paused: { label: "Paused", className: "bg-muted text-[#94a3b8]" },
+  paused: { label: "Paused", className: "bg-muted text-muted-foreground" },
 };
 
 export function ProjectCard({
@@ -35,14 +35,14 @@ export function ProjectCard({
 }: ProjectCardProps) {
   return (
     <Link to={`/project/${id}`}>
-      <div className="group relative rounded-lg border border-border bg-card p-5 transition-all duration-200 hover:border-[#38bdf8]/50 hover:scale-[1.01] cursor-pointer">
+      <div className="group relative rounded-lg border border-border bg-card p-5 transition-all duration-200 hover:border-primary/50 hover:scale-[1.01] cursor-pointer">
         <div className="flex items-start justify-between mb-3">
           <div>
             <h3 className="font-semibold text-lg text-foreground group-hover:text-primary transition-colors">
               {name}
             </h3>
             {(description || summary) && (
-              <p className="text-sm text-[#94a3b8] mt-1 line-clamp-2">
+              <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
                 {summary || description}
               </p>
             )}
@@ -60,7 +60,7 @@ export function ProjectCard({
         <div className="space-y-3">
           <div>
             <div className="flex items-center justify-between text-sm mb-1.5">
-              <span className="text-[#94a3b8]">Progress</span>
+              <span className="text-muted-foreground">Progress</span>
               <span className="font-mono text-foreground">{progress}%</span>
             </div>
             <div className="h-1.5 bg-secondary rounded-full overflow-hidden">
@@ -72,7 +72,7 @@ export function ProjectCard({
           </div>
 
           <div className="flex items-center justify-between text-sm">
-            <span className="text-[#94a3b8]">Tasks</span>
+            <span className="text-muted-foreground">Tasks</span>
             <span className="font-mono text-foreground">
               {tasksCompleted}/{totalTasks}
             </span>
@@ -80,13 +80,13 @@ export function ProjectCard({
 
           {activeSprint && (
             <div className="flex items-center justify-between text-sm">
-              <span className="text-[#94a3b8]">Sprint</span>
+              <span className="text-muted-foreground">Sprint</span>
               <span className="font-mono text-primary">{activeSprint}</span>
             </div>
           )}
 
           <div className="pt-3 border-t border-border">
-            <p className="text-xs text-[#94a3b8] font-mono flex items-center gap-1.5">
+            <p className="text-xs text-muted-foreground font-mono flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
               {lastAgentActivity}
             </p>
