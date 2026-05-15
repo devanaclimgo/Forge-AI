@@ -19,7 +19,7 @@ export function Logo({ size = "md", href = "/" }: LogoProps) {
           <svg
             viewBox="0 0 24 24"
             fill="none"
-            className="w-5 h-5 text-background"
+            className="w-5 h-5 text-foreground"
             stroke="currentColor"
             strokeWidth="2"
           >
@@ -27,7 +27,7 @@ export function Logo({ size = "md", href = "/" }: LogoProps) {
           </svg>
         </div>
       </div>
-      <span className={`font-bold ${sizeClasses[size]} tracking-tight`}>
+      <span className={`font-bold ${sizeClasses[size]} tracking-tight text-foreground`}>
         Forge<span className="text-accent">AI</span>
       </span>
     </div>
