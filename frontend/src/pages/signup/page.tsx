@@ -61,8 +61,8 @@ export default function SignupPage() {
   return (
     <div className="min-h-screen bg-background flex items-center justify-center px-4 py-12">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-[#38bdf8]/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-[#0b0f14]5 rounded-full blur-3xl" />
       </div>
 
       <div className="w-full max-w-md relative">
@@ -73,7 +73,7 @@ export default function SignupPage() {
           <h1 className="text-2xl font-bold text-foreground">
             Create your account
           </h1>
-          <p className="text-muted-foreground mt-2">
+          <p className="text-[#94a3b8] mt-2">
             Start building with AI-powered project management
           </p>
         </div>
@@ -92,7 +92,7 @@ export default function SignupPage() {
               <div className="w-full border-t border-border" />
             </div>
             <div className="relative flex justify-center text-xs">
-              <span className="bg-card px-4 text-muted-foreground">
+              <span className="bg-card px-4 text-[#94a3b8]">
                 or continue with email
               </span>
             </div>
@@ -107,12 +107,12 @@ export default function SignupPage() {
                 Full Name
               </label>
               <div className="relative">
-                <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#94a3b8]" />
                 <input
                   id="name"
                   type="text"
                   placeholder="John Doe"
-                  className="w-full rounded-lg border border-border bg-secondary pl-10 pr-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+                  className="w-full rounded-lg border border-border bg-secondary pl-10 pr-4 py-3 text-sm text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50 focus:border-primary transition-colors"
                   required
                   value={formData.name}
                   onChange={(e) =>
@@ -130,12 +130,12 @@ export default function SignupPage() {
                 Email
               </label>
               <div className="relative">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#94a3b8]" />
                 <input
                   id="email"
                   type="email"
                   placeholder="you@example.com"
-                  className="w-full rounded-lg border border-border bg-secondary pl-10 pr-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+                  className="w-full rounded-lg border border-border bg-secondary pl-10 pr-4 py-3 text-sm text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50 focus:border-primary transition-colors"
                   required
                   value={formData.email}
                   onChange={(e) =>
@@ -153,12 +153,12 @@ export default function SignupPage() {
                 Password
               </label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#94a3b8]" />
                 <input
                   id="password"
                   type={showPassword ? "text" : "password"}
                   placeholder="••••••••"
-                  className="w-full rounded-lg border border-border bg-secondary pl-10 pr-12 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+                  className="w-full rounded-lg border border-border bg-secondary pl-10 pr-12 py-3 text-sm text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50 focus:border-primary transition-colors"
                   required
                   minLength={8}
                   value={formData.password}
@@ -169,7 +169,7 @@ export default function SignupPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#94a3b8] hover:text-foreground transition-colors"
                 >
                   {showPassword ? (
                     <EyeOff className="w-5 h-5" />
@@ -178,7 +178,7 @@ export default function SignupPage() {
                   )}
                 </button>
               </div>
-              <p className="mt-1.5 text-xs text-muted-foreground">
+              <p className="mt-1.5 text-xs text-[#94a3b8]">
                 Must be at least 8 characters
               </p>
             </div>
@@ -186,7 +186,7 @@ export default function SignupPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-[#38bdf8]/90 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? (
                 <>
@@ -206,18 +206,18 @@ export default function SignupPage() {
             </button>
           </form>
 
-          <p className="mt-4 text-xs text-muted-foreground text-center">
+          <p className="mt-4 text-xs text-[#94a3b8] text-center">
             By signing up, you agree to our{" "}
             <a
               href="#"
-              className="text-primary hover:text-primary/80 transition-colors"
+              className="text-primary hover:text-[#38bdf8]/80 transition-colors"
             >
               Terms of Service
             </a>{" "}
             and{" "}
             <a
               href="#"
-              className="text-primary hover:text-primary/80 transition-colors"
+              className="text-primary hover:text-[#38bdf8]/80 transition-colors"
             >
               Privacy Policy
             </a>
@@ -225,25 +225,25 @@ export default function SignupPage() {
         </div>
 
         <div className="mt-8 space-y-3">
-          <div className="flex items-center gap-3 text-sm text-muted-foreground">
+          <div className="flex items-center gap-3 text-sm text-[#94a3b8]">
             <CheckCircle2 className="w-4 h-4 text-success shrink-0" />
             <span>Free tier with unlimited brain dumps</span>
           </div>
-          <div className="flex items-center gap-3 text-sm text-muted-foreground">
+          <div className="flex items-center gap-3 text-sm text-[#94a3b8]">
             <CheckCircle2 className="w-4 h-4 text-success shrink-0" />
             <span>No credit card required to start</span>
           </div>
-          <div className="flex items-center gap-3 text-sm text-muted-foreground">
+          <div className="flex items-center gap-3 text-sm text-[#94a3b8]">
             <CheckCircle2 className="w-4 h-4 text-success shrink-0" />
             <span>Access to all AI agents</span>
           </div>
         </div>
 
-        <p className="text-center mt-6 text-sm text-muted-foreground">
+        <p className="text-center mt-6 text-sm text-[#94a3b8]">
           Already have an account?{" "}
           <Link
             to="/login"
-            className="text-primary hover:text-primary/80 transition-colors font-medium"
+            className="text-primary hover:text-[#38bdf8]/80 transition-colors font-medium"
           >
             Sign in
           </Link>

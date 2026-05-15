@@ -53,9 +53,9 @@ export function AgentCard({
   return (
     <div
       className={cn(
-        "group relative rounded-lg border border-border bg-card p-4 transition-all duration-200 hover:border-border/80 hover:scale-[1.01]",
-        status === "active" && "agent-glow border-accent/50",
-        status === "thinking" && "border-accent/30",
+        "group relative rounded-lg border border-border bg-card p-4 transition-all duration-200 hover:border-[#1f2937]/80 hover:scale-[1.01]",
+        status === "active" && "agent-glow border-[#0b0f14]50",
+        status === "thinking" && "border-[#0b0f14]30",
       )}
     >
       <div className="flex items-start gap-3">
@@ -63,8 +63,8 @@ export function AgentCard({
           className={cn(
             "flex h-10 w-10 shrink-0 items-center justify-center rounded-lg",
             status === "active"
-              ? "bg-accent/20 text-accent"
-              : "bg-secondary text-muted-foreground",
+              ? "bg-[#0b0f14]20 text-accent"
+              : "bg-secondary text-[#94a3b8]",
           )}
         >
           {icon}
@@ -76,17 +76,17 @@ export function AgentCard({
           </div>
           <p className="text-sm text-accent font-mono">{role}</p>
           {!compact && (
-            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+            <p className="mt-2 text-sm text-[#94a3b8] leading-relaxed">
               {description}
             </p>
           )}
           {lastAction && (
             <div className="mt-3 pt-3 border-t border-border">
-              <p className="text-xs text-muted-foreground font-mono truncate">
+              <p className="text-xs text-[#94a3b8] font-mono truncate">
                 {lastAction}
               </p>
               {timestamp && (
-                <p className="text-xs text-muted-foreground/60 font-mono mt-1">
+                <p className="text-xs text-[#94a3b8]/60 font-mono mt-1">
                   {timestamp}
                 </p>
               )}
@@ -99,7 +99,7 @@ export function AgentCard({
         <div className="mt-3 space-y-2">
           {/* Loading state */}
           {triggerLoading && (
-            <div className="flex items-center gap-2 px-3 py-2 rounded-md bg-accent/10 border border-accent/20">
+            <div className="flex items-center gap-2 px-3 py-2 rounded-md bg-[#0b0f14]10 border border-[#0b0f14]20">
               <span className="flex gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent thinking-dot" />
                 <span className="w-1.5 h-1.5 rounded-full bg-accent thinking-dot" />
@@ -118,12 +118,12 @@ export function AgentCard({
                 <p className="text-xs font-mono text-accent">Result</p>
                 <button
                   onClick={() => setShowResult(false)}
-                  className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-xs text-[#94a3b8] hover:text-foreground transition-colors"
                 >
                   dismiss
                 </button>
               </div>
-              <p className="text-xs text-muted-foreground leading-relaxed line-clamp-6">
+              <p className="text-xs text-[#94a3b8] leading-relaxed line-clamp-6">
                 {triggerResult}
               </p>
             </div>
@@ -138,13 +138,13 @@ export function AgentCard({
                 placeholder={`What should ${name} analyze?`}
                 rows={2}
                 autoFocus
-                className="w-full px-3 py-2 rounded-md border border-border bg-background text-sm text-foreground placeholder:text-muted-foreground resize-none focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                className="w-full px-3 py-2 rounded-md border border-border bg-background text-sm text-foreground placeholder:text-[#94a3b8] resize-none focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50 focus:border-primary"
               />
               <div className="flex gap-2">
                 <button
                   onClick={handleTrigger}
                   disabled={!prompt.trim()}
-                  className="flex-1 rounded-md bg-accent px-3 py-1.5 text-xs font-medium text-background transition-colors hover:bg-accent/90 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex-1 rounded-md bg-accent px-3 py-1.5 text-xs font-medium text-background transition-colors hover:bg-[#0b0f14]90 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Run Agent
                 </button>
@@ -181,9 +181,9 @@ export function AgentCard({
 
 function StatusBadge({ status }: { status: "active" | "idle" | "thinking" }) {
   const config = {
-    active: { label: "Active", className: "bg-success/20 text-success" },
-    idle: { label: "Idle", className: "bg-secondary text-muted-foreground" },
-    thinking: { label: "Thinking", className: "bg-accent/20 text-accent" },
+    active: { label: "Active", className: "bg-[#34d399]/20 text-success" },
+    idle: { label: "Idle", className: "bg-secondary text-[#94a3b8]" },
+    thinking: { label: "Thinking", className: "bg-[#0b0f14]20 text-accent" },
   }[status];
 
   return (

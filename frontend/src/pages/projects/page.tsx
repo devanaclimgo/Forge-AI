@@ -48,13 +48,13 @@ export default function ProjectsPage() {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-3xl font-bold text-foreground">Projects</h1>
-            <p className="text-muted-foreground mt-1">
+            <p className="text-[#94a3b8] mt-1">
               {projects.length} projects total
             </p>
           </div>
           <Link
             to="/brain-dump"
-            className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-[#38bdf8]/90"
           >
             <Plus className="w-4 h-4" /> New Project
           </Link>
@@ -62,13 +62,13 @@ export default function ProjectsPage() {
 
         <div className="flex flex-col sm:flex-row gap-4 mb-6">
           <div className="relative flex-1 max-w-md">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#94a3b8]" />
             <input
               type="text"
               placeholder="Search projects..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+              className="w-full pl-10 pr-4 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50 focus:border-primary"
             />
           </div>
           <div className="flex items-center gap-2">
@@ -80,7 +80,7 @@ export default function ProjectsPage() {
                   "px-3 py-2 rounded-lg text-sm font-medium transition-colors capitalize",
                   statusFilter === s
                     ? "bg-secondary text-foreground"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/50",
+                    : "text-[#94a3b8] hover:text-foreground hover:bg-secondary/50",
                 )}
               >
                 {s}
@@ -90,7 +90,7 @@ export default function ProjectsPage() {
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as SortOption)}
-            className="px-3 py-2 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
+            className="px-3 py-2 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50"
           >
             <option value="recent">Sort by: Recent</option>
             <option value="progress">Sort by: Progress</option>
@@ -100,11 +100,11 @@ export default function ProjectsPage() {
 
         {loading && (
           <div className="flex justify-center py-16">
-            <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" />
+            <Loader2 className="w-6 h-6 animate-spin text-[#94a3b8]" />
           </div>
         )}
         {error && (
-          <div className="rounded-lg border border-destructive/30 bg-destructive/10 p-4 text-sm text-destructive">
+          <div className="rounded-lg border border-[#fb923c]/30 bg-[#fb923c]/10 p-4 text-sm text-destructive">
             {error}
           </div>
         )}
@@ -131,19 +131,19 @@ export default function ProjectsPage() {
           ) : (
             <div className="flex flex-col items-center justify-center py-16 text-center">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-secondary mb-4">
-                <FolderOpen className="w-8 h-8 text-muted-foreground" />
+                <FolderOpen className="w-8 h-8 text-[#94a3b8]" />
               </div>
               <h3 className="text-lg font-semibold text-foreground mb-1">
                 No projects found
               </h3>
-              <p className="text-sm text-muted-foreground mb-4">
+              <p className="text-sm text-[#94a3b8] mb-4">
                 {searchQuery
                   ? `No projects match "${searchQuery}"`
                   : "No projects yet"}
               </p>
               <Link
                 to="/brain-dump"
-                className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-accent-foreground hover:bg-primary/90"
+                className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-accent-foreground hover:bg-[#38bdf8]/90"
               >
                 <Plus className="w-4 h-4" /> Create Your First Project
               </Link>

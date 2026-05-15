@@ -92,13 +92,13 @@ export default function BrainDumpPage() {
       <div className="min-h-screen bg-background flex items-center justify-center px-4">
         <div className="w-full max-w-2xl animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-success/20 mb-4">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#34d399]/20 mb-4">
               <CheckCircle2 className="w-8 h-8 text-success" />
             </div>
             <h1 className="text-3xl font-bold text-foreground">
               Project Created!
             </h1>
-            <p className="text-muted-foreground mt-2">
+            <p className="text-[#94a3b8] mt-2">
               Our agents have analyzed your idea and created a structured
               project.
             </p>
@@ -110,25 +110,25 @@ export default function BrainDumpPage() {
             </h2>
             <div className="space-y-4">
               <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">Tasks completed</span>
+                <span className="text-[#94a3b8]">Tasks completed</span>
                 <span className="font-mono text-foreground">
                   {createdProject?.tasks_completed ?? 0}
                 </span>
               </div>
               <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">Total tasks</span>
+                <span className="text-[#94a3b8]">Total tasks</span>
                 <span className="font-mono text-foreground">
                   {createdProject?.total_tasks ?? 0}
                 </span>
               </div>
               <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">Progress</span>
+                <span className="text-[#94a3b8]">Progress</span>
                 <span className="font-mono text-foreground">
                   {createdProject?.progress ?? 0}%
                 </span>
               </div>
               <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">Active sprint</span>
+                <span className="text-[#94a3b8]">Active sprint</span>
                 <span className="font-mono text-foreground">
                   {createdProject?.active_sprint ?? "—"}
                 </span>
@@ -140,9 +140,9 @@ export default function BrainDumpPage() {
             {agents.map((agent, index) => (
               <div
                 key={index}
-                className="flex items-center gap-3 p-3 rounded-lg border border-border bg-card/50"
+                className="flex items-center gap-3 p-3 rounded-lg border border-border bg-[#111827]/50"
               >
-                <div className="flex h-8 w-8 items-center justify-center rounded-md bg-accent/20 text-accent">
+                <div className="flex h-8 w-8 items-center justify-center rounded-md bg-[#0b0f14]20 text-accent">
                   <agent.icon className="w-4 h-4" />
                 </div>
                 <div>
@@ -157,7 +157,7 @@ export default function BrainDumpPage() {
 
           <button
             onClick={handleViewProject}
-            className="w-full flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-4 text-base font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="w-full flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-4 text-base font-medium text-primary-foreground transition-colors hover:bg-[#38bdf8]/90"
           >
             View Project
             <ArrowRight className="w-5 h-5" />
@@ -175,12 +175,12 @@ export default function BrainDumpPage() {
           <Logo href="/dashboard" />
           <button
             onClick={() => navigate("/dashboard")}
-            className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors"
+            className="p-2 rounded-md text-[#94a3b8] hover:text-foreground hover:bg-secondary/50 transition-colors"
           >
             <LogOut className="w-5 h-5 rotate-180" />
           </button>
         </div>
-        <span className="text-sm text-muted-foreground font-mono">
+        <span className="text-sm text-[#94a3b8] font-mono">
           {wordCount} words · {charCount} characters
         </span>
       </header>
@@ -194,7 +194,7 @@ export default function BrainDumpPage() {
                 <h1 className="text-2xl font-bold text-foreground mb-2">
                   Agents are processing your idea
                 </h1>
-                <p className="text-muted-foreground">
+                <p className="text-[#94a3b8]">
                   Sit back while our AI team structures your project
                 </p>
               </div>
@@ -209,19 +209,19 @@ export default function BrainDumpPage() {
                       key={index}
                       className={`flex items-center gap-4 p-4 rounded-lg border transition-all duration-300 ${
                         isProcessed
-                          ? "border-success/50 bg-success/5"
+                          ? "border-[#34d399]/50 bg-[#34d399]/5"
                           : isCurrent
-                            ? "border-accent/50 bg-accent/5 agent-glow"
+                            ? "border-[#0b0f14]50 bg-[#0b0f14]5 agent-glow"
                             : "border-border bg-card"
                       }`}
                     >
                       <div
                         className={`flex h-10 w-10 items-center justify-center rounded-lg transition-colors ${
                           isProcessed
-                            ? "bg-success/20 text-success"
+                            ? "bg-[#34d399]/20 text-success"
                             : isCurrent
-                              ? "bg-accent/20 text-accent"
-                              : "bg-secondary text-muted-foreground"
+                              ? "bg-[#0b0f14]20 text-accent"
+                              : "bg-secondary text-[#94a3b8]"
                         }`}
                       >
                         {isProcessed ? (
@@ -240,7 +240,7 @@ export default function BrainDumpPage() {
                               ? "text-success"
                               : isCurrent
                                 ? "text-accent"
-                                : "text-muted-foreground"
+                                : "text-[#94a3b8]"
                           }`}
                         >
                           {isProcessed
@@ -268,7 +268,7 @@ export default function BrainDumpPage() {
                 <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
                   Brain Dump
                 </h1>
-                <p className="text-muted-foreground text-lg">
+                <p className="text-[#94a3b8] text-lg">
                   Write freely. Our agents will structure everything.
                 </p>
               </div>
@@ -278,13 +278,13 @@ export default function BrainDumpPage() {
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
                   placeholder="What are you trying to build? Don't organize — just write. Describe your idea, the problem you're solving, features you're imagining, technologies you're considering... Let it flow."
-                  className="w-full h-[400px] rounded-xl border border-border bg-card p-6 text-lg text-foreground placeholder:text-muted-foreground/60 resize-none focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all leading-relaxed"
+                  className="w-full h-[400px] rounded-xl border border-border bg-card p-6 text-lg text-foreground placeholder:text-[#94a3b8]/60 resize-none focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50 focus:border-primary transition-all leading-relaxed"
                   autoFocus
                 />
               </div>
 
               <div className="mt-6 flex items-center justify-between">
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-[#94a3b8]">
                   {wordCount > 0
                     ? "Keep going! The more context, the better the planning."
                     : "Start typing your idea..."}
@@ -292,7 +292,7 @@ export default function BrainDumpPage() {
                 <button
                   onClick={handleSubmit}
                   disabled={!content.trim()}
-                  className="flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-base font-medium text-primary-foreground transition-all hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed hover:gap-3"
+                  className="flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-base font-medium text-primary-foreground transition-all hover:bg-[#38bdf8]/90 disabled:opacity-50 disabled:cursor-not-allowed hover:gap-3"
                 >
                   Send to Agents
                   <Send className="w-5 h-5" />

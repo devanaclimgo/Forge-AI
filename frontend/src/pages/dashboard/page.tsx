@@ -42,13 +42,13 @@ export default function DashboardPage() {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
-            <p className="text-muted-foreground mt-1">
+            <p className="text-[#94a3b8] mt-1">
               Overview of your projects and agent activity
             </p>
           </div>
           <Link
             to="/brain-dump"
-            className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-[#38bdf8]/90"
           >
             <Plus className="w-4 h-4" />
             New Project
@@ -97,7 +97,7 @@ export default function DashboardPage() {
                   <p className="text-2xl font-bold text-foreground">
                     {loading ? "—" : value}
                   </p>
-                  <p className="text-sm text-muted-foreground">{label}</p>
+                  <p className="text-sm text-[#94a3b8]">{label}</p>
                 </div>
               </div>
             </div>
@@ -113,7 +113,7 @@ export default function DashboardPage() {
               </h2>
               <Link
                 to="/projects"
-                className="text-sm text-primary hover:text-primary/80 transition-colors"
+                className="text-sm text-primary hover:text-[#38bdf8]/80 transition-colors"
               >
                 View all
               </Link>
@@ -121,12 +121,12 @@ export default function DashboardPage() {
 
             {loading && (
               <div className="flex items-center justify-center py-16">
-                <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" />
+                <Loader2 className="w-6 h-6 animate-spin text-[#94a3b8]" />
               </div>
             )}
 
             {error && (
-              <div className="rounded-lg border border-destructive/30 bg-destructive/10 p-4 text-sm text-destructive">
+              <div className="rounded-lg border border-[#fb923c]/30 bg-[#fb923c]/10 p-4 text-sm text-destructive">
                 {error}
               </div>
             )}
@@ -149,11 +149,11 @@ export default function DashboardPage() {
                   />
                 ))}
                 {projects.length === 0 && (
-                  <div className="col-span-2 text-center py-16 text-muted-foreground">
+                  <div className="col-span-2 text-center py-16 text-[#94a3b8]">
                     <p className="mb-4">No projects yet.</p>
                     <Link
                       to="/brain-dump"
-                      className="text-primary hover:text-primary/80"
+                      className="text-primary hover:text-[#38bdf8]/80"
                     >
                       Create your first project →
                     </Link>
@@ -170,7 +170,7 @@ export default function DashboardPage() {
             </h2>
             <div className="rounded-lg border border-border bg-card">
               {agentLogs.length === 0 ? (
-                <p className="p-6 text-center text-sm text-muted-foreground">
+                <p className="p-6 text-center text-sm text-[#94a3b8]">
                   No agent activity yet. Create a project to get started.
                 </p>
               ) : (
@@ -187,11 +187,11 @@ export default function DashboardPage() {
                             ran analysis
                           </p>
                           <div className="flex items-center gap-2 mt-1.5">
-                            <span className="text-xs text-muted-foreground font-mono">
+                            <span className="text-xs text-[#94a3b8] font-mono">
                               {new Date(log.created_at).toLocaleTimeString()}
                             </span>
-                            <span className="text-xs text-muted-foreground">•</span>
-                            <span className="text-xs text-muted-foreground">
+                            <span className="text-xs text-[#94a3b8]">•</span>
+                            <span className="text-xs text-[#94a3b8]">
                               {log.project_name}
                             </span>
                           </div>
