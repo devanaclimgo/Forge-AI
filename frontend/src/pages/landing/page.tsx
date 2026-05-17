@@ -129,7 +129,7 @@ export default function LandingPage() {
               Multi-Agent Development Platform
             </span>
           </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-balance max-w-4xl mx-auto">
+          <h1 className="text-foreground text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-balance max-w-4xl mx-auto">
             Stop planning.
             <br />
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
@@ -166,7 +166,7 @@ export default function LandingPage() {
       >
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-foreground text-3xl md:text-4xl font-bold mb-4">
               From chaos to clarity in 3 steps
             </h2>
             <p className="text-[#94a3b8] text-lg max-w-2xl mx-auto">
@@ -202,7 +202,7 @@ export default function LandingPage() {
                   <span className={`font-mono text-sm text-${item.color}`}>
                     {item.step}
                   </span>
-                  <h3 className="text-2xl font-bold mt-2 mb-3">{item.title}</h3>
+                  <h3 className="text-foreground text-2xl font-bold mt-2 mb-3">{item.title}</h3>
                   <p className="text-[#94a3b8] leading-relaxed">
                     {item.description}
                   </p>
@@ -231,7 +231,7 @@ export default function LandingPage() {
                 Powered by Multi-Agent AI
               </span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-foreground text-3xl md:text-4xl font-bold mb-4">
               Your AI development team
             </h2>
             <p className="text-[#94a3b8] text-lg max-w-2xl mx-auto">
@@ -271,7 +271,7 @@ export default function LandingPage() {
       <section id="features" className="py-20 md:py-32 border-t border-border">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-foreground text-3xl md:text-4xl font-bold mb-4">
               Everything you need to ship
             </h2>
             <p className="text-[#94a3b8] text-lg max-w-2xl mx-auto">
@@ -284,7 +284,7 @@ export default function LandingPage() {
                 <div className="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-[#38bdf8]/10 text-primary mb-4">
                   <feature.icon className="w-7 h-7" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                <h3 className="text-foreground text-xl font-semibold mb-2">{feature.title}</h3>
                 <p className="text-[#94a3b8] leading-relaxed">
                   {feature.description}
                 </p>
@@ -298,7 +298,7 @@ export default function LandingPage() {
       <section className="py-20 md:py-32 border-t border-border">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-balance">
+            <h2 className="text-foreground text-3xl md:text-5xl font-bold mb-6 text-balance">
               Ready to transform how you build?
             </h2>
             <p className="text-lg text-[#94a3b8] mb-10 max-w-xl mx-auto">
