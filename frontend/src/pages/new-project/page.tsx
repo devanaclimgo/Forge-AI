@@ -10,7 +10,7 @@ const navItems = [
   { href: "/agents",    label: "Agents",     icon: Bot },
 ]
 
-export function Navigation() {
+export default function NewProjectPage() {
   const { pathname } = useLocation()
   const navigate     = useNavigate()
   const [showModal, setShowModal] = useState(false)
