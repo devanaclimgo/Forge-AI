@@ -83,6 +83,12 @@ export default function ProjectPage() {
   const [showMoreMenu, setShowMoreMenu] = useState(false);
   const [showPromptModal, setShowPromptModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showAddSprintModal, setShowAddSprintModal] = useState(false);
+  const [newSprint, setNewSprint] = useState({
+    name: "",
+    start_date: "",
+    end_date: "",
+  });
   const [newTask, setNewTask] = useState({
     title: "",
     description: "",
@@ -175,6 +181,18 @@ export default function ProjectPage() {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (_) {
       alert("Failed to delete project.");
+    }
+  };
+
+  const handleAddSprint = async () => {
+    if (!newSprint.name.trim() || !id) return;
+    try {
+      const created = await api.createSprint(id, newSprint);
+      setSprints((prev) => [...prev, created]);
+      setNewSprint({ name: "", start_date: "", end_date: "" });
+      setShowAddSprintModal(false);
+    } catch (e) {
+      console.error(e);
     }
   };
 
@@ -387,91 +405,91 @@ export default function ProjectPage() {
 
         {/* Main Content */}
         <main className="flex-1 overflow-auto">
-          <div className="p-6">
-            <div className="flex items-center justify-between mb-6">
-              <div>
-                <h2 className="text-xl font-semibold text-foreground">
-                  {activeView === "tasks" ? "Task List" : "Sprint Overview"}
-                </h2>
-                <p className="text-sm text-[#94a3b8] mt-0.5">
-                  {activeView === "tasks"
-                    ? `${done} of ${tasks.length} tasks completed`
-                    : "Manage your sprint cycles"}
-                </p>
-              </div>
-              <div className="flex items-center gap-2">
+          {/* Header fixo */}
+          <div className="flex items-center justify-between border-b border-border px-6 py-4">
+            <div>
+              <h2 className="text-xl font-semibold text-foreground">
+                {activeView === "tasks" ? "Task List" : "Sprint Overview"}
+              </h2>
+              <p className="text-sm text-[#94a3b8] mt-0.5">
+                {activeView === "tasks"
+                  ? `${done} of ${tasks.length} tasks completed`
+                  : "Manage your sprint cycles"}
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setShowAddTaskModal(true)}
+                className="flex items-center gap-2 rounded-lg border border-border px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+              >
+                <Plus className="w-4 h-4" />
+                Add Task
+              </button>
+              <div className="relative">
                 <button
-                  onClick={() => setShowAddTaskModal(true)}
-                  className="flex items-center gap-2 rounded-lg border border-border px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+                  onClick={() => setShowMoreMenu(!showMoreMenu)}
+                  className="p-2 rounded-lg border border-border text-[#94a3b8] hover:text-foreground hover:bg-secondary transition-colors"
                 >
-                  <Plus className="w-4 h-4" />
-                  Add Task
+                  <MoreHorizontal className="w-5 h-5" />
                 </button>
-                <div className="relative">
-                  <button
-                    onClick={() => setShowMoreMenu(!showMoreMenu)}
-                    className="p-2 rounded-lg border border-border text-[#94a3b8] hover:text-foreground hover:bg-secondary transition-colors"
-                  >
-                    <MoreHorizontal className="w-5 h-5" />
-                  </button>
-                  {showMoreMenu && (
-                    <>
-                      <div
-                        className="fixed inset-0 z-40"
-                        onClick={() => setShowMoreMenu(false)}
-                      />
-                      <div className="absolute right-0 top-full mt-1 w-48 rounded-lg border border-border bg-card shadow-lg z-50 py-1 animate-in fade-in zoom-in-95 duration-150">
-                        {[
-                          {
-                            icon: Download,
-                            label: "Export tasks",
-                            danger: false,
-                            action: () => setShowMoreMenu(false),
+                {showMoreMenu && (
+                  <>
+                    <div
+                      className="fixed inset-0 z-40"
+                      onClick={() => setShowMoreMenu(false)}
+                    />
+                    <div className="absolute right-0 top-full mt-1 w-48 rounded-lg border border-border bg-card shadow-lg z-50 py-1 animate-in fade-in zoom-in-95 duration-150">
+                      {[
+                        {
+                          icon: Download,
+                          label: "Export tasks",
+                          danger: false,
+                          action: () => setShowMoreMenu(false),
+                        },
+                        {
+                          icon: Archive,
+                          label: "Archive project",
+                          danger: false,
+                          action: () => setShowMoreMenu(false),
+                        },
+                        {
+                          icon: Copy,
+                          label: "Duplicate sprint",
+                          danger: false,
+                          action: () => setShowMoreMenu(false),
+                        },
+                        {
+                          icon: Trash2,
+                          label: "Delete project",
+                          danger: true,
+                          action: () => {
+                            setShowMoreMenu(false);
+                            setShowDeleteModal(true);
                           },
-                          {
-                            icon: Archive,
-                            label: "Archive project",
-                            danger: false,
-                            action: () => setShowMoreMenu(false),
-                          },
-                          {
-                            icon: Copy,
-                            label: "Duplicate sprint",
-                            danger: false,
-                            action: () => setShowMoreMenu(false),
-                          },
-                          {
-                            icon: Trash2,
-                            label: "Delete project",
-                            danger: true,
-                            action: () => {
-                              setShowMoreMenu(false);
-                              setShowDeleteModal(true);
-                            },
-                          },
-                        ].map(({ icon: Icon, label, danger, action }) => (
-                          <button
-                            key={label}
-                            onClick={action}
-                            className={cn(
-                              "w-full flex items-center gap-2 px-3 py-2 text-sm transition-colors",
-                              danger
-                                ? "text-destructive hover:bg-[#fb923c]/10"
-                                : "text-foreground hover:bg-secondary",
-                            )}
-                          >
-                            <Icon className="w-4 h-4" />
-                            {label}
-                          </button>
-                        ))}
-                      </div>
-                    </>
-                  )}
-                </div>
+                        },
+                      ].map(({ icon: Icon, label, danger, action }) => (
+                        <button
+                          key={label}
+                          onClick={action}
+                          className={cn(
+                            "w-full flex items-center gap-2 px-3 py-2 text-sm transition-colors",
+                            danger
+                              ? "text-destructive hover:bg-[#fb923c]/10"
+                              : "text-foreground hover:bg-secondary",
+                          )}
+                        >
+                          <Icon className="w-4 h-4" />
+                          {label}
+                        </button>
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
             </div>
-
-            {activeView === "tasks" && (
+          </div>
+          {activeView === "tasks" && (
+            <div className="p-6">
               <div className="rounded-lg border border-border bg-card overflow-hidden">
                 {sprintTasks.length === 0 ? (
                   <p className="p-6 text-center text-[#94a3b8] text-sm">
@@ -487,9 +505,28 @@ export default function ProjectPage() {
                   ))
                 )}
               </div>
-            )}
+            </div>
+          )}
 
-            {activeView === "sprints" && (
+          {activeView === "sprints" && (
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h2 className="text-xl font-semibold text-foreground">
+                    Sprint Overview
+                  </h2>
+                  <p className="text-sm text-muted-foreground mt-0.5">
+                    Manage your sprint cycles
+                  </p>
+                </div>
+                <button
+                  onClick={() => setShowAddSprintModal(true)}
+                  className="flex items-center gap-2 rounded-lg border border-border px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+                >
+                  <Plus className="w-4 h-4" />
+                  New Sprint
+                </button>
+              </div>
               <div className="space-y-6">
                 {sprints.map((sprint) => (
                   <div
@@ -530,12 +567,12 @@ export default function ProjectPage() {
                 ))}
                 {sprints.length === 0 && (
                   <p className="text-center text-[#94a3b8] text-sm py-8">
-                    No sprints yet.
+                    No sprints yet. Click "New Sprint" to create one.
                   </p>
                 )}
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </main>
 
         {/* Agent Panel */}
@@ -696,6 +733,89 @@ export default function ProjectPage() {
                 )}
               >
                 Add Task
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Add Sprint Modal */}
+      {showAddSprintModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm animate-in fade-in duration-150"
+          onClick={() => setShowAddSprintModal(false)}
+        >
+          <div
+            className="relative w-full max-w-sm mx-4 rounded-lg border border-border bg-card p-6 shadow-xl animate-in zoom-in-95 duration-150"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowAddSprintModal(false)}
+              className="absolute top-4 right-4 p-1 rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+            >
+              <X className="w-4 h-4" />
+            </button>
+            <h3 className="text-lg font-semibold text-foreground mb-4">
+              New Sprint
+            </h3>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-1.5">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  value={newSprint.name}
+                  onChange={(e) =>
+                    setNewSprint((p) => ({ ...p, name: e.target.value }))
+                  }
+                  placeholder="Sprint 1"
+                  autoFocus
+                  className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                />
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-1.5">
+                    Start date
+                  </label>
+                  <input
+                    type="date"
+                    value={newSprint.start_date}
+                    onChange={(e) =>
+                      setNewSprint((p) => ({
+                        ...p,
+                        start_date: e.target.value,
+                      }))
+                    }
+                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-1.5">
+                    End date
+                  </label>
+                  <input
+                    type="date"
+                    value={newSprint.end_date}
+                    onChange={(e) =>
+                      setNewSprint((p) => ({ ...p, end_date: e.target.value }))
+                    }
+                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                  />
+                </div>
+              </div>
+              <button
+                onClick={handleAddSprint}
+                disabled={!newSprint.name.trim()}
+                className={cn(
+                  "w-full rounded-lg px-4 py-2.5 text-sm font-medium transition-colors",
+                  newSprint.name.trim()
+                    ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                    : "bg-secondary text-muted-foreground cursor-not-allowed",
+                )}
+              >
+                Create Sprint
               </button>
             </div>
           </div>
