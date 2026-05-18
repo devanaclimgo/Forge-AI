@@ -121,7 +121,11 @@ export default function ProjectsPage() {
                   summary={p.summary}
                   progress={p.progress}
                   status={p.progress === 100 ? "completed" : "active"}
-                  lastAgentActivity="—"
+                  lastAgentActivity={
+                    p.updated_at
+                      ? `Updated ${new Date(p.updated_at).toLocaleDateString()}`
+                      : "No activity yet"
+                  }
                   tasksCompleted={p.tasks_completed}
                   totalTasks={p.total_tasks}
                   activeSprint={p.active_sprint}
