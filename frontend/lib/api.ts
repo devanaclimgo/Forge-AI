@@ -55,7 +55,7 @@ export const api = {
   // Projects
   getProjects: () => request<Project[]>("/projects"),
   getProject: (id: string | number) => request<Project>(`/projects/${id}`),
-  createProject: (data: { name: string; description: string }) =>
+  createProject: (data: { name: string; description: string; summary?: string }) =>
     request<Project>("/projects", {
       method: "POST",
       body: JSON.stringify({ project: data }),
