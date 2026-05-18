@@ -142,7 +142,11 @@ export default function DashboardPage() {
                     summary={project.summary}
                     progress={project.progress}
                     status={project.progress === 100 ? "completed" : "active"}
-                    lastAgentActivity="—"
+                    lastAgentActivity={
+                      project.updated_at
+                        ? `Updated ${new Date(project.updated_at).toLocaleDateString()}`
+                        : "No activity yet"
+                    }
                     tasksCompleted={project.tasks_completed}
                     totalTasks={project.total_tasks}
                     activeSprint={project.active_sprint}
