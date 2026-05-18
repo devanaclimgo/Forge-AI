@@ -197,7 +197,7 @@ export default function ProjectPage() {
                 {project.name}
               </h1>
               <p className="text-sm text-[#94a3b8] mt-1 leading-relaxed">
-                {project.summary?.slice(0, 80) + "..."}
+                {project.summary || project.description || "No description."}
               </p>
               <div className="mt-3">
                 <div className="flex items-center justify-between text-sm mb-1.5">
@@ -344,43 +344,45 @@ export default function ProjectPage() {
               )}
             </div>
 
-            <div>
-              <button
-                onClick={() => setShowPromptModal(true)}
-                className="w-full flex items-center gap-2 px-3 py-2 rounded-md text-xs text-[#94a3b8] hover:text-foreground hover:bg-[#1f2937]/50 transition-colors border border-[#1f2937]/50 mt-2"
-              >
-                <FileText className="w-3.5 h-3.5" />
-                View original prompt
-              </button>
-              {showPromptModal && (
-                <div
-                  className="fixed inset-0 z-50 flex items-center justify-center bg-[#1f2937]/80 backdrop-blur-sm"
-                  onClick={() => setShowPromptModal(false)}
+            {project.summary && (
+              <div>
+                <button
+                  onClick={() => setShowPromptModal(true)}
+                  className="w-full flex items-center gap-2 px-3 py-2 rounded-md text-xs text-[#94a3b8] hover:text-foreground hover:bg-[#1f2937]/50 transition-colors border border-border/50 mt-2"
                 >
+                  <FileText className="w-3.5 h-3.5" />
+                  View original prompt
+                </button>
+                {showPromptModal && (
                   <div
-                    className="relative w-full max-w-lg mx-4 rounded-lg border border-border bg-card p-6 shadow-xl max-h-[70vh] flex flex-col"
-                    onClick={(e) => e.stopPropagation()}
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-[#1f2937]/80 backdrop-blur-sm"
+                    onClick={() => setShowPromptModal(false)}
                   >
-                    <div className="flex items-center justify-between mb-4">
-                      <h3 className="text-sm font-semibold text-foreground">
-                        Original Prompt
-                      </h3>
-                      <button
-                        onClick={() => setShowPromptModal(false)}
-                        className="p-1 rounded-md text-[#94a3b8] hover:text-foreground hover:bg-secondary transition-colors"
-                      >
-                        <X className="w-4 h-4" />
-                      </button>
-                    </div>
-                    <div className="overflow-y-auto flex-1">
-                      <p className="text-sm text-[#94a3b8] leading-relaxed whitespace-pre-wrap font-mono">
-                        {project.description}
-                      </p>
+                    <div
+                      className="relative w-full max-w-lg mx-4 rounded-lg border border-border bg-card p-6 shadow-xl max-h-[70vh] flex flex-col"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <div className="flex items-center justify-between mb-4">
+                        <h3 className="text-sm font-semibold text-foreground">
+                          Original Prompt
+                        </h3>
+                        <button
+                          onClick={() => setShowPromptModal(false)}
+                          className="p-1 rounded-md text-[#94a3b8] hover:text-foreground hover:bg-secondary transition-colors"
+                        >
+                          <X className="w-4 h-4" />
+                        </button>
+                      </div>
+                      <div className="overflow-y-auto flex-1">
+                        <p className="text-sm text-[#94a3b8] leading-relaxed whitespace-pre-wrap font-mono">
+                          {project.description}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
-            </div>
+                )}
+              </div>
+            )}
           </div>
         </aside>
 
