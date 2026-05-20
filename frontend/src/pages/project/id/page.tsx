@@ -21,7 +21,6 @@ import {
   Download,
   Archive,
   Copy,
-  Loader2,
   FileText,
   Trash2,
 } from "lucide-react";
@@ -98,9 +97,22 @@ export default function ProjectPage() {
 
   useEffect(() => {
     if (!id) return;
-    Promise.all([api.getProject(id), api.getTasks(id), api.getSprints(id)])
-      .then(([proj, taskList, sprintList]) => {
+
+    const loadProject = async () => {
+      try {
+        const [proj, taskList, sprintList] = await Promise.all([
+          api.getProject(id),
+          api.getTasks(id),
+          api.getSprints(id),
+        ]);
+
         setProject(proj);
+        setSprints(sprintList);
+
+        if (proj.summary && taskList.length === 0) {
+          return false;
+        }
+
         setTasks(
           taskList.map((t) => ({
             ...t,
@@ -108,11 +120,28 @@ export default function ProjectPage() {
             sprint_id: t.sprint_id ?? null,
           })),
         );
-        setSprints(sprintList);
         const active = sprintList.find((s) => s.status === "active");
         if (active) setActiveSprint(active.id);
-      })
-      .finally(() => setLoading(false));
+        return true;
+      } catch {
+        return true;
+      }
+    };
+
+    let attempts = 0;
+    const maxAttempts = 12;
+
+    const poll = async () => {
+      const done = await loadProject();
+      attempts++;
+      if (!done && attempts < maxAttempts) {
+        setTimeout(poll, 5000);
+      } else {
+        setLoading(false);
+      }
+    };
+
+    poll();
   }, [id]);
 
   const sprintTasks =
@@ -156,13 +185,25 @@ export default function ProjectPage() {
 
   if (loading)
     return (
-      <div className="min-h-screen bg-background flex flex-col items-center justify-center gap-4">
-        <div className="flex flex-col items-center gap-3">
-          <Loader2 className="w-6 h-6 animate-spin text-accent" />
-          <p className="text-sm text-[#94a3b8]">Setting up your project...</p>
-          <p className="text-xs text-[#94a3b8]/60">
-            Agents are structuring tasks and sprints
-          </p>
+      <div className="min-h-screen bg-background flex flex-col items-center justify-center gap-6">
+        <div className="flex flex-col items-center gap-4 text-center max-w-sm">
+          <div className="relative">
+            <div className="w-12 h-12 rounded-full border-2 border-accent/20 flex items-center justify-center">
+              <span className="text-accent text-xl">⬡</span>
+            </div>
+            <div className="absolute inset-0 rounded-full border-2 border-accent border-t-transparent animate-spin" />
+          </div>
+          <div>
+            <p className="text-foreground font-medium">Agents are working</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              Structuring tasks and sprints for your project...
+            </p>
+          </div>
+          <div className="flex items-center gap-1.5 mt-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent thinking-dot" />
+            <span className="w-1.5 h-1.5 rounded-full bg-accent thinking-dot" />
+            <span className="w-1.5 h-1.5 rounded-full bg-accent thinking-dot" />
+          </div>
         </div>
       </div>
     );
