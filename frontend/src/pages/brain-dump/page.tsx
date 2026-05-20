@@ -142,7 +142,7 @@ export default function BrainDumpPage() {
                 key={index}
                 className="flex items-center gap-3 p-3 rounded-lg border border-border bg-[#111827]/50"
               >
-                <div className="flex h-8 w-8 items-center justify-center rounded-md bg-[#0b0f14]20 text-accent">
+                <div className="flex h-8 w-8 items-center justify-center rounded-md bg-background20 text-accent">
                   <agent.icon className="w-4 h-4" />
                 </div>
                 <div>
@@ -211,7 +211,7 @@ export default function BrainDumpPage() {
                         isProcessed
                           ? "border-[#34d399]/50 bg-[#34d399]/5"
                           : isCurrent
-                            ? "border-[#0b0f14]50 bg-[#0b0f14]5 agent-glow"
+                            ? "border-background50 bg-background5 agent-glow"
                             : "border-border bg-card"
                       }`}
                     >
@@ -220,7 +220,7 @@ export default function BrainDumpPage() {
                           isProcessed
                             ? "bg-[#34d399]/20 text-success"
                             : isCurrent
-                              ? "bg-[#0b0f14]20 text-accent"
+                              ? "bg-background20 text-accent"
                               : "bg-secondary text-[#94a3b8]"
                         }`}
                       >

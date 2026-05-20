@@ -54,8 +54,8 @@ export function AgentCard({
     <div
       className={cn(
         "group relative rounded-lg border border-border bg-card p-4 transition-all duration-200 hover:border-secondary/80 hover:scale-[1.01]",
-        status === "active" && "agent-glow border-[#0b0f14]50",
-        status === "thinking" && "border-[#0b0f14]30",
+        status === "active" && "agent-glow border-background50",
+        status === "thinking" && "border-background30",
       )}
     >
       <div className="flex items-start gap-3">
@@ -63,7 +63,7 @@ export function AgentCard({
           className={cn(
             "flex h-10 w-10 shrink-0 items-center justify-center rounded-lg",
             status === "active"
-              ? "bg-[#0b0f14]20 text-accent"
+              ? "bg-background20 text-accent"
               : "bg-secondary text-[#94a3b8]",
           )}
         >
@@ -99,7 +99,7 @@ export function AgentCard({
         <div className="mt-3 space-y-2">
           {/* Loading state */}
           {triggerLoading && (
-            <div className="flex items-center gap-2 px-3 py-2 rounded-md bg-[#0b0f14]10 border border-[#0b0f14]20">
+            <div className="flex items-center gap-2 px-3 py-2 rounded-md bg-background10 border border-background20">
               <span className="flex gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent thinking-dot" />
                 <span className="w-1.5 h-1.5 rounded-full bg-accent thinking-dot" />
@@ -144,7 +144,7 @@ export function AgentCard({
                 <button
                   onClick={handleTrigger}
                   disabled={!prompt.trim()}
-                  className="flex-1 rounded-md bg-accent px-3 py-1.5 text-xs font-medium text-background transition-colors hover:bg-[#0b0f14]90 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex-1 rounded-md bg-accent px-3 py-1.5 text-xs font-medium text-background transition-colors hover:bg-background90 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Run Agent
                 </button>
@@ -183,7 +183,7 @@ function StatusBadge({ status }: { status: "active" | "idle" | "thinking" }) {
   const config = {
     active: { label: "Active", className: "bg-[#34d399]/20 text-success" },
     idle: { label: "Idle", className: "bg-secondary text-[#94a3b8]" },
-    thinking: { label: "Thinking", className: "bg-[#0b0f14]20 text-accent" },
+    thinking: { label: "Thinking", className: "bg-background20 text-accent" },
   }[status];
 
   return (

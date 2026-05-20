@@ -76,7 +76,7 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-[#0b0f14]80 backdrop-blur-sm">
+      <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background80 backdrop-blur-sm">
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <Logo />
           <nav className="hidden md:flex items-center gap-6">
@@ -120,7 +120,7 @@ export default function LandingPage() {
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-32">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary]/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#0b0f14]5 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-background5 rounded-full blur-3xl" />
         </div>
         <div className="container relative mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 mb-6">
@@ -227,7 +227,7 @@ export default function LandingPage() {
       >
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#0b0f14]30 bg-[#0b0f14]10 px-4 py-1.5 mb-4">
+            <div className="inline-flex items-center gap-2 rounded-full border border-background30 bg-background10 px-4 py-1.5 mb-4">
               <Zap className="w-4 h-4 text-accent" />
               <span className="text-sm text-accent">
                 Powered by Multi-Agent AI
@@ -245,10 +245,10 @@ export default function LandingPage() {
             {agents.map((agent, index) => (
               <div
                 key={index}
-                className="group rounded-xl border border-border bg-card p-6 transition-all duration-200 hover:border-[#0b0f14]50 hover:scale-[1.01]"
+                className="group rounded-xl border border-border bg-card p-6 transition-all duration-200 hover:border-background50 hover:scale-[1.01]"
               >
                 <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#0b0f14]10 text-accent transition-colors group-hover:bg-[#0b0f14]20">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-background10 text-accent transition-colors group-hover:bg-background20">
                     <agent.icon className="w-6 h-6" />
                   </div>
                   <div>

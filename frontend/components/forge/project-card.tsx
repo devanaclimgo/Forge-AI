@@ -16,7 +16,7 @@ interface ProjectCardProps {
 
 const statusConfig = {
   active: { label: "Active", className: "bg-[#34d399]/20 text-success" },
-  planning: { label: "Planning", className: "bg-[#0b0f14]20 text-accent" },
+  planning: { label: "Planning", className: "bg-background20 text-accent" },
   completed: { label: "Completed", className: "bg-primary/20 text-primary" },
   paused: { label: "Paused", className: "bg-muted text-[#94a3b8]" },
 };

@@ -306,7 +306,7 @@ export default function ProjectPage() {
                 className={cn(
                   "w-full flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors",
                   showAgentPanel
-                    ? "bg-[#0b0f14]20 text-accent"
+                    ? "bg-background20 text-accent"
                     : "text-[#94a3b8] hover:text-foreground hover:bg-secondary/50",
                 )}
               >
@@ -640,7 +640,7 @@ export default function ProjectPage() {
       {/* Delete Modal */}
       {showDeleteModal && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-[#0b0f14]/80 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm"
           onClick={() => setShowDeleteModal(false)}
         >
           <div
@@ -678,7 +678,7 @@ export default function ProjectPage() {
       {/* Add Task Modal */}
       {showAddTaskModal && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-[#0b0f14]/80 backdrop-blur-sm animate-in fade-in duration-150"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm animate-in fade-in duration-150"
           onClick={() => setShowAddTaskModal(false)}
         >
           <div

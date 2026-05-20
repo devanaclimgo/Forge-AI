@@ -33,7 +33,7 @@ export function Navigation() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full border-b border-border bg-[#0b0f14]80 backdrop-blur-sm">
+      <header className="sticky top-0 z-50 w-full border-b border-border bg-background80 backdrop-blur-sm">
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <div className="flex items-center gap-8">
             <Logo href="/dashboard" />

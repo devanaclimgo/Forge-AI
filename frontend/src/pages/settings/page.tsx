@@ -171,7 +171,7 @@ export default function SettingsPage() {
             {/* Profile Section */}
             <div className="rounded-lg border border-border bg-card p-6">
               <div className="flex items-center gap-4 mb-6">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#0b0f14]20 text-accent text-xl font-bold">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-background20 text-accent text-xl font-bold">
                   {getInitials(formData.fullName)}
                 </div>
                 <div>

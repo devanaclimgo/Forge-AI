@@ -188,7 +188,7 @@ export default function AgentsPage() {
           </div>
           <div className="rounded-lg border border-border bg-card p-4">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#0b0f14]10">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-background10">
                 <Zap className="w-5 h-5 text-accent" />
               </div>
               <div>

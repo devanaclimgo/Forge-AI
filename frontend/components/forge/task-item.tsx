@@ -171,7 +171,7 @@ export function TaskItem({
           </span>
 
           {assignedAgent && (
-            <span className="px-2 py-0.5 rounded bg-[#0b0f14]20 text-accent text-xs font-mono">
+            <span className="px-2 py-0.5 rounded bg-background20 text-accent text-xs font-mono">
               {assignedAgent}
             </span>
           )}
@@ -195,7 +195,7 @@ export function TaskItem({
       {isExpanded && hasDetails && (
         <div className="px-12 pb-5 pt-1 space-y-4 animate-in slide-in-from-top-1 duration-150">
           {agentNotes && (
-            <div className="p-3 rounded-lg bg-[#0b0f14]10 border border-[#0b0f14]20">
+            <div className="p-3 rounded-lg bg-background10 border border-background20">
               <p className="text-xs font-mono text-accent mb-1.5">
                 Agent Notes:
               </p>
