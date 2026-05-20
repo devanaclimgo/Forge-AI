@@ -1,89 +1,100 @@
 // src/pages/new-project/page.tsx
-import { useState } from "react"
-import { useNavigate, Link } from "react-router-dom"
-import { Navigation } from "../../../components/forge/navigation"
-import { api } from "../../../lib/api"
-import { Plus, X, ArrowRight, Loader2, Tag } from "lucide-react"
-import { cn } from "../../../lib/utils"
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { Navigation } from "../../../components/forge/navigation";
+import { api } from "../../../lib/api";
+import { Plus, X, ArrowRight, Loader2, Tag } from "lucide-react";
+import { cn } from "../../../lib/utils";
 
-type Category = "feature" | "bug" | "refactor" | "design" | "devops" | "testing"
-type Priority  = "low" | "medium" | "high" | "critical"
+type Category =
+  | "feature"
+  | "bug"
+  | "refactor"
+  | "design"
+  | "devops"
+  | "testing";
+type Priority = "low" | "medium" | "high" | "critical";
 
 interface BacklogTask {
-  tempId:   string
-  title:    string
-  category: Category
-  priority: Priority
+  tempId: string;
+  title: string;
+  category: Category;
+  priority: Priority;
 }
 
 const categoryConfig: Record<Category, { label: string; className: string }> = {
-  feature:  { label: "Feature",  className: "bg-primary/20 text-primary" },
-  bug:      { label: "Bug",      className: "bg-destructive/20 text-destructive" },
+  feature: { label: "Feature", className: "bg-primary/20 text-primary" },
+  bug: { label: "Bug", className: "bg-destructive/20 text-destructive" },
   refactor: { label: "Refactor", className: "bg-accent/20 text-accent" },
-  design:   { label: "Design",   className: "bg-warning/20 text-warning" },
-  devops:   { label: "DevOps",   className: "bg-muted text-muted-foreground" },
-  testing:  { label: "Testing",  className: "bg-success/20 text-success" },
-}
+  design: { label: "Design", className: "bg-warning/20 text-warning" },
+  devops: { label: "DevOps", className: "bg-muted text-muted-foreground" },
+  testing: { label: "Testing", className: "bg-success/20 text-success" },
+};
 
 const priorityConfig: Record<Priority, { label: string; className: string }> = {
-  low:      { label: "Low",      className: "text-muted-foreground" },
-  medium:   { label: "Medium",   className: "text-primary" },
-  high:     { label: "High",     className: "text-warning" },
+  low: { label: "Low", className: "text-muted-foreground" },
+  medium: { label: "Medium", className: "text-primary" },
+  high: { label: "High", className: "text-warning" },
   critical: { label: "Critical", className: "text-destructive" },
-}
+};
 
 export default function NewProjectPage() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const [name, setName]               = useState("")
-  const [description, setDescription] = useState("")
-  const [tasks, setTasks]             = useState<BacklogTask[]>([])
-  const [loading, setLoading]         = useState(false)
-  const [newTaskTitle, setNewTaskTitle]       = useState("")
-  const [newTaskCategory, setNewTaskCategory] = useState<Category>("feature")
-  const [newTaskPriority, setNewTaskPriority] = useState<Priority>("medium")
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [tasks, setTasks] = useState<BacklogTask[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [newTaskTitle, setNewTaskTitle] = useState("");
+  const [newTaskCategory, setNewTaskCategory] = useState<Category>("feature");
+  const [newTaskPriority, setNewTaskPriority] = useState<Priority>("medium");
 
   const addTask = () => {
-    if (!newTaskTitle.trim()) return
-    setTasks(prev => [...prev, {
-      tempId:   crypto.randomUUID(),
-      title:    newTaskTitle.trim(),
-      category: newTaskCategory,
-      priority: newTaskPriority,
-    }])
-    setNewTaskTitle("")
-  }
+    if (!newTaskTitle.trim()) return;
+    setTasks((prev) => [
+      ...prev,
+      {
+        tempId: crypto.randomUUID(),
+        title: newTaskTitle.trim(),
+        category: newTaskCategory,
+        priority: newTaskPriority,
+      },
+    ]);
+    setNewTaskTitle("");
+  };
 
   const removeTask = (tempId: string) => {
-    setTasks(prev => prev.filter(t => t.tempId !== tempId))
-  }
+    setTasks((prev) => prev.filter((t) => t.tempId !== tempId));
+  };
 
   const handleSubmit = async () => {
-    if (!name.trim()) return
-    setLoading(true)
+    if (!name.trim()) return;
+    setLoading(true);
     try {
       const project = await api.createProject({
-        name:        name.trim(),
+        name: name.trim(),
         description: description.trim(),
-        summary:     description.trim(),
-      })
+        summary: description.trim(),
+      });
 
-      await Promise.all(tasks.map(t =>
-        api.createTask(project.id, {
-          title:    t.title,
-          category: t.category,
-          priority: t.priority,
-          status:   "todo",
-        })
-      ))
+      await Promise.all(
+        tasks.map((t) =>
+          api.createTask(project.id, {
+            title: t.title,
+            category: t.category,
+            priority: t.priority,
+            status: "todo",
+          }),
+        ),
+      );
 
-      navigate(`/project/${project.id}`)
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      navigate(`/project/${project.id}`);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (_) {
-      alert("Failed to create project.")
-      setLoading(false)
+      alert("Failed to create project.");
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -91,10 +102,11 @@ export default function NewProjectPage() {
 
       <div className="flex-1 flex flex-col items-center justify-start py-12 px-4">
         <div className="w-full max-w-2xl space-y-8">
-
           <div className="flex items-center gap-4">
             <div>
-              <h1 className="text-3xl font-bold text-foreground">New Project</h1>
+              <h1 className="text-3xl font-bold text-foreground">
+                New Project
+              </h1>
               <p className="text-muted-foreground mt-1">
                 Set up your project and add items to your backlog.
               </p>
@@ -110,22 +122,25 @@ export default function NewProjectPage() {
               <input
                 type="text"
                 value={name}
-                onChange={e => setName(e.target.value)}
+                onChange={(e) => setName(e.target.value)}
                 placeholder="e.g. Âncora, My SaaS, Portfolio v2..."
                 autoFocus
-                className="w-full px-3 py-2.5 rounded-lg border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50 focus:border-primary transition-colors"
+                className="w-full px-3 py-2.5 rounded-lg border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
               />
             </div>
             <div>
               <label className="block text-sm font-medium text-foreground mb-1.5">
-                Description <span className="text-muted-foreground text-xs">(optional)</span>
+                Description{" "}
+                <span className="text-muted-foreground text-xs">
+                  (optional)
+                </span>
               </label>
               <textarea
                 value={description}
-                onChange={e => setDescription(e.target.value)}
+                onChange={(e) => setDescription(e.target.value)}
                 placeholder="What is this project about?"
                 rows={3}
-                className="w-full px-3 py-2.5 rounded-lg border border-border bg-card text-foreground placeholder:text-muted-foreground resize-none focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50 focus:border-primary transition-colors"
+                className="w-full px-3 py-2.5 rounded-lg border border-border bg-card text-foreground placeholder:text-muted-foreground resize-none focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
               />
             </div>
           </div>
@@ -146,27 +161,31 @@ export default function NewProjectPage() {
               <input
                 type="text"
                 value={newTaskTitle}
-                onChange={e => setNewTaskTitle(e.target.value)}
-                onKeyDown={e => e.key === "Enter" && addTask()}
+                onChange={(e) => setNewTaskTitle(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && addTask()}
                 placeholder="Add a feature, bug, or task..."
-                className="flex-1 px-3 py-2 rounded-lg border border-border bg-card text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50 focus:border-primary transition-colors"
+                className="flex-1 px-3 py-2 rounded-lg border border-border bg-card text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
               />
               <select
                 value={newTaskCategory}
-                onChange={e => setNewTaskCategory(e.target.value as Category)}
-                className="px-2 py-2 rounded-lg border border-border bg-card text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50"
+                onChange={(e) => setNewTaskCategory(e.target.value as Category)}
+                className="px-2 py-2 rounded-lg border border-border bg-card text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
               >
-                {(Object.keys(categoryConfig) as Category[]).map(c => (
-                  <option key={c} value={c}>{categoryConfig[c].label}</option>
+                {(Object.keys(categoryConfig) as Category[]).map((c) => (
+                  <option key={c} value={c}>
+                    {categoryConfig[c].label}
+                  </option>
                 ))}
               </select>
               <select
                 value={newTaskPriority}
-                onChange={e => setNewTaskPriority(e.target.value as Priority)}
-                className="px-2 py-2 rounded-lg border border-border bg-card text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50"
+                onChange={(e) => setNewTaskPriority(e.target.value as Priority)}
+                className="px-2 py-2 rounded-lg border border-border bg-card text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
               >
-                {(Object.keys(priorityConfig) as Priority[]).map(p => (
-                  <option key={p} value={p}>{priorityConfig[p].label}</option>
+                {(Object.keys(priorityConfig) as Priority[]).map((p) => (
+                  <option key={p} value={p}>
+                    {priorityConfig[p].label}
+                  </option>
                 ))}
               </select>
               <button
@@ -196,20 +215,26 @@ export default function NewProjectPage() {
                     key={task.tempId}
                     className={cn(
                       "flex items-center gap-3 px-4 py-3 transition-colors hover:bg-secondary/20",
-                      i < tasks.length - 1 && "border-b border-border"
+                      i < tasks.length - 1 && "border-b border-border",
                     )}
                   >
-                    <span className={cn(
-                      "px-2 py-0.5 rounded text-xs font-medium shrink-0",
-                      categoryConfig[task.category].className
-                    )}>
+                    <span
+                      className={cn(
+                        "px-2 py-0.5 rounded text-xs font-medium shrink-0",
+                        categoryConfig[task.category].className,
+                      )}
+                    >
                       {categoryConfig[task.category].label}
                     </span>
-                    <span className="flex-1 text-sm text-foreground">{task.title}</span>
-                    <span className={cn(
-                      "text-xs font-mono shrink-0",
-                      priorityConfig[task.priority].className
-                    )}>
+                    <span className="flex-1 text-sm text-foreground">
+                      {task.title}
+                    </span>
+                    <span
+                      className={cn(
+                        "text-xs font-mono shrink-0",
+                        priorityConfig[task.priority].className,
+                      )}
+                    >
                       {priorityConfig[task.priority].label}
                     </span>
                     <button
@@ -245,12 +270,15 @@ export default function NewProjectPage() {
 
           <p className="text-center text-xs text-muted-foreground">
             You can add sprints and more tasks after creating the project.{" "}
-            <Link to="/dashboard" className="text-primary hover:text-primary/80">
+            <Link
+              to="/dashboard"
+              className="text-primary hover:text-primary/80"
+            >
               Cancel
             </Link>
           </p>
         </div>
       </div>
     </div>
-  )
+  );
 }
