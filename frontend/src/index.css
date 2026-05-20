@@ -4,59 +4,89 @@
 
 @layer base {
   :root {
-    --background: #0b0f14;
-    --foreground: #f8fafc;
-    --card: #111827;
-    --card-foreground: #f8fafc;
-    --popover: #0f172a;
-    --popover-foreground: #f8fafc;
-    --primary: #38bdf8;
-    --primary-foreground: #0b0f14;
-    --secondary: #1f2937;
-    --secondary-foreground: #f8fafc;
-    --muted: #1f2937;
-    --muted-foreground: #94a3b8;
-    --accent: #a78bfa;
-    --accent-foreground: #0b0f14;
-    --destructive: #fb923c;
-    --destructive-foreground: #0b0f14;
-    --border: #1f2937;
-    --input: #1f2937;
-    --ring: #38bdf8;
-    --success: #34d399;
-    --warning: #fbbf24;
-    --agent: #a78bfa;
-    --radius: 0.5rem;
-    --sidebar: #0f172a;
-    --sidebar-foreground: #f8fafc;
-    --sidebar-primary: #38bdf8;
-    --sidebar-primary-foreground: #0b0f14;
-    --sidebar-accent: #1f2937;
-    --sidebar-accent-foreground: #f8fafc;
-    --sidebar-border: #1f2937;
-    --sidebar-ring: #38bdf8;
+    /* BASE */
+
+    --background: 11 15 20;
+    --foreground: 248 250 252;
+
+    --card: 17 24 39;
+    --card-foreground: 248 250 252;
+
+    --popover: 15 23 42;
+    --popover-foreground: 248 250 252;
+
+    /* BRAND */
+
+    --primary: 56 189 248;
+    --primary-foreground: 11 15 20;
+
+    --secondary: 31 41 55;
+    --secondary-foreground: 248 250 252;
+
+    --muted: 31 41 55;
+    --muted-foreground: 148 163 184;
+
+    --accent: 167 139 250;
+    --accent-foreground: 11 15 20;
+
+    --destructive: 251 146 60;
+    --destructive-foreground: 11 15 20;
+
+    /* UI */
+
+    --border: 31 41 55;
+    --input: 31 41 55;
+    --ring: 56 189 248;
+
+    /* STATUS */
+
+    --success: 52 211 153;
+    --warning: 251 191 36;
+
+    /* SPECIAL */
+
+    --agent: 167 139 250;
+
+    /* SIDEBAR */
+
+    --sidebar: 15 23 42;
+    --sidebar-foreground: 248 250 252;
+
+    --sidebar-primary: 56 189 248;
+    --sidebar-primary-foreground: 11 15 20;
+
+    --sidebar-accent: 31 41 55;
+    --sidebar-accent-foreground: 248 250 252;
+
+    --sidebar-border: 31 41 55;
+    --sidebar-ring: 56 189 248;
+
+    /* RADIUS */
+
+    --radius: 0.75rem;
   }
 
   * {
     @apply border-border;
   }
 
-  body {
-    background-color: rgb(var(--background));
-    color: rgb(var(--foreground));
-    font-family: "Geist", system-ui, sans-serif;
-  }
-
   html {
     scroll-behavior: smooth;
   }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
 }
+
+/* ANIMATIONS */
 
 @keyframes pulse-glow {
   0%,
   100% {
     box-shadow: 0 0 8px 2px rgb(var(--accent) / 0.3);
   }
+
   50% {
     box-shadow: 0 0 16px 4px rgb(var(--accent) / 0.5);
   }
@@ -67,10 +97,13 @@
   100% {
     opacity: 0.3;
   }
+
   50% {
     opacity: 1;
   }
 }
+
+/* UTILITIES */
 
 .agent-glow {
   animation: pulse-glow 2s ease-in-out infinite;
@@ -79,9 +112,11 @@
 .thinking-dot {
   animation: thinking-dot 1.5s ease-in-out infinite;
 }
+
 .thinking-dot:nth-child(2) {
   animation-delay: 0.2s;
 }
+
 .thinking-dot:nth-child(3) {
   animation-delay: 0.4s;
 }
