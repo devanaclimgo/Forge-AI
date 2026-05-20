@@ -54,7 +54,7 @@ export default function ProjectsPage() {
           </div>
           <Link
             to="/brain-dump"
-            className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-[#38bdf8]/90"
+            className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
             <Plus className="w-4 h-4" /> New Project
           </Link>
@@ -68,7 +68,7 @@ export default function ProjectsPage() {
               placeholder="Search projects..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50 focus:border-primary"
+              className="w-full pl-10 pr-4 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
             />
           </div>
           <div className="flex items-center gap-2">
@@ -90,7 +90,7 @@ export default function ProjectsPage() {
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as SortOption)}
-            className="px-3 py-2 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50"
+            className="px-3 py-2 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
           >
             <option value="recent">Sort by: Recent</option>
             <option value="progress">Sort by: Progress</option>
@@ -147,7 +147,7 @@ export default function ProjectsPage() {
               </p>
               <Link
                 to="/brain-dump"
-                className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-accent-foreground hover:bg-[#38bdf8]/90"
+                className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-accent-foreground hover:bg-primary/90"
               >
                 <Plus className="w-4 h-4" /> Create Your First Project
               </Link>

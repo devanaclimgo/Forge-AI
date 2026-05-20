@@ -199,7 +199,7 @@ export default function AgentsPage() {
           </div>
           <div className="rounded-lg border border-border bg-card p-4">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#38bdf8]/10">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
                 <Clock className="w-5 h-5 text-primary" />
               </div>
               <div>

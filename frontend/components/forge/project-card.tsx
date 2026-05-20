@@ -17,7 +17,7 @@ interface ProjectCardProps {
 const statusConfig = {
   active: { label: "Active", className: "bg-[#34d399]/20 text-success" },
   planning: { label: "Planning", className: "bg-[#0b0f14]20 text-accent" },
-  completed: { label: "Completed", className: "bg-[#38bdf8]/20 text-primary" },
+  completed: { label: "Completed", className: "bg-primary/20 text-primary" },
   paused: { label: "Paused", className: "bg-muted text-[#94a3b8]" },
 };
 
@@ -35,7 +35,7 @@ export function ProjectCard({
 }: ProjectCardProps) {
   return (
     <Link to={`/project/${id}`}>
-      <div className="group relative rounded-lg border border-border bg-card p-5 transition-all duration-200 hover:border-[#38bdf8]/50 hover:scale-[1.01] cursor-pointer">
+      <div className="group relative rounded-lg border border-border bg-card p-5 transition-all duration-200 hover:border-primary/50 hover:scale-[1.01] cursor-pointer">
         <div className="flex items-start justify-between mb-3">
           <div>
             <h3 className="font-semibold text-lg text-foreground group-hover:text-primary transition-colors">

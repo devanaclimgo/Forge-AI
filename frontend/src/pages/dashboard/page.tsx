@@ -48,7 +48,7 @@ export default function DashboardPage() {
           </div>
           <Link
             to="/brain-dump"
-            className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-[#38bdf8]/90"
+            className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
             <Plus className="w-4 h-4" />
             New Project
@@ -113,7 +113,7 @@ export default function DashboardPage() {
               </h2>
               <Link
                 to="/projects"
-                className="text-sm text-primary hover:text-[#38bdf8]/80 transition-colors"
+                className="text-sm text-primary hover:text-primary/80 transition-colors"
               >
                 View all
               </Link>
@@ -157,7 +157,7 @@ export default function DashboardPage() {
                     <p className="mb-4">No projects yet.</p>
                     <Link
                       to="/brain-dump"
-                      className="text-primary hover:text-[#38bdf8]/80"
+                      className="text-primary hover:text-primary/80"
                     >
                       Create your first project →
                     </Link>

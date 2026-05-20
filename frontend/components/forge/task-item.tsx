@@ -36,7 +36,7 @@ interface TaskItemProps extends Task {
 
 const priorityConfig = {
   low: { label: "Low", className: "bg-muted text-[#94a3b8]" },
-  medium: { label: "Medium", className: "bg-[#38bdf8]/20 text-primary" },
+  medium: { label: "Medium", className: "bg-primary/20 text-primary" },
   high: { label: "High", className: "bg-[#fbbf24]/20 text-warning" },
   critical: {
     label: "Critical",
@@ -182,7 +182,7 @@ export function TaskItem({
                 e.stopPropagation();
                 onAddToSprint?.(id);
               }}
-              className="px-2 py-1 rounded bg-[#38bdf8]/20 text-primary text-xs font-medium hover:bg-[#38bdf8]/30 transition-colors flex items-center gap-1"
+              className="px-2 py-1 rounded bg-primary/20 text-primary text-xs font-medium hover:bg-primary/30 transition-colors flex items-center gap-1"
             >
               <Plus className="w-3 h-3" />
               Add to Sprint

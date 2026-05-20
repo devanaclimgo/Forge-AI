@@ -196,7 +196,7 @@ export default function SettingsPage() {
                         fullName: e.target.value,
                       }))
                     }
-                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50 focus:border-primary"
+                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
                   />
                 </div>
 
@@ -213,7 +213,7 @@ export default function SettingsPage() {
                         email: e.target.value,
                       }))
                     }
-                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50 focus:border-primary"
+                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
                   />
                 </div>
               </div>
@@ -239,7 +239,7 @@ export default function SettingsPage() {
                       }))
                     }
                     placeholder="Enter current password"
-                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50 focus:border-primary"
+                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
                   />
                 </div>
 
@@ -257,7 +257,7 @@ export default function SettingsPage() {
                       }))
                     }
                     placeholder="Enter new password"
-                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50 focus:border-primary"
+                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
                   />
                 </div>
 
@@ -275,7 +275,7 @@ export default function SettingsPage() {
                       }))
                     }
                     placeholder="Confirm new password"
-                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50 focus:border-primary"
+                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
                   />
                 </div>
               </div>
@@ -284,7 +284,7 @@ export default function SettingsPage() {
             {/* Save Button */}
             <button
               onClick={handleSaveChanges}
-              className="w-full rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-background transition-colors hover:bg-[#38bdf8]/90"
+              className="w-full rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-background transition-colors hover:bg-primary/90"
             >
               Save Changes
             </button>
@@ -403,7 +403,7 @@ export default function SettingsPage() {
               {/* TODO: replace mailto link with actual support form or integration */}
               <a
                 href="mailto:support@forgeai.dev"
-                className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-bacground transition-colors hover:bg-[#38bdf8]/90"
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-bacground transition-colors hover:bg-primary/90"
               >
                 Contact Support
               </a>

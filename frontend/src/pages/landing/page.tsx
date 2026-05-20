@@ -108,7 +108,7 @@ export default function LandingPage() {
             </Link>
             <Link
               to="/signup"
-              className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-background transition-colors hover:bg-[#38bdf8]/90"
+              className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-background transition-colors hover:bg-primary/90"
             >
               Start Building
             </Link>
@@ -144,7 +144,7 @@ export default function LandingPage() {
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               to="/signup"
-              className="group flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-base font-medium text-background transition-all hover:bg-[#38bdf8]/90 hover:gap-3"
+              className="group flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-base font-medium text-background transition-all hover:bg-primary/90 hover:gap-3"
             >
               Try for Free
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
@@ -198,11 +198,13 @@ export default function LandingPage() {
               },
             ].map((item, index) => (
               <div key={index} className="relative group">
-                <div className="rounded-xl border border-border bg-card p-8 transition-all duration-200 hover:border-[#38bdf8]/30 hover:scale-[1.02]">
+                <div className="rounded-xl border border-border bg-card p-8 transition-all duration-200 hover:border-primary/30 hover:scale-[1.02]">
                   <span className={`font-mono text-sm text-${item.color}`}>
                     {item.step}
                   </span>
-                  <h3 className="text-foreground text-2xl font-bold mt-2 mb-3">{item.title}</h3>
+                  <h3 className="text-foreground text-2xl font-bold mt-2 mb-3">
+                    {item.title}
+                  </h3>
                   <p className="text-[#94a3b8] leading-relaxed">
                     {item.description}
                   </p>
@@ -281,10 +283,12 @@ export default function LandingPage() {
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {features.map((feature, index) => (
               <div key={index} className="text-center">
-                <div className="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-[#38bdf8]/10 text-primary mb-4">
+                <div className="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary mb-4">
                   <feature.icon className="w-7 h-7" />
                 </div>
-                <h3 className="text-foreground text-xl font-semibold mb-2">{feature.title}</h3>
+                <h3 className="text-foreground text-xl font-semibold mb-2">
+                  {feature.title}
+                </h3>
                 <p className="text-[#94a3b8] leading-relaxed">
                   {feature.description}
                 </p>
@@ -308,7 +312,7 @@ export default function LandingPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 to="/signup"
-                className="group flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-lg font-medium text-background transition-all hover:bg-[#38bdf8]/90 hover:gap-3"
+                className="group flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-lg font-medium text-background transition-all hover:bg-primary/90 hover:gap-3"
               >
                 Start Building for Free
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />
