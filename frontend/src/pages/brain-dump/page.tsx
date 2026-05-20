@@ -140,7 +140,7 @@ export default function BrainDumpPage() {
             {agents.map((agent, index) => (
               <div
                 key={index}
-                className="flex items-center gap-3 p-3 rounded-lg border border-border bg-[#111827]/50"
+                className="flex items-center gap-3 p-3 rounded-lg border border-border bg-card/50"
               >
                 <div className="flex h-8 w-8 items-center justify-center rounded-md bg-background20 text-accent">
                   <agent.icon className="w-4 h-4" />
