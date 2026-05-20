@@ -588,7 +588,7 @@ export default function ProjectPage() {
                             sprint.status === "active"
                               ? "bg-[#34d399]/20 text-success"
                               : sprint.status === "completed"
-                                ? "bg-[#38bdf8]/20 text-primary"
+                                ? "bg-primary/20 text-primary"
                                 : "bg-muted text-[#94a3b8]",
                           )}
                         >
@@ -707,7 +707,7 @@ export default function ProjectPage() {
                   }
                   placeholder="Task title..."
                   autoFocus
-                  className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50 focus:border-primary"
+                  className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
                 />
               </div>
               <div>
@@ -721,7 +721,7 @@ export default function ProjectPage() {
                   }
                   placeholder="Task description..."
                   rows={3}
-                  className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-[#94a3b8] resize-none focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50 focus:border-primary"
+                  className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-[#94a3b8] resize-none focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
@@ -737,7 +737,7 @@ export default function ProjectPage() {
                         priority: e.target.value as Task["priority"],
                       }))
                     }
-                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50"
+                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
                   >
                     <option value="low">Low</option>
                     <option value="medium">Medium</option>
@@ -757,7 +757,7 @@ export default function ProjectPage() {
                         status: e.target.value as Task["status"],
                       }))
                     }
-                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50"
+                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
                   >
                     <option value="todo">To Do</option>
                     <option value="in-progress">In Progress</option>
@@ -772,7 +772,7 @@ export default function ProjectPage() {
                 className={cn(
                   "w-full rounded-lg px-4 py-2.5 text-sm font-medium transition-colors",
                   newTask.title.trim()
-                    ? "bg-primary text-primary-foreground hover:bg-[#38bdf8]/90"
+                    ? "bg-primary text-primary-foreground hover:bg-primary/90"
                     : "bg-secondary text-[#94a3b8] cursor-not-allowed",
                 )}
               >
