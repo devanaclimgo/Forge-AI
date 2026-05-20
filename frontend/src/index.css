@@ -26,8 +26,8 @@
     --muted: 31 41 55;
     --muted-foreground: 148 163 184;
 
-    --accent: 167 139 250;
-    --accent-foreground: 11 15 20;
+    --brand: 167 139 250;
+    --brand-foreground: 11 15 20;
 
     --destructive: 251 146 60;
     --destructive-foreground: 11 15 20;
@@ -55,8 +55,8 @@
     --sidebar-primary: 56 189 248;
     --sidebar-primary-foreground: 11 15 20;
 
-    --sidebar-accent: 31 41 55;
-    --sidebar-accent-foreground: 248 250 252;
+    --sidebar-brand: 31 41 55;
+    --sidebar-brand-foreground: 248 250 252;
 
     --sidebar-border: 31 41 55;
     --sidebar-ring: 56 189 248;
@@ -84,11 +84,11 @@
 @keyframes pulse-glow {
   0%,
   100% {
-    box-shadow: 0 0 8px 2px rgb(var(--accent) / 0.3);
+    box-shadow: 0 0 8px 2px rgb(var(--brand) / 0.3);
   }
 
   50% {
-    box-shadow: 0 0 16px 4px rgb(var(--accent) / 0.5);
+    box-shadow: 0 0 16px 4px rgb(var(--brand) / 0.5);
   }
 }
 

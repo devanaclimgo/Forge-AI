@@ -33,9 +33,9 @@ const config: Config = {
 
         "muted-foreground": "rgb(var(--muted-foreground) / <alpha-value>)",
 
-        accent: "rgb(var(--accent) / <alpha-value>)",
+        brand: "rgb(var(--brand) / <alpha-value>)",
 
-        "accent-foreground": "rgb(var(--accent-foreground) / <alpha-value>)",
+        "brand-foreground": "rgb(var(--brand-foreground) / <alpha-value>)",
 
         destructive: "rgb(var(--destructive) / <alpha-value>)",
 
@@ -63,10 +63,10 @@ const config: Config = {
         "sidebar-primary-foreground":
           "rgb(var(--sidebar-primary-foreground) / <alpha-value>)",
 
-        "sidebar-accent": "rgb(var(--sidebar-accent) / <alpha-value>)",
+        "sidebar-brand": "rgb(var(--sidebar-brand) / <alpha-value>)",
 
-        "sidebar-accent-foreground":
-          "rgb(var(--sidebar-accent-foreground) / <alpha-value>)",
+        "sidebar-brand-foreground":
+          "rgb(var(--sidebar-brand-foreground) / <alpha-value>)",
 
         "sidebar-border": "rgb(var(--sidebar-border) / <alpha-value>)",
 
@@ -87,7 +87,7 @@ const config: Config = {
       },
 
       boxShadow: {
-        glow: "0 0 20px rgb(var(--accent) / 0.35)",
+        glow: "0 0 20px rgb(var(--brand) / 0.35)",
 
         soft: "0 8px 30px rgb(0 0 0 / 0.12)",
       },

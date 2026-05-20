@@ -142,7 +142,7 @@ export default function BrainDumpPage() {
                 key={index}
                 className="flex items-center gap-3 p-3 rounded-lg border border-border bg-card/50"
               >
-                <div className="flex h-8 w-8 items-center justify-center rounded-md bg-background20 text-accent">
+                <div className="flex h-8 w-8 items-center justify-center rounded-md bg-background20 text-brand">
                   <agent.icon className="w-4 h-4" />
                 </div>
                 <div>
@@ -220,7 +220,7 @@ export default function BrainDumpPage() {
                           isProcessed
                             ? "bg-success/20 text-success"
                             : isCurrent
-                              ? "bg-background20 text-accent"
+                              ? "bg-background20 text-brand"
                               : "bg-secondary text-muted-foreground"
                         }`}
                       >
@@ -239,7 +239,7 @@ export default function BrainDumpPage() {
                             isProcessed
                               ? "text-success"
                               : isCurrent
-                                ? "text-accent"
+                                ? "text-brand"
                                 : "text-muted-foreground"
                           }`}
                         >
@@ -252,9 +252,9 @@ export default function BrainDumpPage() {
                       </div>
                       {isCurrent && (
                         <span className="flex gap-1">
-                          <span className="w-2 h-2 rounded-full bg-accent thinking-dot" />
-                          <span className="w-2 h-2 rounded-full bg-accent thinking-dot" />
-                          <span className="w-2 h-2 rounded-full bg-accent thinking-dot" />
+                          <span className="w-2 h-2 rounded-full bg-brand thinking-dot" />
+                          <span className="w-2 h-2 rounded-full bg-brand thinking-dot" />
+                          <span className="w-2 h-2 rounded-full bg-brand thinking-dot" />
                         </span>
                       )}
                     </div>

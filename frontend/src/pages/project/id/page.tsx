@@ -188,10 +188,10 @@ export default function ProjectPage() {
       <div className="min-h-screen bg-background flex flex-col items-center justify-center gap-6">
         <div className="flex flex-col items-center gap-4 text-center max-w-sm">
           <div className="relative">
-            <div className="w-12 h-12 rounded-full border-2 border-accent/20 flex items-center justify-center">
-              <span className="text-accent text-xl">⬡</span>
+            <div className="w-12 h-12 rounded-full border-2 border-brand/20 flex items-center justify-center">
+              <span className="text-brand text-xl">⬡</span>
             </div>
-            <div className="absolute inset-0 rounded-full border-2 border-accent border-t-transparent animate-spin" />
+            <div className="absolute inset-0 rounded-full border-2 border-brand border-t-transparent animate-spin" />
           </div>
           <div>
             <p className="text-foreground font-medium">Agents are working</p>
@@ -200,9 +200,9 @@ export default function ProjectPage() {
             </p>
           </div>
           <div className="flex items-center gap-1.5 mt-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent thinking-dot" />
-            <span className="w-1.5 h-1.5 rounded-full bg-accent thinking-dot" />
-            <span className="w-1.5 h-1.5 rounded-full bg-accent thinking-dot" />
+            <span className="w-1.5 h-1.5 rounded-full bg-brand thinking-dot" />
+            <span className="w-1.5 h-1.5 rounded-full bg-brand thinking-dot" />
+            <span className="w-1.5 h-1.5 rounded-full bg-brand thinking-dot" />
           </div>
         </div>
       </div>
@@ -267,7 +267,7 @@ export default function ProjectPage() {
                 </div>
                 <div className="h-1.5 bg-secondary rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-500"
+                    className="h-full bg-gradient-to-r from-primary to-brand rounded-full transition-all duration-500"
                     style={{ width: `${progress}%` }}
                   />
                 </div>
@@ -306,7 +306,7 @@ export default function ProjectPage() {
                 className={cn(
                   "w-full flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors",
                   showAgentPanel
-                    ? "bg-background20 text-accent"
+                    ? "bg-background20 text-brand"
                     : "text-muted-foreground hover:text-foreground hover:bg-secondary/50",
                 )}
               >
@@ -601,7 +601,7 @@ export default function ProjectPage() {
                     </div>
                     <div className="h-2 bg-secondary rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-500"
+                        className="h-full bg-gradient-to-r from-primary to-brand rounded-full transition-all duration-500"
                         style={{
                           width: `${sprint.tasks > 0 ? (sprint.completed / sprint.tasks) * 100 : 0}%`,
                         }}
@@ -666,7 +666,7 @@ export default function ProjectPage() {
               </button>
               <button
                 onClick={handleDeleteProject}
-                className="flex-1 rounded-lg bg-destructive px-4 py-2 text-sm font-medium text-accent-foreground hover:bg-destructive/90 transition-colors"
+                className="flex-1 rounded-lg bg-destructive px-4 py-2 text-sm font-medium text-brand-foreground hover:bg-destructive/90 transition-colors"
               >
                 Delete
               </button>

@@ -63,7 +63,7 @@ export function AgentCard({
           className={cn(
             "flex h-10 w-10 shrink-0 items-center justify-center rounded-lg",
             status === "active"
-              ? "bg-background20 text-accent"
+              ? "bg-background20 text-brand"
               : "bg-secondary text-muted-foreground",
           )}
         >
@@ -74,7 +74,7 @@ export function AgentCard({
             <h3 className="font-semibold text-foreground">{name}</h3>
             <StatusBadge status={status} />
           </div>
-          <p className="text-sm text-accent font-mono">{role}</p>
+          <p className="text-sm text-brand font-mono">{role}</p>
           {!compact && (
             <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
               {description}
@@ -101,11 +101,11 @@ export function AgentCard({
           {triggerLoading && (
             <div className="flex items-center gap-2 px-3 py-2 rounded-md bg-background10 border border-background20">
               <span className="flex gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent thinking-dot" />
-                <span className="w-1.5 h-1.5 rounded-full bg-accent thinking-dot" />
-                <span className="w-1.5 h-1.5 rounded-full bg-accent thinking-dot" />
+                <span className="w-1.5 h-1.5 rounded-full bg-brand thinking-dot" />
+                <span className="w-1.5 h-1.5 rounded-full bg-brand thinking-dot" />
+                <span className="w-1.5 h-1.5 rounded-full bg-brand thinking-dot" />
               </span>
-              <span className="text-xs text-accent font-mono">
+              <span className="text-xs text-brand font-mono">
                 Agent is thinking...
               </span>
             </div>
@@ -115,7 +115,7 @@ export function AgentCard({
           {showResult && !triggerLoading && (
             <div className="rounded-md bg-secondary/50 border border-border p-3">
               <div className="flex items-center justify-between mb-2">
-                <p className="text-xs font-mono text-accent">Result</p>
+                <p className="text-xs font-mono text-brand">Result</p>
                 <button
                   onClick={() => setShowResult(false)}
                   className="text-xs text-muted-foreground hover:text-foreground transition-colors"
@@ -144,7 +144,7 @@ export function AgentCard({
                 <button
                   onClick={handleTrigger}
                   disabled={!prompt.trim()}
-                  className="flex-1 rounded-md bg-accent px-3 py-1.5 text-xs font-medium text-background transition-colors hover:bg-background90 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex-1 rounded-md bg-brand px-3 py-1.5 text-xs font-medium text-background transition-colors hover:bg-background90 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Run Agent
                 </button>
@@ -183,7 +183,7 @@ function StatusBadge({ status }: { status: "active" | "idle" | "thinking" }) {
   const config = {
     active: { label: "Active", className: "bg-success/20 text-success" },
     idle: { label: "Idle", className: "bg-secondary text-muted-foreground" },
-    thinking: { label: "Thinking", className: "bg-background20 text-accent" },
+    thinking: { label: "Thinking", className: "bg-background20 text-brand" },
   }[status];
 
   return (

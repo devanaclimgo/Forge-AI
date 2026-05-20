@@ -16,7 +16,7 @@ interface ProjectCardProps {
 
 const statusConfig = {
   active: { label: "Active", className: "bg-success/20 text-success" },
-  planning: { label: "Planning", className: "bg-background20 text-accent" },
+  planning: { label: "Planning", className: "bg-background20 text-brand" },
   completed: { label: "Completed", className: "bg-primary/20 text-primary" },
   paused: { label: "Paused", className: "bg-muted text-muted-foreground" },
 };
@@ -65,7 +65,7 @@ export function ProjectCard({
             </div>
             <div className="h-1.5 bg-secondary rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-500"
+                className="h-full bg-gradient-to-r from-primary to-brand rounded-full transition-all duration-500"
                 style={{ width: `${progress}%` }}
               />
             </div>
@@ -87,7 +87,7 @@ export function ProjectCard({
 
           <div className="pt-3 border-t border-border">
             <p className="text-xs text-muted-foreground font-mono flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-brand animate-pulse" />
               {lastAgentActivity}
             </p>
           </div>

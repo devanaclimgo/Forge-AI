@@ -25,7 +25,7 @@ interface BacklogTask {
 const categoryConfig: Record<Category, { label: string; className: string }> = {
   feature: { label: "Feature", className: "bg-primary/20 text-primary" },
   bug: { label: "Bug", className: "bg-destructive/20 text-destructive" },
-  refactor: { label: "Refactor", className: "bg-accent/20 text-accent" },
+  refactor: { label: "Refactor", className: "bg-brand/20 text-brand" },
   design: { label: "Design", className: "bg-warning/20 text-warning" },
   devops: { label: "DevOps", className: "bg-muted text-muted-foreground" },
   testing: { label: "Testing", className: "bg-success/20 text-success" },

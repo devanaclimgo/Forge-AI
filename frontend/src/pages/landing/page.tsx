@@ -124,7 +124,7 @@ export default function LandingPage() {
         </div>
         <div className="container relative mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 mb-6">
-            <Bot className="w-4 h-4 text-accent" />
+            <Bot className="w-4 h-4 text-brand" />
             <span className="text-sm text-muted-foreground">
               Multi-Agent Development Platform
             </span>
@@ -132,7 +132,7 @@ export default function LandingPage() {
           <h1 className="text-foreground text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-balance max-w-4xl mx-auto">
             Stop planning.
             <br />
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-primary to-brand bg-clip-text text-transparent">
               Start building.
             </span>
           </h1>
@@ -187,7 +187,7 @@ export default function LandingPage() {
                 title: "Plan",
                 description:
                   "Our agents analyze, structure, and transform your input into organized features, tasks, and sprints.",
-                color: "accent",
+                color: "brand",
               },
               {
                 step: "03",
@@ -228,8 +228,8 @@ export default function LandingPage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 rounded-full border border-background30 bg-background10 px-4 py-1.5 mb-4">
-              <Zap className="w-4 h-4 text-accent" />
-              <span className="text-sm text-accent">
+              <Zap className="w-4 h-4 text-brand" />
+              <span className="text-sm text-brand">
                 Powered by Multi-Agent AI
               </span>
             </div>
@@ -248,16 +248,14 @@ export default function LandingPage() {
                 className="group rounded-xl border border-border bg-card p-6 transition-all duration-200 hover:border-background50 hover:scale-[1.01]"
               >
                 <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-background10 text-accent transition-colors group-hover:bg-background20">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-background10 text-brand transition-colors group-hover:bg-background20">
                     <agent.icon className="w-6 h-6" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg text-foreground">
                       {agent.name}
                     </h3>
-                    <p className="text-sm text-accent font-mono">
-                      {agent.role}
-                    </p>
+                    <p className="text-sm text-brand font-mono">{agent.role}</p>
                   </div>
                 </div>
                 <p className="mt-4 text-muted-foreground leading-relaxed">
