@@ -86,7 +86,7 @@ export function ProjectCard({
           )}
 
           <div className="pt-3 border-t border-border">
-            <p className="text-xs text-muted-foreground font-mono flex items-center gap-1.5">
+            <p className="text-xs text-muted-foreground font-mono flex items-center gap-1.5 pt-2">
               <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
               {lastAgentActivity}
             </p>
