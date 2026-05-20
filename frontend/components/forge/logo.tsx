@@ -15,7 +15,7 @@ export function Logo({ size = "md", href = "/" }: LogoProps) {
   const content = (
     <div className="flex items-center gap-2">
       <div className="relative">
-        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-brand flex items-center justify-center">
+        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -30,7 +30,7 @@ export function Logo({ size = "md", href = "/" }: LogoProps) {
       <span
         className={`font-bold ${sizeClasses[size]} tracking-tight text-foreground`}
       >
-        Forge<span className="text-brand">AI</span>
+        Forge<span className="text-accent">AI</span>
       </span>
     </div>
   );

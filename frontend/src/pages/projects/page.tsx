@@ -147,7 +147,7 @@ export default function ProjectsPage() {
               </p>
               <Link
                 to="/brain-dump"
-                className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-brand-foreground hover:bg-primary/90"
+                className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-accent-foreground hover:bg-primary/90"
               >
                 <Plus className="w-4 h-4" /> Create Your First Project
               </Link>

@@ -191,7 +191,7 @@ export default function AgentsPage() {
           <div className="rounded-lg border border-border bg-card p-4">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-background10">
-                <Zap className="w-5 h-5 text-brand" />
+                <Zap className="w-5 h-5 text-accent" />
               </div>
               <div>
                 <p className="text-2xl font-bold text-foreground">127</p>
@@ -235,10 +235,10 @@ export default function AgentsPage() {
                 {activityLog.map((entry, index) => (
                   <div key={index} className="p-4">
                     <div className="flex items-start gap-3">
-                      <div className="w-2 h-2 rounded-full bg-brand mt-2 shrink-0" />
+                      <div className="w-2 h-2 rounded-full bg-accent mt-2 shrink-0" />
                       <div className="min-w-0">
                         <p className="text-sm text-foreground leading-relaxed">
-                          <span className="font-medium text-brand">
+                          <span className="font-medium text-accent">
                             {entry.agent}
                           </span>{" "}
                           {entry.action}

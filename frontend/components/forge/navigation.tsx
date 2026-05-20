@@ -115,9 +115,9 @@ export function Navigation() {
                   setShowModal(false);
                   navigate("/brain-dump");
                 }}
-                className="flex flex-col items-start gap-3 p-4 rounded-lg border border-border bg-background hover:border-brand/50 hover:bg-brand/5 transition-all duration-150 text-left group hover:scale-[1.02]"
+                className="flex flex-col items-start gap-3 p-4 rounded-lg border border-border bg-background hover:border-accent/50 hover:bg-accent/5 transition-all duration-150 text-left group hover:scale-[1.02]"
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand/10 text-brand group-hover:bg-brand/20 transition-colors">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 text-accent group-hover:bg-accent/20 transition-colors">
                   <Brain className="w-5 h-5" />
                 </div>
                 <div>

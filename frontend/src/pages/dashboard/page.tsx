@@ -72,7 +72,7 @@ export default function DashboardPage() {
             },
             {
               icon: Zap,
-              color: "brand",
+              color: "accent",
               value: projects.length,
               label: "Total Projects",
             },
@@ -182,10 +182,10 @@ export default function DashboardPage() {
                   {agentLogs.map((log) => (
                     <div key={log.id} className="p-4">
                       <div className="flex items-start gap-3">
-                        <div className="w-2 h-2 rounded-full bg-brand mt-2 shrink-0" />
+                        <div className="w-2 h-2 rounded-full bg-accent mt-2 shrink-0" />
                         <div className="min-w-0">
                           <p className="text-sm text-foreground leading-relaxed">
-                            <span className="font-medium text-brand capitalize">
+                            <span className="font-medium text-accent capitalize">
                               {log.agent_name.replace(/_/g, " ")}
                             </span>{" "}
                             ran analysis
