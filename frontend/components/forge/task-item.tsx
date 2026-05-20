@@ -35,17 +35,17 @@ interface TaskItemProps extends Task {
 }
 
 const priorityConfig = {
-  low: { label: "Low", className: "bg-muted text-[#94a3b8]" },
+  low: { label: "Low", className: "bg-muted text-muted-foreground" },
   medium: { label: "Medium", className: "bg-primary/20 text-primary" },
-  high: { label: "High", className: "bg-[#fbbf24]/20 text-warning" },
+  high: { label: "High", className: "bg-warning/20 text-warning" },
   critical: {
     label: "Critical",
-    className: "bg-[#fb923c]/20 text-destructive",
+    className: "bg-destructive/20 text-destructive",
   },
 };
 
 const statusConfig = {
-  todo: { label: "To Do", icon: Circle, className: "text-[#94a3b8]" },
+  todo: { label: "To Do", icon: Circle, className: "text-muted-foreground" },
   "in-progress": {
     label: "In Progress",
     icon: Clock,
@@ -109,7 +109,7 @@ export function TaskItem({
       >
         {/* Expand chevron */}
         <button
-          className="text-[#94a3b8] hover:text-foreground transition-colors shrink-0"
+          className="text-muted-foreground hover:text-foreground transition-colors shrink-0"
           onClick={(e) => {
             e.stopPropagation();
             if (hasDetails) setIsExpanded(!isExpanded);
@@ -144,7 +144,7 @@ export function TaskItem({
         <div className="flex-1 min-w-0">
           <span className="font-medium text-foreground text-sm">{title}</span>
           {description && (
-            <p className="text-xs text-[#94a3b8] mt-0.5 truncate">
+            <p className="text-xs text-muted-foreground mt-0.5 truncate">
               {description}
             </p>
           )}
@@ -199,7 +199,7 @@ export function TaskItem({
               <p className="text-xs font-mono text-accent mb-1.5">
                 Agent Notes:
               </p>
-              <p className="text-sm text-[#94a3b8] leading-relaxed">
+              <p className="text-sm text-muted-foreground leading-relaxed">
                 {agentNotes}
               </p>
             </div>
@@ -207,7 +207,7 @@ export function TaskItem({
 
           {subTasks && subTasks.length > 0 && (
             <div className="space-y-2">
-              <p className="text-xs font-mono text-[#94a3b8] uppercase tracking-wider">
+              <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider">
                 Sub-tasks:
               </p>
               <div className="space-y-1.5">
@@ -219,13 +219,13 @@ export function TaskItem({
                     {subTask.completed ? (
                       <CheckCircle2 className="w-4 h-4 text-success shrink-0" />
                     ) : (
-                      <Circle className="w-4 h-4 text-[#94a3b8] shrink-0" />
+                      <Circle className="w-4 h-4 text-muted-foreground shrink-0" />
                     )}
                     <span
                       className={cn(
                         "text-sm",
                         subTask.completed
-                          ? "text-[#94a3b8] line-through"
+                          ? "text-muted-foreground line-through"
                           : "text-foreground",
                       )}
                     >

@@ -156,7 +156,7 @@ export default function SettingsPage() {
                 "flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 transition-colors -mb-px",
                 activeTab === tab.id
                   ? "border-primary text-foreground"
-                  : "border-transparent text-[#94a3b8] hover:text-foreground",
+                  : "border-transparent text-muted-foreground hover:text-foreground",
               )}
             >
               <tab.icon className="w-4 h-4" />
@@ -178,7 +178,9 @@ export default function SettingsPage() {
                   <h2 className="text-lg font-semibold text-foreground">
                     {formData.fullName}
                   </h2>
-                  <p className="text-sm text-[#94a3b8]">{formData.email}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {formData.email}
+                  </p>
                 </div>
               </div>
 
@@ -239,7 +241,7 @@ export default function SettingsPage() {
                       }))
                     }
                     placeholder="Enter current password"
-                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
                   />
                 </div>
 
@@ -257,7 +259,7 @@ export default function SettingsPage() {
                       }))
                     }
                     placeholder="Enter new password"
-                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
                   />
                 </div>
 
@@ -275,7 +277,7 @@ export default function SettingsPage() {
                       }))
                     }
                     placeholder="Confirm new password"
-                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
                   />
                 </div>
               </div>
@@ -290,18 +292,18 @@ export default function SettingsPage() {
             </button>
 
             {/* Danger Zone */}
-            <div className="rounded-lg border border-[#fb923c]/50 bg-[#fb923c]/5 p-6">
+            <div className="rounded-lg border border-destructive/50 bg-destructive/5 p-6">
               <h3 className="text-lg font-semibold text-destructive mb-2">
                 Danger Zone
               </h3>
-              <p className="text-sm text-[#94a3b8] mb-4">
+              <p className="text-sm text-muted-foreground mb-4">
                 Once you delete your account, there is no going back. This
                 action is permanent.
               </p>
               <div className="flex gap-3">
                 <button
                   onClick={() => setShowDeleteModal(true)}
-                  className="flex items-center gap-2 rounded-lg bg-destructive px-4 py-2 text-sm font-medium text-bacground transition-colors hover:bg-[#fb923c]/90"
+                  className="flex items-center gap-2 rounded-lg bg-destructive px-4 py-2 text-sm font-medium text-bacground transition-colors hover:bg-destructive/90"
                 >
                   <Trash2 className="w-4 h-4" />
                   Delete Account
@@ -329,7 +331,7 @@ export default function SettingsPage() {
                 <h3 className="text-lg font-semibold text-foreground mb-2">
                   {section.title}
                 </h3>
-                <p className="text-sm text-[#94a3b8] mb-4">
+                <p className="text-sm text-muted-foreground mb-4">
                   {section.description}
                 </p>
                 <ul className="space-y-2">
@@ -372,7 +374,7 @@ export default function SettingsPage() {
                       </span>
                       <ChevronDown
                         className={cn(
-                          "w-5 h-5 text-[#94a3b8] shrink-0 transition-transform duration-200",
+                          "w-5 h-5 text-muted-foreground shrink-0 transition-transform duration-200",
                           expandedFaq === index && "rotate-180",
                         )}
                       />
@@ -383,7 +385,7 @@ export default function SettingsPage() {
                         expandedFaq === index ? "max-h-96" : "max-h-0",
                       )}
                     >
-                      <p className="px-4 pb-4 text-sm text-[#94a3b8] leading-relaxed">
+                      <p className="px-4 pb-4 text-sm text-muted-foreground leading-relaxed">
                         {item.answer}
                       </p>
                     </div>
@@ -397,7 +399,7 @@ export default function SettingsPage() {
               <h3 className="text-lg font-semibold text-foreground mb-2">
                 Still need help?
               </h3>
-              <p className="text-sm text-[#94a3b8] mb-4">
+              <p className="text-sm text-muted-foreground mb-4">
                 Our support team is here to assist you.
               </p>
               {/* TODO: replace mailto link with actual support form or integration */}
@@ -415,22 +417,22 @@ export default function SettingsPage() {
       {/* Delete Account Modal */}
       {showDeleteModal && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-[#0f172a]/80 backdrop-blur-sm animate-in fade-in duration-150"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-popover/80 backdrop-blur-sm animate-in fade-in duration-150"
           onClick={() => setShowDeleteModal(false)}
         >
           <div
-            className="relative w-full max-w-md mx-4 rounded-lg border border-[#fb923c]/50 bg-card p-6 shadow-xl animate-in zoom-in-95 duration-150"
+            className="relative w-full max-w-md mx-4 rounded-lg border border-destructive/50 bg-card p-6 shadow-xl animate-in zoom-in-95 duration-150"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setShowDeleteModal(false)}
-              className="absolute top-4 right-4 p-1 rounded-md text-[#94a3b8] hover:text-foreground hover:bg-secondary transition-colors"
+              className="absolute top-4 right-4 p-1 rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
 
             <div className="flex items-center gap-3 mb-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#fb923c]/20">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-destructive/20">
                 <Trash2 className="w-5 h-5 text-destructive" />
               </div>
               <h3 className="text-lg font-semibold text-foreground">
@@ -438,7 +440,7 @@ export default function SettingsPage() {
               </h3>
             </div>
 
-            <p className="text-sm text-[#94a3b8] mb-6">
+            <p className="text-sm text-muted-foreground mb-6">
               Are you sure you want to delete your account? This action cannot
               be undone. All your projects, tasks, and data will be permanently
               deleted.
@@ -453,7 +455,7 @@ export default function SettingsPage() {
               </button>
               <button
                 onClick={handleDeleteAccount}
-                className="flex-1 rounded-lg bg-destructive px-4 py-2.5 text-sm font-medium text-bacground transition-colors hover:bg-[#fb923c]/90"
+                className="flex-1 rounded-lg bg-destructive px-4 py-2.5 text-sm font-medium text-bacground transition-colors hover:bg-destructive/90"
               >
                 Delete Account
               </button>

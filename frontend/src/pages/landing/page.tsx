@@ -82,19 +82,19 @@ export default function LandingPage() {
           <nav className="hidden md:flex items-center gap-6">
             <a
               href="#how-it-works"
-              className="text-sm text-[#94a3b8] hover:text-foreground transition-colors"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               How it Works
             </a>
             <a
               href="#agents"
-              className="text-sm text-[#94a3b8] hover:text-foreground transition-colors"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               Agents
             </a>
             <a
               href="#features"
-              className="text-sm text-[#94a3b8] hover:text-foreground transition-colors"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               Features
             </a>
@@ -102,7 +102,7 @@ export default function LandingPage() {
           <div className="flex items-center gap-3">
             <Link
               to="/login"
-              className="text-sm font-medium text-[#94a3b8] hover:text-foreground transition-colors"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               Log in
             </Link>
@@ -125,7 +125,7 @@ export default function LandingPage() {
         <div className="container relative mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 mb-6">
             <Bot className="w-4 h-4 text-accent" />
-            <span className="text-sm text-[#94a3b8]">
+            <span className="text-sm text-muted-foreground">
               Multi-Agent Development Platform
             </span>
           </div>
@@ -136,7 +136,7 @@ export default function LandingPage() {
               Start building.
             </span>
           </h1>
-          <p className="mt-6 text-lg md:text-xl text-[#94a3b8] max-w-2xl mx-auto text-balance leading-relaxed">
+          <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto text-balance leading-relaxed">
             Dump your raw ideas, let our AI agents structure everything. Tasks,
             sprints, and priorities emerge automatically — so you can focus on
             what you do best: building.
@@ -169,7 +169,7 @@ export default function LandingPage() {
             <h2 className="text-foreground text-3xl md:text-4xl font-bold mb-4">
               From chaos to clarity in 3 steps
             </h2>
-            <p className="text-[#94a3b8] text-lg max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               No complex setup. No learning curve. Just start writing.
             </p>
           </div>
@@ -205,7 +205,7 @@ export default function LandingPage() {
                   <h3 className="text-foreground text-2xl font-bold mt-2 mb-3">
                     {item.title}
                   </h3>
-                  <p className="text-[#94a3b8] leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -236,7 +236,7 @@ export default function LandingPage() {
             <h2 className="text-foreground text-3xl md:text-4xl font-bold mb-4">
               Your AI development team
             </h2>
-            <p className="text-[#94a3b8] text-lg max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Specialized agents that think like a senior team. Each one focuses
               on what they do best.
             </p>
@@ -260,7 +260,7 @@ export default function LandingPage() {
                     </p>
                   </div>
                 </div>
-                <p className="mt-4 text-[#94a3b8] leading-relaxed">
+                <p className="mt-4 text-muted-foreground leading-relaxed">
                   {agent.description}
                 </p>
               </div>
@@ -276,7 +276,7 @@ export default function LandingPage() {
             <h2 className="text-foreground text-3xl md:text-4xl font-bold mb-4">
               Everything you need to ship
             </h2>
-            <p className="text-[#94a3b8] text-lg max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Built for developers who want structure without bureaucracy.
             </p>
           </div>
@@ -289,7 +289,7 @@ export default function LandingPage() {
                 <h3 className="text-foreground text-xl font-semibold mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-[#94a3b8] leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed">
                   {feature.description}
                 </p>
               </div>
@@ -305,7 +305,7 @@ export default function LandingPage() {
             <h2 className="text-foreground text-3xl md:text-5xl font-bold mb-6 text-balance">
               Ready to transform how you build?
             </h2>
-            <p className="text-lg text-[#94a3b8] mb-10 max-w-xl mx-auto">
+            <p className="text-lg text-muted-foreground mb-10 max-w-xl mx-auto">
               Join developers who ship faster with AI-powered project
               management.
             </p>
@@ -318,7 +318,7 @@ export default function LandingPage() {
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />
               </Link>
             </div>
-            <div className="mt-8 flex items-center justify-center gap-6 text-sm text-[#94a3b8]">
+            <div className="mt-8 flex items-center justify-center gap-6 text-sm text-muted-foreground">
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-success" />
                 No credit card required
@@ -337,7 +337,7 @@ export default function LandingPage() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <Logo size="sm" href="/" />
-            <p className="text-sm text-[#94a3b8]">
+            <p className="text-sm text-muted-foreground">
               © 2026 Forge AI. Built for developers who ship.
             </p>
           </div>
