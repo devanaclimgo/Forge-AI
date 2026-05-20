@@ -157,7 +157,7 @@ export default function BrainDumpPage() {
 
           <button
             onClick={handleViewProject}
-            className="w-full flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-4 text-base font-medium text-primary-foreground transition-colors hover:bg-[#38bdf8]/90"
+            className="w-full flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-4 text-base font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
             View Project
             <ArrowRight className="w-5 h-5" />
@@ -278,7 +278,7 @@ export default function BrainDumpPage() {
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
                   placeholder="What are you trying to build? Don't organize — just write. Describe your idea, the problem you're solving, features you're imagining, technologies you're considering... Let it flow."
-                  className="w-full h-[400px] rounded-xl border border-border bg-card p-6 text-lg text-foreground placeholder:text-[#94a3b8]/60 resize-none focus:outline-none focus:ring-2 focus:ring-[#38bdf8]/50 focus:border-primary transition-all leading-relaxed"
+                  className="w-full h-[400px] rounded-xl border border-border bg-card p-6 text-lg text-foreground placeholder:text-[#94a3b8]/60 resize-none focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all leading-relaxed"
                   autoFocus
                 />
               </div>
@@ -292,7 +292,7 @@ export default function BrainDumpPage() {
                 <button
                   onClick={handleSubmit}
                   disabled={!content.trim()}
-                  className="flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-base font-medium text-primary-foreground transition-all hover:bg-[#38bdf8]/90 disabled:opacity-50 disabled:cursor-not-allowed hover:gap-3"
+                  className="flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-base font-medium text-primary-foreground transition-all hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed hover:gap-3"
                 >
                   Send to Agents
                   <Send className="w-5 h-5" />
