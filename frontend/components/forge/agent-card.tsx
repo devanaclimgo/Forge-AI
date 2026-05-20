@@ -53,7 +53,7 @@ export function AgentCard({
   return (
     <div
       className={cn(
-        "group relative rounded-lg border border-border bg-card p-4 transition-all duration-200 hover:border-[#1f2937]/80 hover:scale-[1.01]",
+        "group relative rounded-lg border border-border bg-card p-4 transition-all duration-200 hover:border-secondary/80 hover:scale-[1.01]",
         status === "active" && "agent-glow border-[#0b0f14]50",
         status === "thinking" && "border-[#0b0f14]30",
       )}

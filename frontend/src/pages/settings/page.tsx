@@ -365,7 +365,7 @@ export default function SettingsPage() {
                       onClick={() =>
                         setExpandedFaq(expandedFaq === index ? null : index)
                       }
-                      className="w-full flex items-center justify-between p-4 text-left hover:bg-[#1f2937]/30 transition-colors"
+                      className="w-full flex items-center justify-between p-4 text-left hover:bg-secondary/30 transition-colors"
                     >
                       <span className="font-medium text-foreground pr-4">
                         {item.question}

@@ -294,7 +294,7 @@ export default function ProjectPage() {
                     "w-full flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors",
                     activeView === view
                       ? "bg-secondary text-foreground"
-                      : "text-[#94a3b8] hover:text-foreground hover:bg-[#1f2937]/50",
+                      : "text-[#94a3b8] hover:text-foreground hover:bg-secondary/50",
                   )}
                 >
                   <Icon className="w-4 h-4" />
@@ -307,7 +307,7 @@ export default function ProjectPage() {
                   "w-full flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors",
                   showAgentPanel
                     ? "bg-[#0b0f14]20 text-accent"
-                    : "text-[#94a3b8] hover:text-foreground hover:bg-[#1f2937]/50",
+                    : "text-[#94a3b8] hover:text-foreground hover:bg-secondary/50",
                 )}
               >
                 <Bot className="w-4 h-4" />
@@ -357,7 +357,7 @@ export default function ProjectPage() {
             <div>
               <button
                 onClick={() => setShowBacklog(!showBacklog)}
-                className="w-full flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-[#94a3b8] hover:text-foreground hover:bg-[#1f2937]/50 transition-colors"
+                className="w-full flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-[#94a3b8] hover:text-foreground hover:bg-secondary/50 transition-colors"
               >
                 {showBacklog ? (
                   <ChevronDown className="w-4 h-4" />
@@ -379,7 +379,7 @@ export default function ProjectPage() {
                     backlogTasks.map((task) => (
                       <div
                         key={task.id}
-                        className="px-3 py-2 rounded-md bg-[#1f2937]/50 border border-border"
+                        className="px-3 py-2 rounded-md bg-secondary/50 border border-border"
                       >
                         <p className="text-sm text-foreground truncate">
                           {task.title}
@@ -409,14 +409,14 @@ export default function ProjectPage() {
               <div>
                 <button
                   onClick={() => setShowPromptModal(true)}
-                  className="w-full flex items-center gap-2 px-3 py-2 rounded-md text-xs text-[#94a3b8] hover:text-foreground hover:bg-[#1f2937]/50 transition-colors border border-border/50 mt-2"
+                  className="w-full flex items-center gap-2 px-3 py-2 rounded-md text-xs text-[#94a3b8] hover:text-foreground hover:bg-secondary/50 transition-colors border border-border/50 mt-2"
                 >
                   <FileText className="w-3.5 h-3.5" />
                   View original prompt
                 </button>
                 {showPromptModal && (
                   <div
-                    className="fixed inset-0 z-50 flex items-center justify-center bg-[#1f2937]/80 backdrop-blur-sm"
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-secondary/80 backdrop-blur-sm"
                     onClick={() => setShowPromptModal(false)}
                   >
                     <div
