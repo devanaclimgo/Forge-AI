@@ -105,7 +105,7 @@ export default function BrainDumpPage() {
           </div>
 
           <div className="rounded-xl border border-border bg-card p-6 mb-6">
-            <h2 className="text-xl font-semibold mb-4">
+            <h2 className="text-xl font-semibold mb-4 text-foreground">
               Project: {createdProject?.name ?? "New Project"}
             </h2>
             <div className="space-y-4">
