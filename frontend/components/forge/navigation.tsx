@@ -50,7 +50,7 @@ export function Navigation() {
                       "flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors",
                       isActive
                         ? "bg-secondary text-foreground"
-                        : "text-[#94a3b8] hover:text-foreground hover:bg-[#38bdf8]/50",
+                        : "text-[#94a3b8] hover:text-foreground hover:bg-primary/50",
                     )}
                   >
                     <item.icon className="w-4 h-4" />
@@ -97,7 +97,7 @@ export function Navigation() {
           >
             <button
               onClick={() => setShowModal(false)}
-              className="absolute top-4 right-4 p-1 rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+              className="absolute top-4 right-4 p-1 rounded-md text-[#94a3b8] hover:text-foreground hover:bg-secondary transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
@@ -105,7 +105,7 @@ export function Navigation() {
             <h2 className="text-lg font-semibold text-foreground mb-1">
               Create Project
             </h2>
-            <p className="text-sm text-muted-foreground mb-6">
+            <p className="text-sm text-[#94a3b8] mb-6">
               How do you want to start?
             </p>
 
@@ -115,7 +115,7 @@ export function Navigation() {
                   setShowModal(false);
                   navigate("/brain-dump");
                 }}
-                className="flex flex-col items-start gap-3 p-4 rounded-lg border border-border bg-background hover:border-accent/50 hover:bg-accent/5 transition-all duration-150 text-left group"
+                className="flex flex-col items-start gap-3 p-4 rounded-lg border border-border bg-background hover:border-accent/50 hover:bg-accent/5 transition-all duration-150 text-left group hover:scale-[1.02]"
               >
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 text-accent group-hover:bg-accent/20 transition-colors">
                   <Brain className="w-5 h-5" />
@@ -124,7 +124,7 @@ export function Navigation() {
                   <p className="font-medium text-foreground text-sm">
                     Brain Dump
                   </p>
-                  <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">
+                  <p className="text-xs text-[#94a3b8] mt-0.5 leading-relaxed">
                     Write freely, AI structures everything for you
                   </p>
                 </div>
@@ -135,7 +135,7 @@ export function Navigation() {
                   setShowModal(false);
                   navigate("/new-project");
                 }}
-                className="flex flex-col items-start gap-3 p-4 rounded-lg border border-border bg-background hover:border-primary/50 hover:bg-primary/5 transition-all duration-150 text-left group"
+                className="flex flex-col items-start gap-3 p-4 rounded-lg border border-border bg-background hover:border-primary/50 hover:bg-primary/5 transition-all duration-150 text-left group hover:scale-[1.02]"
               >
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
                   <PenLine className="w-5 h-5" />
@@ -144,7 +144,7 @@ export function Navigation() {
                   <p className="font-medium text-foreground text-sm">
                     Manual Setup
                   </p>
-                  <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">
+                  <p className="text-xs text-[#94a3b8] mt-0.5 leading-relaxed">
                     Set up yourself and add tasks to backlog
                   </p>
                 </div>
