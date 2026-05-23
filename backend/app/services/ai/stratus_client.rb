@@ -65,6 +65,19 @@ module Ai
       parsed
     end
 
+    response = http.request(request)
+
+  unless response.is_a?(Net::HTTPSuccess)
+    begin
+      parsed_error = JSON.parse(response.body)
+    raise ApiError, "Stratus error #{response.code}: #{parsed_error.dig("error", "message")}"
+    rescue JSON::ParserError
+      raise ApiError, "Stratus error #{response.code}: service unavailable"
+    end
+
+    JSON.parse(response.body)
+  end
+
     def self.api_key
       ENV["STRATUS_API_KEY"] || Rails.application.credentials.stratus_api_key
     end
