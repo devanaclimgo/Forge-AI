@@ -40,7 +40,7 @@ module Ai
     private
 
     def self.post(path, body)
-      uri =URI("#{BASE_URL}/#{path}")
+      uri  = URI("#{BASE_URL}/#{path}")
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true
       http.read_timeout = 30
@@ -48,10 +48,14 @@ module Ai
 
       request = Net::HTTP::Post.new(uri)
       request["Authorization"] = "Bearer #{api_key}"
-      request["Content-Type"] = "application/json"
+      request["Content-Type"]  = "application/json"
       request.body = body.to_json
 
       response = http.request(request)
+      
+      puts "STATUS: #{response.code}"
+      puts "BODY: #{response.body[0..500]}"
+      
       parsed = JSON.parse(response.body)
 
       unless response.is_a?(Net::HTTPSuccess)
