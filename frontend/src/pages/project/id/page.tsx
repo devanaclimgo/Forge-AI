@@ -405,7 +405,7 @@ export default function ProjectPage() {
               )}
             </div>
 
-            {project.summary && (
+            {project.description && project.description.length > 100 && (
               <div>
                 <button
                   onClick={() => setShowPromptModal(true)}
