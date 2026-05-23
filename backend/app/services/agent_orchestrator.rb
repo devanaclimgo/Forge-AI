@@ -1,7 +1,6 @@
 class AgentOrchestrator
   def self.project_created(project)
-    AgentJob.perform_later(project.id, "planner")
-    AgentJob.perform_later(project.id, "architect")
+    AgentJob.perform_now(project.id, "planner")
   end
 
   def self.task_completed(task)
