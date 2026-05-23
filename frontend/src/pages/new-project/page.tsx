@@ -1,4 +1,3 @@
-// src/pages/new-project/page.tsx
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Navigation } from "../../../components/forge/navigation";
