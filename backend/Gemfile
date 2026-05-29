@@ -31,9 +31,6 @@ gem "image_processing", "~> 1.2"
 gem 'bcrypt'
 gem 'jwt'
 
-# JSON serialization
-gem 'active_model_serializers'
-
 # CORS (frontend separado)
 gem 'rack-cors'
 
