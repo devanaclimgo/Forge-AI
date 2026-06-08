@@ -3,7 +3,7 @@ module Agents
     def call(description)
       prompt = build_prompt(description)
 
-      response = Ai::StratusClient.generate(
+      response = Ai::ApiClient.generate(
         prompt,
         system: "You are a senior software project planner. Be concise and structured.", max_tokens: 2000
       )
