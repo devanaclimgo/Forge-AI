@@ -2,7 +2,7 @@ module Agents
   class ProgressAgent < BaseAgent
     def call
       stats   = build_stats
-      response = Ai::StratusClient.generate(
+      response = Ai::ApiClient.generate(
         build_prompt(stats),
         system: "You are a project progress analyst inside Forge AI. Be concise and actionable."
       )
