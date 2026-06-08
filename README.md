@@ -126,7 +126,7 @@ Get structure.
 - TailwindCSS
 
 ### AI Layer
-- Stratus API
+- OpenRouter API
 - Multi-agent orchestration
 
 ## 🧠 Architecture Overview
