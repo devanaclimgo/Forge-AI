@@ -5,7 +5,7 @@ class Api::V1::AgentTestController < ApplicationController
 
     return render json: { error: "prompt is required" }, status: :unprocessable_entity if prompt.blank?
 
-    result = Ai::StratusClient.generate(
+    result = Ai::ApiClient.generate(
       prompt,
       system: system_prompt_for(agent)
     )
