@@ -1,7 +1,7 @@
 module Agents
   class DebugAgent < BaseAgent
     def call(task)
-      response = Ai::StratusClient.generate(
+      response = Ai::ApiClient.generate(
         build_prompt(task),
         system: "You are a QA engineer and debugger inside Forge AI. Be direct and structured."
       )
