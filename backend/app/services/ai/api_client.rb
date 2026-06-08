@@ -2,9 +2,9 @@ require 'net/http'
 require 'uri'
 
 module Ai
-  class StratusClient
-    BASE_URL = "https://api.stratus.run/v1".freeze
-    MODEL = "stratus-x1ac-small-gpt-4o".freeze
+  class ApiClient
+    BASE_URL = "https://api.deepseek.com".freeze
+    MODEL = "deepseek-chat".freeze
 
     class ApiError < StandardError; end
 
