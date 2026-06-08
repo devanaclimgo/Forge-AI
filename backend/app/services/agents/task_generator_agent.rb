@@ -1,7 +1,7 @@
 module Agents
   class TaskGeneratorAgent < BaseAgent
     def call(planner_output)
-      response = Ai::StratusClient.generate(
+      response = Ai::ApiClient.generate(
         build_prompt(planner_output),
         system: "You are a JSON generator. You ONLY return valid JSON, no markdown, no explanation.",
         max_tokens: 2000
