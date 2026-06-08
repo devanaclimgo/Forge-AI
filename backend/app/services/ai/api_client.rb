@@ -3,7 +3,7 @@ require 'uri'
 
 module Ai
   class ApiClient
-    BASE_URL = "https://api.deepseek.com".freeze
+    BASE_URL = "https://openrouter.ai/api/v1".freeze
     MODEL = "deepseek-chat".freeze
 
     class ApiError < StandardError; end
@@ -47,8 +47,9 @@ module Ai
       http.open_timeout = 10
 
       request = Net::HTTP::Post.new(uri)
-      request["Authorization"] = "Bearer #{api_key}"
-      request["Content-Type"]  = "application/json"
+      request["Authorization"] = "Bearer #{ENV["OPENROUTER_API_KEY"]}"
+      request["HTTP-Referer"] = "https://seusite.com" # To be added
+      request["X-Title"] = "Forge AI"
       request.body = body.to_json
 
       response = http.request(request)
