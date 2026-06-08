@@ -1,7 +1,7 @@
 module Agents
   class ArchitectAgent < BaseAgent
     def call(description)
-      response = Ai::StratusClient.generate(
+      response = Ai::ApiClient.generate(
         build_prompt(description),
         system: "You are a software architect inside Forge AI. Focus on practical decisions."
       )
