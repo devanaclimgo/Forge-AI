@@ -219,7 +219,9 @@ adapt with you — not against you
 ## 🧑‍💻 Author
 
 Ana Gomes
-Full-Stack Engineer
+<br>
+Software Engineer
+<br>
 Ruby on Rails • React • AI Systems
 
 ## 🧨 Final Thought
