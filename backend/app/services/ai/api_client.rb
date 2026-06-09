@@ -21,9 +21,9 @@ module Ai
 
       {
         result: response.dig("choices", 0, "message", "content"),
-        confidence: response.dig("stratus", "confidence"),
-        action_sequence: response.dig("stratus", "action_sequence"),
-        planning_ms: response.dig("stratus", "planning_time_ms"),
+        confidence: response.dig("router", "confidence"),
+        action_sequence: response.dig("router", "action_sequence"),
+        planning_ms: response.dig("router", "planning_time_ms"),
         raw: response
       }
     end
@@ -60,7 +60,7 @@ module Ai
       parsed = JSON.parse(response.body)
 
       unless response.is_a?(Net::HTTPSuccess)
-        raise ApiError, "Stratus API error: #{response.code}: #{parsed.dig("error", "message")}"
+        raise ApiError, "Router API error: #{response.code}: #{parsed.dig("error", "message")}"
       end
 
       parsed
@@ -71,16 +71,16 @@ module Ai
   unless response.is_a?(Net::HTTPSuccess)
     begin
       parsed_error = JSON.parse(response.body)
-    raise ApiError, "Stratus error #{response.code}: #{parsed_error.dig("error", "message")}"
+    raise ApiError, "Router error #{response.code}: #{parsed_error.dig("error", "message")}"
     rescue JSON::ParserError
-      raise ApiError, "Stratus error #{response.code}: service unavailable"
+      raise ApiError, "Router error #{response.code}: service unavailable"
     end
 
     JSON.parse(response.body)
   end
 
     def self.api_key
-      ENV["STRATUS_API_KEY"] || Rails.application.credentials.stratus_api_key
+      ENV["API_KEY"] || Rails.application.credentials.api_key
     end
   end
 end
