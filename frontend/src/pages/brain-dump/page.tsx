@@ -12,7 +12,9 @@ import {
   CheckCircle2,
   LogOut,
 } from "lucide-react";
-import { api, type Project } from "../../lib/api";
+import type { Project } from "../../types/project";
+import { useCreateProject } from "@/src/hooks/useCreateProject";
+import { projectService } from "../../services/project.service";
 import { extractProjectName } from "../../utils/project-utils";
 
 const agents = [
@@ -40,6 +42,7 @@ export default function BrainDumpPage() {
   const [showResult, setShowResult] = useState(false);
   const [createdProjectId, setCreatedProjectId] = useState<string>("");
   const [createdProject, setCreatedProject] = useState<Project | null>(null);
+  const { createProject } = useCreateProject();
 
   const wordCount = content.trim().split(/\s+/).filter(Boolean).length;
   const charCount = content.length;
@@ -62,12 +65,12 @@ export default function BrainDumpPage() {
     try {
       const name = extractProjectName(content);
 
-      const project = await api.createProject({
+      const project = await createProject({
         name,
         description: content,
       });
 
-      const updatedProject = await api.getProject(project.id);
+      const updatedProject = await projectService.getProject(project.id);
 
       setCreatedProject(updatedProject);
 
