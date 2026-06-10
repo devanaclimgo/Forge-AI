@@ -26,8 +26,6 @@ module Ai
         planning_ms: response.dig("router", "planning_time_ms"),
         raw: response
       }
-
-      puts ENV["API_KEY"]
     end
 
     def self.rollout(steps:, context:, max_tokens: 1000)
@@ -70,7 +68,7 @@ module Ai
     end
 
     def self.api_key
-      ENV["API_KEY"] || Rails.application.credentials.api_key
+      ENV["OPENROUTER_API_KEY"] || Rails.application.credentials.api_key
     end
   end
 end
