@@ -4,7 +4,7 @@ require 'uri'
 module Ai
   class ApiClient
     BASE_URL = "https://openrouter.ai/api/v1".freeze
-    MODEL = "deepseek-chat".freeze
+    MODEL = "google/gemini-2.5-flash".freeze
 
     class ApiError < StandardError; end
 
@@ -48,7 +48,7 @@ module Ai
 
       request = Net::HTTP::Post.new(uri)
       request["Authorization"] = "Bearer #{ENV["OPENROUTER_API_KEY"]}"
-      request["HTTP-Referer"] = "https://seusite.com" # To be added
+      # request["HTTP-Referer"] = "https://seusite.com" # To be added
       request["X-Title"] = "Forge AI"
       request.body = body.to_json
 
