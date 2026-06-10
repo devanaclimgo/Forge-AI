@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { cn } from "../../lib/utils";
-import { api } from "../../lib/api";
+import { agentService } from "../../services/agent.service";
 
 interface AgentCardProps {
   name: string;
@@ -37,7 +37,7 @@ export function AgentCard({
     setShowPrompt(false);
     try {
       const agentId = name.toLowerCase().replace(/\s+/g, "");
-      const res = await api.runAgent(agentId, prompt);
+      const res = await agentService.runAgent(agentId, prompt);
       setTriggerResult(res.result);
       setShowResult(true);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
