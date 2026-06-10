@@ -25,8 +25,7 @@ export function ProcessingAgents({
         </h1>
 
         <p className="text-muted-foreground">
-          Sit back while our AI team structures
-          your project
+          Sit back while our AI team structures your project
         </p>
       </div>
 
@@ -41,11 +40,11 @@ export function ProcessingAgents({
           return (
             <div
               key={agent.name}
-              className={`flex items-center gap-4 p-4 rounded-lg border ${
+              className={`flex items-center gap-4 p-4 rounded-lg border transition-all duration-300 ${
                 isProcessed
                   ? "border-success/50 bg-success/5"
                   : isCurrent
-                    ? "border-background50 bg-background5"
+                    ? "border-background50 bg-background5 agent-glow"
                     : "border-border bg-card"
               }`}
             >
@@ -70,7 +69,15 @@ export function ProcessingAgents({
                   {agent.name}
                 </p>
 
-                <p className="text-sm text-muted-foreground">
+                <p
+                  className={`text-sm font-mono ${
+                    isProcessed
+                      ? "text-success"
+                      : isCurrent
+                        ? "text-accent"
+                        : "text-muted-foreground"
+                  }`}
+                >
                   {isProcessed
                     ? "Completed"
                     : isCurrent
@@ -78,6 +85,14 @@ export function ProcessingAgents({
                       : "Waiting..."}
                 </p>
               </div>
+
+              {isCurrent && (
+                <span className="flex gap-1">
+                  <span className="w-2 h-2 rounded-full bg-accent thinking-dot" />
+                  <span className="w-2 h-2 rounded-full bg-accent thinking-dot" />
+                  <span className="w-2 h-2 rounded-full bg-accent thinking-dot" />
+                </span>
+              )}
             </div>
           );
         })}
