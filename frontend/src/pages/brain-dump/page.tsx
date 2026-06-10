@@ -30,6 +30,20 @@ const agents = [
   { name: "Analyst", icon: Workflow, message: "Analyzing scope..." },
 ];
 
+const extractProjectName = (content: string) => {
+  const productNameMatch = content.match(/Product Name:\s*(.+)/i);
+
+  if (productNameMatch?.[1]) {
+    return productNameMatch[1].trim();
+  }
+
+  const firstLine = content.split("\n")[0].trim();
+
+  return firstLine.length > 50
+    ? `${firstLine.slice(0, 50)}...`
+    : firstLine || "New Project";
+};
+
 export default function BrainDumpPage() {
   const navigate = useNavigate();
   const [content, setContent] = useState("");
@@ -59,19 +73,24 @@ export default function BrainDumpPage() {
     }, 1200);
 
     try {
-      const firstLine = content.split("\n")[0].trim();
-      const name =
-        firstLine.length > 50
-          ? firstLine.slice(0, 50) + "..."
-          : firstLine || "New Project";
+      const name = extractProjectName(content);
 
-      const project = await api.createProject({ name, description: content });
+      const project = await api.createProject({
+        name,
+        description: content,
+      });
+
+      const updatedProject = await api.getProject(project.id);
+
+      setCreatedProject(updatedProject);
 
       setTimeout(
         () => {
           setShowResult(true);
-          setCreatedProjectId(String(project.id));
-          setCreatedProject(project);
+
+          setCreatedProjectId(String(updatedProject.id));
+
+          setCreatedProject(updatedProject);
         },
         agents.length * 1200 + 500,
       );
