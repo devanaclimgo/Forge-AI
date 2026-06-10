@@ -48,6 +48,7 @@ module Ai
 
       request = Net::HTTP::Post.new(uri)
       request["Authorization"] = "Bearer #{ENV["OPENROUTER_API_KEY"]}"
+      request["Content-Type"] = "application/json"
       # request["HTTP-Referer"] = "https://seusite.com" # To be added
       request["X-Title"] = "Forge AI"
       request.body = body.to_json
@@ -65,19 +66,6 @@ module Ai
 
       parsed
     end
-
-    response = http.request(request)
-
-  unless response.is_a?(Net::HTTPSuccess)
-    begin
-      parsed_error = JSON.parse(response.body)
-    raise ApiError, "Router error #{response.code}: #{parsed_error.dig("error", "message")}"
-    rescue JSON::ParserError
-      raise ApiError, "Router error #{response.code}: service unavailable"
-    end
-
-    JSON.parse(response.body)
-  end
 
     def self.api_key
       ENV["API_KEY"] || Rails.application.credentials.api_key
