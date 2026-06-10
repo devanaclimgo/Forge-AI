@@ -3,7 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Navigation } from "../../../components/forge/navigation";
 import { TaskItem, type Task } from "../../../components/forge/task-item";
 import { AgentCard } from "../../../components/forge/agent-card";
-import { api, type Project, type Sprint } from "../../../lib/api";
+import type { Project } from "../../../types/project";
+import type { Sprint } from "../../../types/sprint";
 import {
   ChevronDown,
   ChevronRight,
@@ -25,6 +26,9 @@ import {
   Trash2,
 } from "lucide-react";
 import { cn } from "../../../lib/utils";
+import { taskService } from "@/src/services/task.service";
+import { sprintService } from "@/src/services/sprint.service";
+import { projectService } from "@/src/services/project.service";
 
 const agentDefs = [
   {
@@ -101,9 +105,9 @@ export default function ProjectPage() {
     const loadProject = async () => {
       try {
         const [proj, taskList, sprintList] = await Promise.all([
-          api.getProject(id),
-          api.getTasks(id),
-          api.getSprints(id),
+          projectService.getProject(id),
+          taskService.getTasks(id),
+          sprintService.getSprints(id),
         ]);
 
         setProject(proj);
@@ -161,15 +165,14 @@ export default function ProjectPage() {
     setTasks((prev) =>
       prev.map((t) => (t.id === taskId ? { ...t, status: newStatus } : t)),
     );
-    await api
-      .updateTask(id!, taskId, { status: newStatus })
+    await taskService.updateTask(id!, taskId, { status: newStatus })
       .catch(console.error);
   };
 
   const handleAddTask = async () => {
     if (!newTask.title.trim() || !id) return;
     try {
-      const created = await api.createTask(id, newTask);
+      const created = await taskService.createTask(id, newTask);
       setTasks((prev) => [...prev, { ...created, id: String(created.id) }]);
       setNewTask({
         title: "",
@@ -217,7 +220,7 @@ export default function ProjectPage() {
 
   const handleDeleteProject = async () => {
     try {
-      await api.deleteProject(project.id);
+      await projectService.deleteProject(project.id);
       navigate("/dashboard");
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (_) {
@@ -228,7 +231,7 @@ export default function ProjectPage() {
   const handleAddSprint = async () => {
     if (!newSprint.name.trim() || !id) return;
     try {
-      const created = await api.createSprint(id, newSprint);
+      const created = await sprintService.createSprint(id, newSprint);
       setSprints((prev) => [...prev, created]);
       setNewSprint({ name: "", start_date: "", end_date: "" });
       setShowAddSprintModal(false);
