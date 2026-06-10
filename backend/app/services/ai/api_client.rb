@@ -26,6 +26,8 @@ module Ai
         planning_ms: response.dig("router", "planning_time_ms"),
         raw: response
       }
+
+      puts ENV["API_KEY"]
     end
 
     def self.rollout(steps:, context:, max_tokens: 1000)
