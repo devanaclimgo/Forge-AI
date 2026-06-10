@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Logo } from "../../../components/forge/logo";
+import { Logo } from "../../components/forge/logo";
 import {
   Send,
   Target,
@@ -12,7 +12,8 @@ import {
   CheckCircle2,
   LogOut,
 } from "lucide-react";
-import { api, type Project } from "../../../lib/api";
+import { api, type Project } from "../../lib/api";
+import { extractProjectName } from "../../utils/project-utils";
 
 const agents = [
   { name: "Planner", icon: Target, message: "Structuring features..." },
@@ -29,20 +30,6 @@ const agents = [
   },
   { name: "Analyst", icon: Workflow, message: "Analyzing scope..." },
 ];
-
-const extractProjectName = (content: string) => {
-  const productNameMatch = content.match(/Product Name:\s*(.+)/i);
-
-  if (productNameMatch?.[1]) {
-    return productNameMatch[1].trim();
-  }
-
-  const firstLine = content.split("\n")[0].trim();
-
-  return firstLine.length > 50
-    ? `${firstLine.slice(0, 50)}...`
-    : firstLine || "New Project";
-};
 
 export default function BrainDumpPage() {
   const navigate = useNavigate();
