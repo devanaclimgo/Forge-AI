@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Navigation } from "../../../components/forge/navigation";
-import { ProjectCard } from "../../../components/forge/project-card";
+import { Navigation } from "../../components/forge/navigation";
+import { ProjectCard } from "../../components/forge/project-card";
 import {
   Plus,
   Activity,
@@ -10,7 +10,7 @@ import {
   Calendar,
   Loader2,
 } from "lucide-react";
-import { api, type AgentLog, type Project } from "../../../lib/api";
+import { api, type AgentLog, type Project } from "../../lib/api";
 
 export default function DashboardPage() {
   const [projects, setProjects] = useState<Project[]>([]);

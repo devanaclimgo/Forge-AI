@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { Logo } from "../../../components/forge/logo";
+import { Logo } from "../../components/forge/logo";
 import {
   Mail,
   Lock,

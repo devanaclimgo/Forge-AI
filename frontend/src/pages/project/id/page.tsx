@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Navigation } from "../../../../components/forge/navigation";
-import { TaskItem, type Task } from "../../../../components/forge/task-item";
-import { AgentCard } from "../../../../components/forge/agent-card";
-import { api, type Project, type Sprint } from "../../../../lib/api";
+import { Navigation } from "../../../components/forge/navigation";
+import { TaskItem, type Task } from "../../../components/forge/task-item";
+import { AgentCard } from "../../../components/forge/agent-card";
+import { api, type Project, type Sprint } from "../../../lib/api";
 import {
   ChevronDown,
   ChevronRight,
@@ -24,7 +24,7 @@ import {
   FileText,
   Trash2,
 } from "lucide-react";
-import { cn } from "../../../../lib/utils";
+import { cn } from "../../../lib/utils";
 
 const agentDefs = [
   {

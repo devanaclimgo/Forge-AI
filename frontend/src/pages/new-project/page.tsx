@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { Navigation } from "../../../components/forge/navigation";
-import { api } from "../../../lib/api";
+import { Navigation } from "../../components/forge/navigation";
+import { api } from "../../lib/api";
 import { Plus, X, ArrowRight, Loader2, Tag } from "lucide-react";
-import { cn } from "../../../lib/utils";
+import { cn } from "../../lib/utils";
 
 type Category =
   | "feature"

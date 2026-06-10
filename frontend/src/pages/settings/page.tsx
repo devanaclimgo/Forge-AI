@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Navigation } from "../../../components/forge/navigation";
-import { cn } from "../../../lib/utils";
+import { Navigation } from "../../components/forge/navigation";
+import { cn } from "../../lib/utils";
 import {
   User,
   Book,

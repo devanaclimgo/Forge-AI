@@ -1,5 +1,5 @@
-import { Navigation } from "../../../components/forge/navigation";
-import { AgentCard } from "../../../components/forge/agent-card";
+import { Navigation } from "../../components/forge/navigation";
+import { AgentCard } from "../../components/forge/agent-card";
 import {
   Target,
   GitBranch,

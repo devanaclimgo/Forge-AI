@@ -1,10 +1,10 @@
 import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { Navigation } from "../../../components/forge/navigation";
-import { ProjectCard } from "../../../components/forge/project-card";
+import { Navigation } from "../../components/forge/navigation";
+import { ProjectCard } from "../../components/forge/project-card";
 import { Plus, Search, FolderOpen, Loader2 } from "lucide-react";
-import { cn } from "../../../lib/utils";
-import { api, type Project } from "../../../lib/api";
+import { cn } from "../../lib/utils";
+import { api, type Project } from "../../lib/api";
 
 type StatusFilter = "all" | "active" | "completed";
 type SortOption = "recent" | "progress" | "name";
