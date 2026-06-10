@@ -10,7 +10,10 @@ import {
   Calendar,
   Loader2,
 } from "lucide-react";
-import { api, type AgentLog, type Project } from "../../lib/api";
+import type { AgentLog } from "../../types/agent";
+import type { Project } from "../../types/project";
+import { projectService } from "@/src/services/project.service";
+import { agentService } from "@/src/services/agent.service";
 
 export default function DashboardPage() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -19,13 +22,12 @@ export default function DashboardPage() {
   const [agentLogs, setAgentLogs] = useState<AgentLog[]>([]);
 
   useEffect(() => {
-    api
-      .getProjects()
+    projectService.getProjects()
       .then(setProjects)
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
 
-    api.getAgentLogs().then(setAgentLogs).catch(console.error);
+    agentService.getAgentLogs().then(setAgentLogs).catch(console.error);
   }, []);
 
   const totalTasksDone = projects.reduce(
