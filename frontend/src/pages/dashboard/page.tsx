@@ -12,8 +12,8 @@ import {
 } from "lucide-react";
 import type { AgentLog } from "../../types/agent";
 import type { Project } from "../../types/project";
-import { projectService } from "@/src/services/project.service";
-import { agentService } from "@/src/services/agent.service";
+import { projectService } from "../../services/project.service";
+import { agentService } from "../../services/agent.service";
 
 export default function DashboardPage() {
   const [projects, setProjects] = useState<Project[]>([]);

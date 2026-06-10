@@ -26,9 +26,9 @@ import {
   Trash2,
 } from "lucide-react";
 import { cn } from "../../../lib/utils";
-import { taskService } from "@/src/services/task.service";
-import { sprintService } from "@/src/services/sprint.service";
-import { projectService } from "@/src/services/project.service";
+import { taskService } from "../../../services/task.service";
+import { sprintService } from "../../../services/sprint.service";
+import { projectService } from "../../../services/project.service";
 
 const agentDefs = [
   {

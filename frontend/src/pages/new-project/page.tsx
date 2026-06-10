@@ -3,8 +3,8 @@ import { useNavigate, Link } from "react-router-dom";
 import { Navigation } from "../../components/forge/navigation";
 import { Plus, X, ArrowRight, Loader2, Tag } from "lucide-react";
 import { cn } from "../../lib/utils";
-import { taskService } from "@/src/services/task.service";
-import { projectService } from "@/src/services/project.service";
+import { taskService } from "../../services/task.service";
+import { projectService } from "../../services/project.service";
 
 type Category =
   | "feature"
