@@ -4,7 +4,8 @@ import { Navigation } from "../../components/forge/navigation";
 import { ProjectCard } from "../../components/forge/project-card";
 import { Plus, Search, FolderOpen, Loader2 } from "lucide-react";
 import { cn } from "../../lib/utils";
-import { api, type Project } from "../../lib/api";
+import type { Project } from "../../types/project";
+import { projectService } from "../../../src/services/project.service";
 
 type StatusFilter = "all" | "active" | "completed";
 type SortOption = "recent" | "progress" | "name";
@@ -18,8 +19,7 @@ export default function ProjectsPage() {
   const [sortBy, setSortBy] = useState<SortOption>("recent");
 
   useEffect(() => {
-    api
-      .getProjects()
+    projectService.getProjects()
       .then(setProjects)
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
