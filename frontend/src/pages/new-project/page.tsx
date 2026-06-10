@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Navigation } from "../../components/forge/navigation";
-import { api } from "../../lib/api";
 import { Plus, X, ArrowRight, Loader2, Tag } from "lucide-react";
 import { cn } from "../../lib/utils";
+import { taskService } from "@/src/services/task.service";
+import { projectService } from "@/src/services/project.service";
 
 type Category =
   | "feature"
@@ -70,7 +71,7 @@ export default function NewProjectPage() {
     if (!name.trim()) return;
     setLoading(true);
     try {
-      const project = await api.createProject({
+      const project = await projectService.createProject({
         name: name.trim(),
         description: description.trim(),
         summary: description.trim(),
@@ -78,7 +79,7 @@ export default function NewProjectPage() {
 
       await Promise.all(
         tasks.map((t) =>
-          api.createTask(project.id, {
+          taskService.createTask(project.id, {
             title: t.title,
             category: t.category,
             priority: t.priority,
