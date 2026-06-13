@@ -240,11 +240,9 @@ export default function ProjectPage() {
     }
   };
 
-  // TODO: add project hover border just like in v0
   // TODO: add "last agent activity" info to project card and project page, maybe in the sidebar header next to progress
   // TODO: add ability to click on sprint in sidebar to filter tasks by sprint, maybe also add a "no sprint" option to show backlog tasks
   // TODO: add ability to create/edit/delete sprints
-  // TODO: loading page after "create project" before showing project page, informações demoram pra carregar e fica parecendo q não ta funcionando
   // TODO: add "archive project" option in more menu, move "delete" to inside project settings page with a confirmation step, and add "duplicate project" option that copies the project and all its tasks and sprints
   // TODO: add ability to click on agent in sidebar to show only tasks related to that agent (maybe using tags or something), and add an "all agents" option to show everything
   // TODO: add ability to click on task to open a detail view where you can edit the task and see its activity log, maybe also add a "comment" feature where you can comment on tasks and agents can reply with updates or questions
