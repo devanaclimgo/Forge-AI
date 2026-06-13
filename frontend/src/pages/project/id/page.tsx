@@ -165,7 +165,8 @@ export default function ProjectPage() {
     setTasks((prev) =>
       prev.map((t) => (t.id === taskId ? { ...t, status: newStatus } : t)),
     );
-    await taskService.updateTask(id!, taskId, { status: newStatus })
+    await taskService
+      .updateTask(id!, taskId, { status: newStatus })
       .catch(console.error);
   };
 
@@ -181,6 +182,28 @@ export default function ProjectPage() {
         status: "todo",
       });
       setShowAddTaskModal(false);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleDeleteProject = async () => {
+    try {
+      await projectService.deleteProject(project!.id);
+      navigate("/dashboard");
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (_) {
+      alert("Failed to delete project.");
+    }
+  };
+
+  const handleAddSprint = async () => {
+    if (!newSprint.name.trim() || !id) return;
+    try {
+      const created = await sprintService.createSprint(id, newSprint);
+      setSprints((prev) => [...prev, created]);
+      setNewSprint({ name: "", start_date: "", end_date: "" });
+      setShowAddSprintModal(false);
     } catch (e) {
       console.error(e);
     }
@@ -218,28 +241,6 @@ export default function ProjectPage() {
       </div>
     );
 
-  const handleDeleteProject = async () => {
-    try {
-      await projectService.deleteProject(project.id);
-      navigate("/dashboard");
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (_) {
-      alert("Failed to delete project.");
-    }
-  };
-
-  const handleAddSprint = async () => {
-    if (!newSprint.name.trim() || !id) return;
-    try {
-      const created = await sprintService.createSprint(id, newSprint);
-      setSprints((prev) => [...prev, created]);
-      setNewSprint({ name: "", start_date: "", end_date: "" });
-      setShowAddSprintModal(false);
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
   // TODO: add "last agent activity" info to project card and project page, maybe in the sidebar header next to progress
   // TODO: add ability to click on sprint in sidebar to filter tasks by sprint, maybe also add a "no sprint" option to show backlog tasks
   // TODO: add ability to create/edit/delete sprints
@@ -251,6 +252,7 @@ export default function ProjectPage() {
     <div className="min-h-screen bg-background">
       <Navigation />
       <div className="flex h-[calc(100vh-64px)]">
+
         {/* Left Sidebar */}
         <aside className="w-64 border-r border-border bg-card p-4 hidden lg:block overflow-auto">
           <div className="space-y-6">
@@ -277,16 +279,8 @@ export default function ProjectPage() {
 
             <div className="space-y-1">
               {[
-                {
-                  view: "tasks" as ViewType,
-                  icon: LayoutList,
-                  label: "Task List",
-                },
-                {
-                  view: "sprints" as ViewType,
-                  icon: Calendar,
-                  label: "Sprints",
-                },
+                { view: "tasks" as ViewType, icon: LayoutList, label: "Task List" },
+                { view: "sprints" as ViewType, icon: Calendar, label: "Sprints" },
               ].map(({ view, icon: Icon, label }) => (
                 <button
                   key={view}
@@ -450,7 +444,8 @@ export default function ProjectPage() {
 
         {/* Main Content */}
         <main className="flex-1 overflow-auto">
-          {/* Header fixo */}
+
+          {/* Fixed Header */}
           <div className="flex items-center justify-between border-b border-border px-6 py-4">
             <div>
               <h2 className="text-xl font-semibold text-foreground">
@@ -463,6 +458,15 @@ export default function ProjectPage() {
               </p>
             </div>
             <div className="flex items-center gap-2">
+              {activeView === "sprints" && (
+                <button
+                  onClick={() => setShowAddSprintModal(true)}
+                  className="flex items-center gap-2 rounded-lg border border-border px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+                >
+                  <Plus className="w-4 h-4" />
+                  New Sprint
+                </button>
+              )}
               <button
                 onClick={() => setShowAddTaskModal(true)}
                 className="flex items-center gap-2 rounded-lg border border-border px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
@@ -533,6 +537,8 @@ export default function ProjectPage() {
               </div>
             </div>
           </div>
+
+          {/* Task List View */}
           {activeView === "tasks" && (
             <div className="p-6">
               <div className="rounded-lg border border-border bg-card overflow-hidden">
@@ -553,27 +559,15 @@ export default function ProjectPage() {
             </div>
           )}
 
+          {/* Sprint Overview View */}
           {activeView === "sprints" && (
-            <div className="p-6">
-              <div className="flex items-center justify-between mb-6">
-                <div>
-                  <h2 className="text-xl font-semibold text-foreground">
-                    Sprint Overview
-                  </h2>
-                  <p className="text-sm text-muted-foreground mt-0.5">
-                    Manage your sprint cycles
-                  </p>
-                </div>
-                <button
-                  onClick={() => setShowAddSprintModal(true)}
-                  className="flex items-center gap-2 rounded-lg border border-border px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
-                >
-                  <Plus className="w-4 h-4" />
-                  New Sprint
-                </button>
-              </div>
-              <div className="space-y-6">
-                {sprints.map((sprint) => (
+            <div className="p-6 space-y-6">
+              {sprints.length === 0 ? (
+                <p className="text-center text-muted-foreground text-sm py-8">
+                  No sprints yet. Click "New Sprint" to create one.
+                </p>
+              ) : (
+                sprints.map((sprint) => (
                   <div
                     key={sprint.id}
                     className="rounded-lg border border-border bg-card p-5"
@@ -609,13 +603,8 @@ export default function ProjectPage() {
                       />
                     </div>
                   </div>
-                ))}
-                {sprints.length === 0 && (
-                  <p className="text-center text-muted-foreground text-sm py-8">
-                    No sprints yet. Click "New Sprint" to create one.
-                  </p>
-                )}
-              </div>
+                ))
+              )}
             </div>
           )}
         </main>
