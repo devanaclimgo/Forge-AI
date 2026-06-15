@@ -8,8 +8,8 @@ Rails.application.routes.draw do
       get "agent_logs", to: "agent_logs#index"
 
       resources :projects do
-        resources :tasks
-        resources :sprints, only: [:index, :create]
+        resources :tasks, only: [:index, :create, :update, :destroy]
+        resources :sprints, only: [:index, :create, :update, :destroy]
       end
     end
   end
